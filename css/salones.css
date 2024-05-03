@@ -8,16 +8,33 @@
 .filtro {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   margin: 60px;
 }
 
 .filtro input {
-  width: 300px;
+  width: 1000px;
   height: 30px;
   border-radius: 5px;
   border-color: #058B3C;
+}
+
+.filtro div {
   display: flex;
-  justify-content: space-around;
+}
+
+.filtro div h4 {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  color: #058B3C;
+}
+
+.filtro div select {
+  height: 30px;
+  width: 250px;
+  border-color:  #058B3C;
+  border-radius: 5px;
 }
 
 .salones {
@@ -75,8 +92,9 @@
   height: 30%;
 }
 
-.card-footer button {
+.card-footer a {
   border: none; 
+  display: block;
   background-color: #004336;
   height: 30px;
   color: #FFF;
@@ -84,5 +102,8 @@
   border-radius: 10px;
   font-family: 'Poppins' sans-serif;
   font-weight: 600;
-  font-size: 0.8em;
+  font-size: 1em;
+  text-align: center;
+  padding: 5px;
+  text-decoration: none;
 }

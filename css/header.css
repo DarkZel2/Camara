@@ -13,14 +13,14 @@ header {
     z-index: 99;
     box-shadow: 0px 6px 8px rgb(0, 0, 0, 0.3);
 }
-
+/*Parte superior del encabezado*/
 .hd-hidden {
     height: 40%;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-
+/*Parte donde se encuentra el gov.co*/
 .hidden-1 {
     height: 40%;
     width: 100%;
@@ -33,7 +33,7 @@ header {
     float: right;
     margin-right: 50px;
 }
-
+/*Menu de navegación con los servicios principales*/
 .hidden-2 {
     height: 60%;
     width: 100%;
@@ -78,7 +78,7 @@ header {
     font-weight: 500;
     color: #FFF;
 }
-
+/*Segunda parte del encabezado, se fija a la pantalla cuando se hace scroll*/
 .hd-visible {
     background-color: #FFF;
     height: 60%;
@@ -86,7 +86,7 @@ header {
     display: flex;
     justify-content: space-between;
 }
-
+/*Logo centro de eventos*/
 .logo {
     background-color: #058B3C;
     width: 250px;
@@ -100,7 +100,7 @@ header {
     height: 60px;
     width: 200px;
 }
-
+/*Segundo nav donde estan los servicios de camara de comercio e informacion*/
 .nav2 {
     display: flex;
     flex-direction: row;
@@ -161,3 +161,4 @@ header {
     margin: 0px 0px 0px 0px;
     padding: 7px 7px 7px 7px;
 }
+/*media query*/

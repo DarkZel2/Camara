@@ -4,12 +4,12 @@
     bottom: 0;
     margin: 0;
 }
-
+/*Contenedor padre del footer*/
 footer {
     display: flex;
     flex-direction: column;
 }
-
+/*Primer div con el contenido de contacto y horario*/
 .info {
     width: 100%;
     height: 220px;
@@ -31,7 +31,7 @@ footer {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
-
+/*Div que contiene el eslogan de centro de eventos*/
 .eslogan {
     width: 100%;
     height: 150px;
@@ -47,7 +47,7 @@ footer {
     font-weight: 600;
     font-size: 1.8em;
 }
-
+/*Div que contiene información acerca de camara de comercio y los canales de atención*/
 .sobre-cc {
     width: 100%;
     height: 400px;
@@ -58,7 +58,7 @@ footer {
     justify-content: space-between;
     padding: 50px;
 }
-
+/*Logo de camara de comercio ubicado en la sección de información sobre camara de comercio*/
 .sobre-cc img {
     width: 160px;
     height: 100px;
@@ -88,9 +88,11 @@ footer {
     font-size: 1.2em;
     font-weight: 500;
 }
-
+/*Ultimo div del footer que contiene las politicas de privacidad de datos y cuestiones legales*/
 .politicas {
     width: 100%;
     height: 100px;
     background-color: #058B3C;
 }
+
+/*Media query*/
