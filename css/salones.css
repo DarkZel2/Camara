@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.filtro {
+  display: flex;
+  flex-direction: row;
+  margin: 60px;
+}
+
+.filtro input {
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: #058B3C;
+  display: flex;
+  justify-content: space-around;
+}
+
+.salones {
+  margin: 60px;
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.salon {
+  border: solid 5px #058B3C;
+  width: 750px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.card-img {
+  width: 500px;
+  height: 290px;
+  border-radius: 5px;
+}
+
+.card-body {
+  width: 250px;
+  height: 290px;
+  padding: 5px;
+}
+
+.card-head {
+  text-align: center;
+  align-items: baseline;
+  color: #058B3C;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+  display: block;
+  height: 30%;
+}
+
+.card-main {
+  font-size: 1em;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 400;
+  text-align: center;
+  align-items: center;
+  height: 40%;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  height: 30%;
+}
+
+.card-footer button {
+  border: none; 
+  background-color: #004336;
+  height: 30px;
+  color: #FFF;
+  width: 100px;
+  border-radius: 10px;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+  font-size: 0.8em;
+}
