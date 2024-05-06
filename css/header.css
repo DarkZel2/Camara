@@ -2,6 +2,7 @@
     top: 0;
     bottom: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -79,7 +80,7 @@ header {
     color: #FFF;
 }
 /*Segunda parte del encabezado, se fija a la pantalla cuando se hace scroll*/
-.hd-visible {
+#hd-fijo {
     background-color: #FFF;
     height: 60%;
     width: 100%;
@@ -101,33 +102,150 @@ header {
     width: 200px;
 }
 /*Segundo nav donde estan los servicios de camara de comercio e informacion*/
+
 .nav2 {
+    width: 100%;
+    margin: auto;
     display: flex;
-    flex-direction: row;
-    margin-top: auto;
-    margin-bottom: auto;
-    justify-content: center;
+    justify-content: end;
 }
 
 .nav2 ul {
-    display: flex;
-    flex-direction: row;
-    margin-right: 15px;
     list-style: none;
+    display: flex;
+    gap: 5px;
 }
 
-.nav2 ul li a {
-    font-family: "Poppins", Sans-serif;
+.submenus.uno {
+    bottom: auto;
+    top: auto;
+}
+
+.nav2 li a {
+    text-decoration: none;
+    color: #000;
     font-size: 12px;
     font-weight: 500;
-    line-height: 1em;
+    font-family: 'Poppins', sans-serif;
     letter-spacing: 0.1px;
-    text-decoration: none;
     display: block;
-    color: #000;
-    text-align: left;
-    margin: 10px;
-    align-items: last baseline;
+    padding: 10px 15px;
+    transition: 300ms;
+}
+
+.menu1:hover {
+    color: #058B3C;
+    transition: 300ms;
+}
+
+/* .nav2 ul li::before {
+    content: "";
+    height: 3px;
+    width: 4%;
+    background: #058B3C;
+    position: absolute;
+    transition: 0.4s ease-out;
+}
+
+.amt:hover::before {
+    width: 100%;
+} */
+
+/* .ul_links{
+    width: 100%;
+    position: absolute;
+    top: 80px;  
+    display: flex;
+    justify-content: center;
+    height: 0;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    left: 0;
+
+    transition: all .3s;
+} */
+
+.menu2-top:hover {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.menu2:hover {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+}
+
+.menu2-bottom:hover {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.menu2-alone:hover {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+    border-radius: 10px;
+}
+
+.nav2 li ul {
+    display: none;
+    position: absolute;
+}
+
+.nav2 li:hover > ul {
+    display: block;
+    z-index: 1;
+    background-color: #FFF;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+    -moz-box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+    box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+}
+
+.nav2 li ul li {
+    position: relative;
+}
+
+.nav2 li ul li ul {
+    -webkit-box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+    -moz-box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+    box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+    background-color: #FFF;
+    bottom: auto;
+    z-index: 2;
+}
+
+.menu3-1 {
+    left: -407px;
+}
+
+.menu3-2 {
+    right: -262px;
+}
+
+.menu3-3 {
+    left: -245px;
+}
+
+.menu3-4 {
+    left: -402px;
+}
+
+.menu3-5 {
+    left: -287px;
+}
+
+.menu3-6 {
+    left: -184px;
 }
 
 .bi-search {

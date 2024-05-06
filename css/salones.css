@@ -33,6 +33,7 @@
 .filtro div select {
   height: 30px;
   width: 250px;
+  border: solid 2px;
   border-color:  #058B3C;
   border-radius: 5px;
 }
@@ -91,6 +92,8 @@
   align-items: end;
   height: 30%;
 }
+
+/* #F15A24 */
 
 .card-footer a {
   border: none; 
