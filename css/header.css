@@ -167,6 +167,8 @@ header {
     transition: all .3s;
 } */
 
+/* Configuración de diferentes hover para los menus desplegables */
+
 .menu2-top:hover {
     background-color: #058B3C;
     color: #FFF;
@@ -196,6 +198,8 @@ header {
     border-radius: 10px;
 }
 
+/* Estilos de los menús desplegables */
+
 .nav2 li ul {
     display: none;
     position: absolute;
@@ -223,6 +227,8 @@ header {
     bottom: auto;
     z-index: 2;
 }
+
+/* Ajustes de disposición de los submenús desplegables */
 
 .menu3-1 {
     left: -407px;
