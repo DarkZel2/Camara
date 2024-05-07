@@ -23,8 +23,18 @@ footer {
 
 .info .contacto {
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.2em;
 } 
+
+.info .contacto ul {
+    list-style: none;
+}
+
+.contacto ul li i {
+    font-size: 1.2em;
+}
 
 .info .horario {
     text-align: center;

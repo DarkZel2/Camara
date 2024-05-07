@@ -2,6 +2,7 @@
   margin: 0;
   top: 0;
   bottom: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -17,6 +18,22 @@
   height: 30px;
   border-radius: 5px;
   border-color: #058B3C;
+  padding: 5px;
+  font-size: 1em;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.search {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.sch2 {
+  transform: translateX(-25px);
+  font-size: 1.2em;
 }
 
 .filtro div {
@@ -28,6 +45,10 @@
   align-items: center;
   margin-right: 15px;
   color: #058B3C;
+  font-size: 1em;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .filtro div select {
@@ -36,6 +57,11 @@
   border: solid 2px;
   border-color:  #058B3C;
   border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .salones {
@@ -47,18 +73,57 @@
 }
 
 .salon {
-  border: solid 5px #058B3C;
   width: 750px;
   height: 300px;
   border-radius: 10px;
   display: flex;
   margin-bottom: 30px;
+  -webkit-box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+  -moz-box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
+  box-shadow: 0px 0px 37px -15px rgba(0,0,0,0.43);
 }
 
 .card-img {
   width: 500px;
-  height: 290px;
+  height: 300px;
   border-radius: 5px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card-img ul {
+  display: flex;
+  width: 1970px;
+  animation: slide 15s infinite alternate ease-in-out;
+  padding: 0;
+}
+
+.card-img li {
+  list-style: none;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0
+}
+
+.card-img img {
+  width: 500px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+@keyframes slide {
+  0% {margin-left: 0;}
+  20% {margin-left: 0;}
+
+  25% {margin-left: -100%;}
+  45% {margin-left: -100%;}
+
+  50% {margin-left: -200%;}
+  70% {margin-left: -200%;}
+
+  75% {margin-left: -300%;}
+  100% {margin-left: -300%;}
 }
 
 .card-body {
@@ -72,7 +137,8 @@
   align-items: baseline;
   color: #058B3C;
   font-family: 'Poppins' sans-serif;
-  font-weight: 600;
+  font-weight: 700;
+  font-style: normal;
   display: block;
   height: 30%;
 }
@@ -80,7 +146,9 @@
 .card-main {
   font-size: 1em;
   font-family: 'Poppins' sans-serif;
-  font-weight: 400;
+  font-weight: 500;
+  font-style: normal;
+  font-style: normal;
   text-align: center;
   align-items: center;
   height: 40%;
@@ -93,7 +161,7 @@
   height: 30%;
 }
 
-/* #F15A24 */
+/* #528F1D Color para el hover en los botones*/
 
 .card-footer a {
   border: none; 
@@ -104,9 +172,17 @@
   width: 100px;
   border-radius: 10px;
   font-family: 'Poppins' sans-serif;
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 700;
   font-size: 1em;
   text-align: center;
   padding: 5px;
   text-decoration: none;
+  transition: all 300ms ease 0ms;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.43);
+}
+
+.card-footer a:hover {
+  background-color: #528F1D;
+  transform: translateY(-5px);
 }

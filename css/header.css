@@ -7,36 +7,38 @@
 }
 
 header {
-    height: 180px;
+    height: 160px;
     width: 100%;
     display: flex;
     flex-direction: column;
     z-index: 99;
-    box-shadow: 0px 6px 8px rgb(0, 0, 0, 0.3);
 }
 /*Parte superior del encabezado*/
 .hd-hidden {
-    height: 40%;
+    height: 72px;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 /*Parte donde se encuentra el gov.co*/
 .hidden-1 {
-    height: 40%;
+    height: 25.2px;
     width: 100%;
     background-color: #FFF;
     padding: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .hidden-1 img {
-    height: 99%;
-    float: right;
-    margin-right: 50px;
+    height: 22px;
+    width: 105px;
+    margin-right: 45px;
 }
 /*Menu de navegación con los servicios principales*/
 .hidden-2 {
-    height: 60%;
+    height: 46.8px;
     width: 100%;
     background-color: #058B3C;
     display: flex;
@@ -46,6 +48,7 @@ header {
 .nav1 {
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 40px;
 }
 
 .nav1 ul {
@@ -58,6 +61,7 @@ header {
     display: block;
     text-decoration: none;
     font-family: "Poppins", Sans-serif;
+    font-style: normal;
     font-size: 12px;
     font-weight: 500;
     color: #FFF;
@@ -82,16 +86,21 @@ header {
 /*Segunda parte del encabezado, se fija a la pantalla cuando se hace scroll*/
 #hd-fijo {
     background-color: #FFF;
-    height: 60%;
+    height: 88px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    box-shadow: 0px 6px 8px rgb(0, 0, 0, 0.3);
 }
+
+#hd-fijo.abajo {
+    position: fixed;
+    z-index: 98;
+}
+
 /*Logo centro de eventos*/
 .logo {
-    background-color: #058B3C;
-    width: 250px;
-    border-radius: 40% 100% 25% 50%;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +108,8 @@ header {
 
 .logo img {
     height: 60px;
-    width: 200px;
+    width: 220px;
+    margin-left: 40px;
 }
 /*Segundo nav donde estan los servicios de camara de comercio e informacion*/
 
@@ -113,7 +123,6 @@ header {
 .nav2 ul {
     list-style: none;
     display: flex;
-    gap: 5px;
 }
 
 .submenus.uno {
@@ -123,14 +132,19 @@ header {
 
 .nav2 li a {
     text-decoration: none;
-    color: #000;
     font-size: 12px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
+    font-style: normal;
     letter-spacing: 0.1px;
     display: block;
     padding: 10px 15px;
     transition: 300ms;
+    color: #000;
+}
+
+.center {
+    padding: 10px 0px;
 }
 
 .menu1:hover {
@@ -138,38 +152,21 @@ header {
     transition: 300ms;
 }
 
-/* .nav2 ul li::before {
-    content: "";
-    height: 3px;
-    width: 4%;
-    background: #058B3C;
-    position: absolute;
-    transition: 0.4s ease-out;
-}
+/* Configuración de las animaciones debajo de cada item de la barra de navegación */
 
-.amt:hover::before {
-    width: 100%;
-} */
 
-/* .ul_links{
-    width: 100%;
-    position: absolute;
-    top: 80px;  
-    display: flex;
-    justify-content: center;
-    height: 0;
-    overflow: hidden;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    left: 0;
 
-    transition: all .3s;
-} */
-
-/* Configuración de diferentes hover para los menus desplegables */
+/* Configuración de diferentes hover para los menus desplegables y sus estados activos*/
 
 .menu2-top:hover {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.menu2-top-active {
     background-color: #058B3C;
     color: #FFF;
     transition: 300ms;
@@ -183,7 +180,21 @@ header {
     transition: 300ms;
 }
 
+.menu2-active {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+}
+
 .menu2-bottom:hover {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.menu2-bottom-active {
     background-color: #058B3C;
     color: #FFF;
     transition: 300ms;
@@ -198,11 +209,19 @@ header {
     border-radius: 10px;
 }
 
+.menu2-alone-active {
+    background-color: #058B3C;
+    color: #FFF;
+    transition: 300ms;
+    border-radius: 10px;
+}
+
 /* Estilos de los menús desplegables */
 
 .nav2 li ul {
     display: none;
     position: absolute;
+    z-index: inherit;
 }
 
 .nav2 li:hover > ul {
@@ -273,16 +292,25 @@ header {
 }
 
 .btn-search button {
-    font-family: "Arial", Sans-serif;
+    font-family: "Poppins", Sans-serif;
     color: #058B3C;
     background-color: transparent;
     font-size: 13px;
     font-weight: 700;
+    font-style: normal;
     border-style: solid;
     border-width: 2px 2px 2px 2px;
     border-color: #058B3C;
     border-radius: 6px;
-    margin: 0px 0px 0px 0px;
+    margin: auto;
     padding: 7px 7px 7px 7px;
+    cursor: pointer;
+    transition: all 300ms ease 0ms;
 }
+
+.btn-search button:hover {
+    color: #FFF;
+    background-color: #058B3C;
+}
+
 /*media query*/

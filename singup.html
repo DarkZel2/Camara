@@ -8,15 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <title>Salones | (Nombre_Salón)</title>
+  <link rel="stylesheet" href="/css/sesion.css">
+  <title>Sing Up</title>
 </head>
 <body>
   <!-- Encabezado -->
   <header> 
     <div class="hd-hidden">
       <div class="hidden-1">
-        <img src="/img/articles-76053_logo-1.webp">
+        <img src="img/articles-76053_logo-1.webp">
       </div>
       <div class="hidden-2">
         <div class="nav1">
@@ -32,14 +32,14 @@
           </ul>
         </div>
         <div class="singup">
-          <a href="/singup.html" title="Ir a Iniciar">Inicia Sesión</a>
+          <a href="singup.html" title="Ir a Iniciar">Inicia Sesión</a>
         </div>
       </div>
     </div>
     <!-- Encabezado fijo que se mueve conforme al scroll -->
     <div id="hd-fijo">
       <div class="logo">
-        <img src="/img/Logo_CE-01 (5) (1).png">
+        <img src="img/Logo_CE-01 (5) (1).png">
       </div>
       <div class="nav2">
         <ul>
@@ -137,72 +137,33 @@
       </div>
     </div>
   </header>
-<!-- Cuerpo pirncipal de la página -->
+  <!-- Cuerpo Principal de la página -->
   <main>
-    <div>
-      <h1>Nombre del Salón</h1>
-      <button>COTIZAR</button>
+    <div class="container">
+      <h1>Inicia Sesión</h1>
+      <form action="" method="post">
+        <div class="npt">
+          <label for="">Número de Identificación</label><br>
+          <input type="text" name="id">
+        </div>
+        <div class="npt">
+          <label for="">Contraseña</label><br>
+          <div>
+            <input type="password" name="pass" id="pass">
+            <i class="bi bi-eye" id="icon"></i>
+          </div>
+        </div>
+        <div class="submit">
+          <input type="submit" value="Iniciar Sesión">
+        </div>
+        <div class="more">
+          <a href="">Registrarme</a>
+          <a href="">¿Olvidó su contraseña?</a>
+        </div>
+      </form>
     </div>
   </main>
-  <!-- Footer o Pie de página -->
-  <footer>
-    <div class="info">
-      <div class="contacto">
-        <ul>
-          <li><i class="bi bi-telephone-fill"></i>  3208521110 - 3142444629</li>
-          <li><i class="bi bi-envelope"></i>  eventosespinal@ccsurortolima.org.co</li>
-          <li><i class="bi bi-geo-alt-fill"></i>  Centro de Eventos Cra 3 Calle 21 B. Belén El Espinal Tolima</li>
-        </ul>
-      </div>
-      <div class="horario">
-        <h4>Horario de Atención</h4>
-        <p>Lunes a Viernes: 8:00 a.m. a 12:30 p.m. y de 2:00 p.m. a 6:00 p.m. <br> Sábados: 8:00 a.m. a 12:00 p.m.</p>
-      </div>
-    </div>
-    <div class="eslogan">
-      <h4>"Los <b style="color: #058B3C; font-style: italic;">GRANDES</b> momentos se celebran en los <b style="color: #058B3C; font-style: italic;">MEJORES</b> escenarios"</h4>
-    </div>
-    <div class="sobre-cc">
-      <div style="text-align: center; margin-left: 100px;" class="more-info">
-        <img src="/img/LOGO CC-05.png">
-        <p>Somos Cámara de Comercio del Sur y Oriente del Tolima, estamos comprometidos en fortalecer una region empresaria y competitiva.</p>
-      </div>
-      <div class="more-info">
-        <h4>Atención al Cliente</h4>
-        <ul>
-          <li>Único correo para notificaciones judiciales: <b style="font-weight: 600;">contactenos@ccsurortolima.org.co</b></li>
-          <li>Canales de atención y sedes</li>
-          <li>Trabaje con nosotros</li>
-          <li>Intranet</li>
-        </ul>
-      </div>
-      <div class="more-info">
-        <h4>Información de Interés</h4>
-        <ul>
-          <li>Ley de Transparencia</li>
-          <li>Protección de datos personales</li>
-          <li>Tarifas</li>
-          <li>Formación</li>
-          <li>Calendario de Eventos</li>
-          <li>Centro de Apropiación Tecnológica y Desarrollo Empresarial - CTDE</li>
-        </ul>
-      </div>
-      <div class="more-info" style="margin-right: 100px;">
-        <h4>Sobre Cámara de Comercio</h4>
-        <ul>
-          <li>Registros públicos</li>
-          <li>Desarrollo empresarial</li>
-          <li>Centro de eventos</li>
-          <li>Proveedores y contratistas</li>
-          <li>Certificación de Sistemas de Gestión</li>
-        </ul>
-      </div>
-    </div>
-    <div class="politicas">
 
-    </div>
-  </footer>
-
-  <script src="/js/nav_fijo.js"></script>
+  <script src="/js/ver_pass.js"></script>
 </body>
 </html>
