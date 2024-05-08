@@ -262,7 +262,7 @@ header {
 }
 
 .menu3-4 {
-    left: -402px;
+    right: -402px;
 }
 
 .menu3-5 {
@@ -291,8 +291,9 @@ header {
     display: block;
 }
 
-.btn-search button {
+.btn-search .btn-trmt {
     font-family: "Poppins", Sans-serif;
+    text-decoration: none;
     color: #058B3C;
     background-color: transparent;
     font-size: 13px;
@@ -308,7 +309,7 @@ header {
     transition: all 300ms ease 0ms;
 }
 
-.btn-search button:hover {
+.btn-search .btn-trmt:hover {
     color: #FFF;
     background-color: #058B3C;
 }

@@ -36,9 +36,10 @@ body {
 }
 
 .texto {
+  width: 300px;
   position: absolute;
   text-align: center;
-  padding: 0 250px;
+  /* padding: 0 250px; */
   top: 250px;
   color: white;
 }
