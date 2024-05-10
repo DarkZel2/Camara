@@ -176,7 +176,34 @@
         
       </div>
       <div class="calendario">
-
+        <div class="left">
+          <div class="calendar">
+            <div class="month">
+              <i class="bi bi-arrow-left-circle-fill" id="prev"></i>
+              <div class="date"></div>
+              <i class="bi bi-arrow-right-circle-fill" id="next"></i>
+            </div>
+            <div class="weekdays">
+              <div>Domingo</div>
+              <div>Lunes</div>
+              <div>Martes</div>
+              <div>Miércoles</div>
+              <div>Jueves</div>
+              <div>Viernes</div>
+              <div>Sábado</div>
+            </div>
+            <div class="days">
+              <!-- Agregamos los dias con js -->
+            </div>
+            <div class="goto-today">
+              <div class="goto">
+                <input type="text" placeholder="mm/yyyy" class="date-input">
+                <button class="goto-btn">Ir</button>
+              </div>
+              <button class="today-btn">Hoy</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -241,5 +268,6 @@
 
   <script src="/js/carrusel.js"></script>
   <script src="/js/nav_fijo.js"></script>
+  <script src="/js/calendar.js"></script>
 </body>
 </html>
