@@ -19,15 +19,15 @@ body {
 }
 
 .container {
- position: relative;
- width: 1200px;
- height: 850px;
- margin: 0 auto;
- padding: 5px;
- color: #FFF;
- display: flex;
- border-radius: 10px;
- background-color: var(--secundai_clr); 
+  position: relative;
+  width: 1200px;
+  height: 850px;
+  margin: 0 auto;
+  padding: 5px;
+  color: #FFF;
+  display: flex;
+  border-radius: 10px;
+  background-color: var(--secundai_clr); 
 }
 
 .left {
@@ -80,6 +80,7 @@ body {
 
 .calendar .month .bi {
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .calendar .month .bi:hover {
@@ -126,6 +127,7 @@ body {
   justify-content: center;
   cursor: pointer;
   border: solid 1px #F5F5F5;
+  transition: 0.3s;
 }
 
 .calendar .day:not(.prev-date , .next-date) {
@@ -230,6 +232,7 @@ body {
   background-color: transparent;
   cursor: pointer;
   color: var(--primari_clr);
+  transition: 0.3s;
 }
 
 .calendar .goto-today button:hover {
