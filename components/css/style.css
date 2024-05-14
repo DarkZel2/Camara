@@ -327,8 +327,8 @@ body {
 }
 
 .events .event .title i {
-  color: var(--primari_clr);
-  font-size: 0.5rem;
+  color: #ffffffab;
+  font-size: 0.8rem;
 }
 
 .events .event:hover .title i,
@@ -344,7 +344,7 @@ body {
   pointer-events: none;
 }
 
-.event::after {
+.events .event::after {
   content: "✔";
   position: absolute;
   top: 50%;
@@ -358,8 +358,19 @@ body {
   transform: translateY(-50%);
 }
 
-.event:hover::after {
+.events .event:hover::after {
   display: flex;
+}
+
+.events .no-event {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffffffab;
 }
 
 .add-event-wrapper {
