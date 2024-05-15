@@ -176,7 +176,7 @@
       <div class="servicios">
         
       </div>
-      <div class="calendario">
+      <div class="container-c">
         <div class="left">
           <div class="calendar">
             <div class="month">
@@ -205,6 +205,38 @@
             </div>
           </div>
         </div>
+        <div class="right">
+          <div class="today-date">
+            <div class="event-day"></div>
+            <div class="event-date"></div>
+          </div>
+          <div class="events">
+            <!-- Se añadirá con js -->
+          </div>
+          <div class="add-event-wrapper">
+            <div class="add-event-header">
+              <div class="title">Agregar evento</div>
+              <i class="bi bi-x-circle" id="close"></i>
+            </div>
+            <div class="add-event-body">
+              <div class="add-event-input">
+                <input type="text" placeholder="Nombre del Evento" class="event-name">
+              </div>
+              <div class="add-event-input">
+                <input type="text" placeholder="Hora de Inicio" class="event-time-from">
+              </div>
+              <div class="add-event-input">
+                <input type="text" placeholder="Hora de Fin" class="event-time-to">
+              </div>
+              <div class="add-event-footer">
+                <button class="add-event-btn">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="add-event">
+          <i class="bi bi-plus-circle"></i>
+        </button>
       </div>
     </div>
   </main>

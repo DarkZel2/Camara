@@ -165,6 +165,7 @@ main {
 
 .servicios {
   margin-top: 40px;
+  margin-bottom: 40px;
   height: 400px;
   width: 100%;
   border-radius: 20px;
@@ -172,16 +173,3 @@ main {
 }
 
 /* Los estilos del calendario se encuentran en la ruta "/css/calendar.css" */
-
-.calendario {
-  margin-top: 40px;
-  height: 850px;
-  width: 100%;
-  position: relative;
-  height: 850px;
-  padding: 5px;
-  color: #FFF;
-  display: flex;
-  border-radius: 10px;
-  background-color: var(--primari_clr); 
-}

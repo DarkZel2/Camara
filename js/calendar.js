@@ -34,34 +34,39 @@ const months = [
 
 //Array para los eventos
 
-const eventsArr = [
-  {
-    day: 15,
-    month: 5,
-    year: 2024,
-    events: [
-      {
-        title: "Event 1",
-        time: "10:00 AM - 10:30 AM",
-      },
-      {
-        title: "Event 2",
-        time: "11:00 AM",
-      },
-    ],
-  },
-  {
-    day: 18,
-    month: 5,
-    year: 2024,
-    events: [
-      {
-        title: "Event 1",
-        time: "10:00 AM",
-      },
-    ],
-  },
-];
+// const eventsArr = [
+//   {
+//     day: 15,
+//     month: 5,
+//     year: 2024,
+//     events: [
+//       {
+//         title: "Event 1",
+//         time: "10:00 AM - 10:30 AM",
+//       },
+//       {
+//         title: "Event 2",
+//         time: "11:00 AM",
+//       },
+//     ],
+//   },
+//   {
+//     day: 18,
+//     month: 5,
+//     year: 2024,
+//     events: [
+//       {
+//         title: "Event 1",
+//         time: "10:00 AM",
+//       },
+//     ],
+//   },
+// ];
+
+//Usamos un array vacio
+let eventsArr = [];
+
+getEvents();
 
 //Función para agregar dias
 
@@ -401,8 +406,9 @@ function updateEvents(date) {
     </div>
     `
   }
-  console.log(events)
   eventsContainer.innerHTML = events;
+  //Guarda los eventos cuando se haga update
+  saveEvents();
 }
 
 //Creamos la función para agregar eventos
@@ -535,3 +541,14 @@ eventsContainer.addEventListener("click", (e) => {
 
 //Almacenaremos los eventos de forma local
 
+function saveEvents() {
+  localStorage.setItem("events", JSON.stringify(eventsArr));
+}
+
+function getEvents() {
+  if (localStorage.getItem("events" === null)) {
+    return;
+  }
+
+  eventsArr.push( ... JSON.parse(localStorage.getItem("events")));
+}
