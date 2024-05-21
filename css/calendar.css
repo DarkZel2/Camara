@@ -6,14 +6,9 @@
 .container-c {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-}
-
-.container-c {
-  position: relative;
-  width: 1200px;
-  height: 850px;
+  width: 100%;
+  height: auto;
   margin: 0 auto;
   padding: 5px;
   color: #FFF;
@@ -243,6 +238,8 @@
   width: 40%;
   min-height: 100%;
   padding: 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .right .today-date {
@@ -367,7 +364,6 @@
 
 .add-event-wrapper {
   position: absolute;
-  bottom: 100px;
   left: 50%;
   width: 90%;
   max-height: 0;
@@ -376,6 +372,7 @@
   background-color: #FFF;
   transform: translateX(-50%);
   transition: max-height 0.5s;
+  top: 50%;
 }
 
 .add-event-wrapper.active {
@@ -409,7 +406,7 @@
 
 .add-event-body {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -476,15 +473,24 @@
   background-color: transparent;
 }
 
-.add-event {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  width: 40px;
+.event-add {
+  position: relative;
+  width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+}
+
+.add-event {
+  position: relative;
+  padding: 25px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
   font-size: 2rem;
   color: #ffffffab;
   border: none;
@@ -532,7 +538,10 @@
     padding-bottom: 340px;
   }
   .add-event-wrapper {
-    bottom: 100px;
+    top: 35%;
+  }
+  .add-event {
+    margin-bottom: 20px;
   }
 }
 
