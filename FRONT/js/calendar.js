@@ -32,10 +32,6 @@ const months = [
   "Diciembre",
 ]
 
-//Llamamos la lista de eventos de la base de datos desde la API
-
-// const API ="https://localhost:4000/eventos";
-
 //Usamos un array vacio
 let eventsArr = [];
 
@@ -518,10 +514,14 @@ function saveEvents() {
   localStorage.setItem("events", JSON.stringify(eventsArr));
 }
 
-function getEvents() {
+async function getEvents() {
   if (localStorage.getItem("events" === null)) {
     return;
   }
 
   eventsArr.push( ... JSON.parse(localStorage.getItem("events")));
+
+  // const res = await fetch("https://localhost:5500/eventos");
+  // const resJson = await res.json();
+  // return resJson;
 }

@@ -9,6 +9,11 @@ body {
   height: 100%;
   background: linear-gradient(to bottom right,#69C362, #058B3C);
 }
+
+.back {
+  overflow-y: hidden;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -119,8 +124,34 @@ main {
   font-size: 0.7em;
   text-decoration: none;
   transition: all 200ms ease 0ms;
+  cursor: pointer;
 }
 
 .more a:hover {
   color: #2c6397;
+}
+
+.registro {
+  display: none;
+}
+
+.registro.active {
+  position: fixed;
+  z-index: 100;
+
+  width: 60%;
+  height: 70%;
+  margin: auto;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.5);
+}
+
+.registro form {
+  display: flex;
+  flex-direction: column;
 }
