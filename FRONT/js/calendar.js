@@ -32,36 +32,9 @@ const months = [
   "Diciembre",
 ]
 
-//Array para los eventos
+//Llamamos la lista de eventos de la base de datos desde la API
 
-// const eventsArr = [
-//   {
-//     day: 15,
-//     month: 5,
-//     year: 2024,
-//     events: [
-//       {
-//         title: "Event 1",
-//         time: "10:00 AM - 10:30 AM",
-//       },
-//       {
-//         title: "Event 2",
-//         time: "11:00 AM",
-//       },
-//     ],
-//   },
-//   {
-//     day: 18,
-//     month: 5,
-//     year: 2024,
-//     events: [
-//       {
-//         title: "Event 1",
-//         time: "10:00 AM",
-//       },
-//     ],
-//   },
-// ];
+// const API ="https://localhost:4000/eventos";
 
 //Usamos un array vacio
 let eventsArr = [];
