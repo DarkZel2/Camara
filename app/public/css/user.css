@@ -111,7 +111,7 @@ table {
     padding: 5px 20px;
   }
 
-  td a {
+  td a:not(.btn-edit){
     text-decoration: none;
     color: var(--clr-links);
   }
