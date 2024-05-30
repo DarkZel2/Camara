@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+}
+/*Contenedor padre del footer*/
+footer {
+  display: flex;
+  flex-direction: column;
+}
+/*Primer div con el contenido de contacto y horario*/
+.info {
+  width: 100%;
+  height: 220px;
+  background-color: #058B3C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  color: #FFF;
+}
+
+.info .contacto {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.2em;
+} 
+
+.info .contacto ul {
+  list-style: none;
+}
+
+.contacto ul li i {
+  font-size: 1.2em;
+}
+
+.info .horario {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+/*Div que contiene el eslogan de centro de eventos*/
+.eslogan {
+  width: 100%;
+  height: 150px;
+  background-color: #FFF;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.eslogan h4 {
+  font-family: "Lustria", Sans-serif;
+  font-weight: 600;
+  font-size: 1.8em;
+}
+/*Div que contiene información acerca de camara de comercio y los canales de atención*/
+.sobre-cc {
+  width: 100%;
+  height: 400px;
+  background-color: #000;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+}
+/*Logo de camara de comercio ubicado en la sección de información sobre camara de comercio*/
+.sobre-cc img {
+  width: 160px;
+  height: 100px;
+}
+
+.sobre-cc .more-info {
+  width: 300px;
+}
+
+.sobre-cc .more-info h4 {
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+.sobre-cc .more-info ul li {
+  font-family: 'Poppins' sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  list-style-type: circle;
+}
+
+.sobre-cc .more-info p {
+  font-family: 'Poppins' sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+/*Ultimo div del footer que contiene las politicas de privacidad de datos y cuestiones legales*/
+.politicas {
+  width: 100%;
+  height: 100px;
+  background-color: #058B3C;
+}
+
+/*Media query*/

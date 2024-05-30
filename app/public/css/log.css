@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right,#69C362, #058B3C);
+}
+
+.back {
+  overflow-y: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 96px;
+}
+
+.container {
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 500px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.container h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 80px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px
+  ;
+}
+
+label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+}
+
+input {
+  width: 350px;
+  height: 30px;
+  border: solid 1px #058B3C;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.8em;
+}
+
+i {
+  font-size: 1.2em;
+  transform: translate(160px, -35px);
+  cursor: pointer;
+  transition: all 330ms ease 0ms;
+}
+i:hover {
+  color: #7A7A7A;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80px;
+  gap: 10px;
+}
+
+.submit input {
+  background-color: #058B3C;
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  color: #FFFFFF;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
+  transition: all 300ms ease 0ms;
+  cursor: pointer;
+}
+
+.submit input:hover {
+  background-color: #F15A24;
+  transform: translateY(-5px);
+}
+
+.submit .error {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #F15A24;
+  text-align: center;
+}
+
+.error.escondido {
+  display: none;
+}
+
+.more {
+  display: flex;
+  align-items: last baseline;
+  justify-content: start;
+  width: 100%;
+  height: 90px;
+  gap: 15px;
+}
+
+.more a {
+  color: #40A3FF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.7em;
+  text-decoration: none;
+  transition: all 200ms ease 0ms;
+  cursor: pointer;
+}
+
+.more a:hover {
+  color: #2c6397;
+}
