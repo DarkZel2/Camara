@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/log.css">
+  <link rel="stylesheet" href="css/user.css">
   <title>Administrador</title>
 </head>
 <body>
@@ -138,12 +139,81 @@
   </header>
   <!-- Cuerpo Principal de la página -->
   <main>
+    <div class="sidebar">
+      <ul>
+        <li id="1">Mis Datos</li>
+        <li id="2">Mis Solicitudes</li>
+        <li id="3">Reservaciones</li>
+        <li id="4">Reservaciones Anteriores</li>
+        <section class="foot-btn">
+          <button id="close-log">Cerrar Sesión</button>
+        </section>
+      </ul>
+    </div>
     <div class="container">
-      <h1>Bienvenido Admin</h1>
-      <button>Cerrar Sesión</button>
+      <div id="datos" class="escondido">
+        <h1>Mis Datos</h1>
+        <table>
+          <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="btn-edit"><a href="">Editar</a></td>
+          </tr>
+      </table>
+      </div>
+      <div id="solicitud" class="solic escondido">
+        <h1>Mis Solicitudes</h1>
+        <table>
+          <tr>
+              <th>Tipo de Evento</th>
+              <th>Salón</th>
+              <th>Horario</th>
+              <th>Estado</th>
+              <th>Pago</th>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><a href="">Ir a pagar</a></td>
+          </tr>
+      </table>
+      </div>
+      <div id="reser" class="escondido">
+        <h1>Reservaciones</h1>
+        <table>
+          <tr>
+              <th>Tipo de Evento</th>
+              <th>Salón</th>
+              <th>Horario</th>
+              <th>Estado</th>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+          </tr>
+      </table>
+      </div>
+      <div id="prev-reser" class="escondido">
+        <h1>Reservaciones Anteriores</h1>
+      </div>
     </div>
   </main>
 
-  <script src="user.js"></script>
+
+  <script src="js/user_menu.js"></script>
+  <script src="close.js"></script>
 </body>
 </html>

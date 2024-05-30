@@ -2,7 +2,6 @@ import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
 import { usuarios } from "../database/usuarios.js";
-import { admin } from "../database/admin.js"
 // import { enviarMailVerificacion } from "../services/mail.services";
 
 dotenv.config();
@@ -21,7 +20,7 @@ async function login(req,res) {
   if (usuarioARevisar) {
     const loginCorrecto = await bcryptjs.compare(password,usuarioARevisar.password)
     if (!loginCorrecto) {
-      return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
+      return res.status(400).send({status:"Error",message:"Contraseña incorrecta"})
     }
     const token = jsonwebtoken.sign({id:usuarioARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
 
@@ -30,7 +29,7 @@ async function login(req,res) {
       path: "/"
     }
     res.cookie("jwt",token,cookieOption);
-    res.send({status:"ok",message:"Usuario loggeado",redirect:"/admin"});
+    res.send({status:"ok",message:"Usuario loggeado",redirect:"/user"});
   }
   
 };

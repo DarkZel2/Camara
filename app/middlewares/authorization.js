@@ -13,7 +13,7 @@ function soloAdmin(req,res,next) {
 function soloPublico(req,res,next) {
   const loggeado = revisarCookie(req);
   if(!loggeado) return next();
-  return res.redirect("/admin");
+  return res.redirect("/user");
 }
 
 function revisarCookie(req) {
