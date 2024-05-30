@@ -70,9 +70,10 @@ header {
 }
 
 .singup {
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 40px;
+  margin: auto 40px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .singup a {

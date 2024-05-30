@@ -22,8 +22,14 @@ app.use(cookieParser());
 app.get("/", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/index.html"));
 app.get("/login", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/login.html"));
 app.get("/register", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/register.html"));
-app.get("/admin", authorization.soloAdmin, (req,res) => res.sendFile(__dirname + "/pages/admin/admin.html"));
 app.get("/user", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/users/user.html"));
 app.get("/salon", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/salons/salon.html"));
+
+//Rutas privadas
+app.get("/admin", authorization.soloAdmin, (req,res) => res.sendFile(__dirname + "/pages/admin/admin.html"));
+app.get("/loginAdmin", (req,res) => res.sendFile(__dirname + "/pages/admin/login.html"));
+app.get("/registerAdmin", (req,res) => res.sendFile(__dirname + "/pages/admin/register.html"));
+
+//Rutas de autentificación
 app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);

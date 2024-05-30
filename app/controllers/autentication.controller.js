@@ -14,29 +14,10 @@ async function login(req,res) {
   if (!id || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  const adminARevisar = admin.find(admin => admin.id === id);
   const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
-  if (!adminARevisar && !usuarioARevisar) {
+  if (!usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
   }
-  //Revisión admin
-  
-  if (adminARevisar) {
-    const loginCorrecto = await bcryptjs.compare(password,adminARevisar.password)
-    if (!loginCorrecto) {
-      return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
-    }
-    const token = jsonwebtoken.sign({id:adminARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
-
-    const cookieOption = {
-      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      path: "/"
-    }
-    res.cookie("jwt",token,cookieOption);
-    res.send({status:"ok",message:"Usuario loggeado",redirect:"/admin"});
-  }
-  //Revisión usuario
-  
   if (usuarioARevisar) {
     const loginCorrecto = await bcryptjs.compare(password,usuarioARevisar.password)
     if (!loginCorrecto) {
@@ -49,7 +30,7 @@ async function login(req,res) {
       path: "/"
     }
     res.cookie("jwt",token,cookieOption);
-    res.send({status:"ok",message:"Usuario loggeado",redirect:"/usuario"});
+    res.send({status:"ok",message:"Usuario loggeado",redirect:"/admin"});
   }
   
 };
@@ -64,8 +45,7 @@ async function register(req,res) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
   const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
-  const adminARevisar = usuarios.find(usuario => usuario.id === id);
-  if (adminARevisar && usuarioARevisar) {
+  if (usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Este usuario ya existe"})
   }
   const salt = await bcryptjs.genSalt(5);
@@ -75,17 +55,11 @@ async function register(req,res) {
 
   // const mail = await enviarMailVerificacion(email,"TOKEN DE PRUEBA")
 
-  const nuevoAdmin = {
-    id, name, email, password:hashPassword
-  }
-
   const nuevoUsuario ={
     id, name, email, password:hashPassword
   }
-  admin.push(nuevoAdmin)
   usuarios.push(nuevoUsuario);
   console.log(usuarios);
-  console.log(admin);
   return res.status(201).send({statu:"ok",message:`Usuario ${nuevoUsuario.name} agregado`,redirect:"/login"})
 };
 
