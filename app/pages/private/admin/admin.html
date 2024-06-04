@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/log.css">
-  <title>Registro</title>
+  <title>Administrador</title>
 </head>
 <body>
   <header> 
     <div class="hd-hidden">
       <div class="hidden-1">
-        <img src="https://github.com/DarkZel2/Camara/raw/main/FRONT/img/articles-76053_logo-1.webp">
+        <img src="img/articles-76053_logo-1.webp">
       </div>
       <div class="hidden-2">
         <div class="nav1">
@@ -32,14 +32,13 @@
         </div>
         <div class="singup">
           <a href="/login" title="Ir a Iniciar">Inicia Sesión</a>
-          <a href="/loginAdmin" class="bi bi-person-fill"></a>
         </div>
       </div>
     </div>
     <!-- Encabezado fijo que se mueve conforme al scroll -->
     <div id="hd-fijo">
       <div class="logo">
-        <img src="https://github.com/DarkZel2/Camara/blob/main/FRONT/img/Logo_CE-01%20(5)%20(1).png">
+        <img src="img/Logo_CE-01 (5) (1).png">
       </div>
       <div class="nav2">
         <ul>
@@ -140,33 +139,11 @@
   <!-- Cuerpo Principal de la página -->
   <main>
     <div class="container">
-      <h1>Registro</h1>
-      <form id="register-form">
-        <label for="id"></label>
-        <input type="text" placeholder="Número de Identificación" name="id" id="id">
-        <label for="name"></label>
-        <input type="text" placeholder="Nombre" name="name" id="name">
-        <label for="email"></label>
-        <input type="email" placeholder="Correo Electrónico" name="email" id="email">
-        <label for="password"></label>
-        <select name="acceso" id="acceso">
-          <option selected disabled>Seleeciona tu nivel de acceso</option>
-          <option value="admin">Administrador de Solicitudes</option>
-          <option value="report">Reportes de uso</option>
-          <option value="superAdmin">Administrador</option>
-        </select>
-        <input type="password" placeholder="Contraseña" name="password" id="pass">
-        <i class="bi bi-eye" id="icon"></i>
-        <div class="submit">
-          <input type="submit" value="Registrarme">
-          <p class="error escondido">hola</p>
-        </div>
-      </form>
+      <h1>Bienvenido Admin</h1>
+      <button id="close-log">Cerrar Sesión</button>
     </div>
   </main>
 
-  <script src="js/nav_fijo.js"></script>
-  <script src="js/ver_pass.js"></script>
-  <script src="register.js"></script>
+  <script src="close.js"></script>
 </body>
 </html>

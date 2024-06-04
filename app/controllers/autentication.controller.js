@@ -22,16 +22,56 @@ async function login(req,res) {
     if (!loginCorrecto) {
       return res.status(400).send({status:"Error",message:"Contraseña incorrecta"})
     }
-    const token = jsonwebtoken.sign({id:usuarioARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
 
-    const cookieOption = {
-      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      path: "/"
+    const nivelAcceso = usuarioARevisar.access;
+    console.log(nivelAcceso);
+    
+    // verificacion de acceso 0
+    if (nivelAcceso === process.env.NIVEL_0_ACCESS) {
+      const token = jsonwebtoken.sign({id:usuarioARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
+
+      const cookieOption = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+        path: "/"
+      }
+      res.cookie("jwt",token,cookieOption);
+      res.send({status:"ok",message:"Usuario loggeado",redirect:"/user"});
+    } 
+    // verificacion de acceso 1
+      else if (nivelAcceso === process.env.NIVEL_1_ACCESS) {
+      const token = jsonwebtoken.sign({id:usuarioARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
+
+      const cookieOption = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+        path: "/"
+      }
+      res.cookie("jwt",token,cookieOption);
+      res.send({status:"ok",message:"Usuario loggeado",redirect:"/sAdmin"});
     }
-    res.cookie("jwt",token,cookieOption);
-    res.send({status:"ok",message:"Usuario loggeado",redirect:"/user"});
+    // verificacion de acceso 2
+      else if (nivelAcceso === process.env.NIVEL_2_ACCESS) {
+      const token = jsonwebtoken.sign({id:usuarioARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
+
+      const cookieOption = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+        path: "/"
+      }
+      res.cookie("jwt",token,cookieOption);
+      res.send({status:"ok",message:"Usuario loggeado",redirect:"/admin"});
+    }
+    // verificacion de acceso 3
+      else if (nivelAcceso === process.env.NIVEL_3_ACCESS) {
+      const token = jsonwebtoken.sign({id:usuarioARevisar.id},process.env.JWT_SECRET, {expiresIn:process.env.JWT_EXPIRATION})
+
+      const cookieOption = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+        path: "/"
+      }
+      res.cookie("jwt",token,cookieOption);
+      res.send({status:"ok",message:"Usuario loggeado",redirect:"/reports"});
+    }else res.status(400).send({status:"Error",message:"Sin nivel de acceso"})
+    
   }
-  
 };
 
 async function register(req,res) {
@@ -39,6 +79,7 @@ async function register(req,res) {
   const id = req.body.id;
   const name = req.body.name;
   const email = req.body.email;
+  const access = req.body.access;
   const password = req.body.password;
   if(!id || !name || !email || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
@@ -55,7 +96,7 @@ async function register(req,res) {
   // const mail = await enviarMailVerificacion(email,"TOKEN DE PRUEBA")
 
   const nuevoUsuario ={
-    id, name, email, password:hashPassword
+    id, name, email, access, password:hashPassword
   }
   usuarios.push(nuevoUsuario);
   console.log(usuarios);

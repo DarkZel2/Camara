@@ -11,6 +11,7 @@ document.getElementById("register-form").addEventListener("submit",async(e) => {
       id: e.target.children.id.value,
       name: e.target.children.name.value,
       email: e.target.children.email.value,
+      access: e.target.children.access.value,
       password: e.target.children.password.value
     })
   });

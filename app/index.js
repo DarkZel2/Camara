@@ -19,16 +19,22 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Rutas 
-app.get("/", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/index.html"));
-app.get("/login", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/login.html"));
-app.get("/register", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/register.html"));
-app.get("/user", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/users/user.html"));
-app.get("/salon", authorization.soloPublico, (req,res) => res.sendFile(__dirname + "/pages/salons/salon.html"));
+app.get("/", (req,res) => res.sendFile(__dirname + "/pages/index.html"));
+app.get("/salon", (req,res) => res.sendFile(__dirname + "/pages/salons/salon.html"));
+app.get("/login", authorization.soloSinLog, (req,res) => res.sendFile(__dirname + "/pages/login.html"));
+app.get("/register", authorization.soloSinLog, (req,res) => res.sendFile(__dirname + "/pages/register.html"));
+
+//Rutas de usuarios
+app.get("/user", authorization.soloUser, (req,res) => res.sendFile(__dirname + "/pages/users/user.html"));
 
 //Rutas privadas
-app.get("/admin", authorization.soloAdmin, (req,res) => res.sendFile(__dirname + "/pages/admin/admin.html"));
-app.get("/loginAdmin", (req,res) => res.sendFile(__dirname + "/pages/admin/login.html"));
-app.get("/registerAdmin", (req,res) => res.sendFile(__dirname + "/pages/admin/register.html"));
+    //SuperAdmin
+    app.get("/sAdmin", authorization.soloSAdmin, (req,res) => res.sendFile(__dirname + "/pages/private/superAdmin/sAdmin.html"));
+    app.get("/registerAdmin", authorization.soloSAdmin, (req,res) => res.sendFile(__dirname + "/pages/private/superAdmin/register.html"));
+    //Administrador general
+    app.get("/admin", authorization.soloAdmin, authorization.soloSAdmin, (req,res) => res.sendFile(__dirname + "/pages/private/admin/admin.html"));
+    //Reportes
+    app.get("/reports", authorization.soloReport, authorization.soloSAdmin, (req,res) => res.sendFile(__dirname + "/pages/private/reports/reports.html"));
 
 //Rutas de autentificación
 app.post("/api/register", autentication.register);
