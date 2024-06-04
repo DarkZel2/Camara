@@ -149,14 +149,17 @@
         <label for="email"></label>
         <input type="email" placeholder="Correo Electrónico" name="email" id="email">
         <label for="password"></label>
+        <select name="acceso" id="acceso">
+          <option selected disabled>Seleeciona tu nivel de acceso</option>
+          <option value="admin">Administrador de Solicitudes</option>
+          <option value="report">Reportes de uso</option>
+          <option value="superAdmin">Administrador</option>
+        </select>
         <input type="password" placeholder="Contraseña" name="password" id="pass">
         <i class="bi bi-eye" id="icon"></i>
         <div class="submit">
           <input type="submit" value="Registrarme">
           <p class="error escondido">hola</p>
-        </div>
-        <div class="more">
-          <a href="/loginAdmin" class="btn-registros">Iniciar Sesión</a>
         </div>
       </form>
     </div>
