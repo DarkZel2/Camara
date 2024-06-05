@@ -6,6 +6,16 @@
   box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #058B3C;
+  border-radius: 5px;
+}
+
 .filtro {
   display: flex;
   flex-direction: row;

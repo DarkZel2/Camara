@@ -1,1 +1,0 @@
-import { usuarios } from "../database/usuarios";

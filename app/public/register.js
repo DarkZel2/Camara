@@ -1,5 +1,11 @@
 const mensajeError = document.getElementsByClassName("error");
 
+async function getUsuarios() {
+  const res = await fetch("http://localhost:4500/usuarios");
+  const resJson = await res.json();
+  return resJson;
+}
+
 document.getElementById("register-form").addEventListener("submit",async(e) => {
   e.preventDefault();
   const res = await fetch("http://localhost:4500/api/register", {
@@ -16,7 +22,6 @@ document.getElementById("register-form").addEventListener("submit",async(e) => {
     })
   });
   if (!res.ok) {
-    // mensajeError.classList.toggle("escondido",false);
     return;
   }
   const resJson = await res.json();

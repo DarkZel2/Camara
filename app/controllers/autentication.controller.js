@@ -1,7 +1,6 @@
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
-import { usuarios } from "../database/usuarios.js";
 // import { enviarMailVerificacion } from "../services/mail.services";
 
 dotenv.config();
@@ -13,7 +12,7 @@ async function login(req,res) {
   if (!id || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
+  const usuarioARevisar = usuarios.id === id;
   if (!usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
   }
@@ -24,7 +23,6 @@ async function login(req,res) {
     }
 
     const nivelAcceso = usuarioARevisar.access;
-    console.log(nivelAcceso);
     
     // verificacion de acceso 0
     if (nivelAcceso === process.env.NIVEL_0_ACCESS) {
@@ -84,7 +82,7 @@ async function register(req,res) {
   if(!id || !name || !email || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
+  const usuarioARevisar = usuarios.id === id;
   if (usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Este usuario ya existe"})
   }
@@ -98,8 +96,9 @@ async function register(req,res) {
   const nuevoUsuario ={
     id, name, email, access, password:hashPassword
   }
-  usuarios.push(nuevoUsuario);
-  console.log(usuarios);
+
+  console.log(nuevoUsuario);
+  
   return res.status(201).send({statu:"ok",message:`Usuario ${nuevoUsuario.name} agregado`,redirect:"/login"})
 };
 

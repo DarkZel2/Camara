@@ -27,42 +27,41 @@ main {
 .head {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  background-color: aliceblue;
-}
+  align-items: center;
+  justify-content: space-between;
 
-.head h1 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 2em;
-  font-style: normal;
-  letter-spacing: 2.5px;
-  color: #058B3C;
-}
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    font-style: normal;
+    letter-spacing: 2.5px;
+    color: #058B3C;
+  }
 
-.head a {
-  width: 200px;
-  height: 50px;
-  margin: auto;
-  display: block;
-  text-align: center;
-  padding: 8px;
-  background-color: #058B3C;
-  border-radius: 5px;
-  font-size: 1.5em;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: #FFFFFF;
-  letter-spacing: 2.5px;
-  box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.3);
-  transition: all 300ms ease 0ms;
-}
+  a {
+    width: 200px;
+    height: 50px;
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background-color: #058B3C;
+    border-radius: 5px;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #FFFFFF;
+    letter-spacing: 2.5px;
+    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.3);
+    transition: all 300ms ease 0ms;
+  }
 
-.head a:hover {
-  background-color: #F15A24;
-  transform: translateY(-5px);
+  a:hover {
+    background-color: #F15A24;
+    transform: translateY(-5px);
+  }
 }
 
 .carrusel {

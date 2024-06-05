@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
   <header> 
     <div class="hd-hidden">
       <div class="hidden-1">
-        <img src="img/articles-76053_logo-1.webp">
+        <img src="/img/logoGOV">
       </div>
       <div class="hidden-2">
         <div class="nav1">
@@ -38,7 +38,9 @@
     <!-- Encabezado fijo que se mueve conforme al scroll -->
     <div id="hd-fijo">
       <div class="logo">
-        <img src="img/Logo_CE-01 (5) (1).png">
+        <a href="/">
+          <img src="/img/logoCE">
+        </a>
       </div>
       <div class="nav2">
         <ul>
@@ -140,17 +142,41 @@
   <main>
     <div class="sidebar">
       <ul>
-        <li>Uno</li>
-        <li>Dos</li>
-        <li>Tres</li>
+        <li id="t1">Acciones de Administrador</li>
+        <li id="t2">Generar Reportes</li>
+        <li id="t3">Revisar Solicitudes</li>
+        <li id="t4">Cambiar mis Datos</li>
+        <li id="t5">Eliminar usuarios</li>
+        <li id="t6">Editar Salones</li>
       </ul>
-      <button id="close-log">Cerrar Sesión</button>
+      <section class="foot-btn">
+        <button id="close-log">Cerrar Sesión</button>
+      </section>
     </div>
     <div class="container">
-      <h1>Bienvenido Admin</h1>
+      <div id="c0">
+        <h1>Bienvenido Admin</h1>
+      </div>
+      <div id="c1" class="escondido">
+        <h1>Acciones de Administrador</h1>
+        <div>
+          <h3>Registrar un nuevo administrador</h3>
+          <p>Si desea registrar un nuevo administrador de solicitudes o administrador de reportes, de click <a href="/registerAdmin">aquí</a></p>
+        </div>
+      </div>
+      <div id="c2" class="escondido">
+        <h1>Generar Reportes</h1>
+      </div>
+      <div id="c3" class="escondido">
+        <h1>Revisar Solicitudes</h1>
+      </div>
+      <div id="c4" class="escondido">
+        <h1>Mis Datos</h1>
+      </div>
     </div>
   </main>
 
+  <script src="js/user_menu.js"></script>
   <script src="close.js"></script>
 </body>
 </html>

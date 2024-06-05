@@ -14,7 +14,6 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     })
   });
   if(!res.ok) {
-    // mensajeError.classList.toggle("escondido", false);
     return;
   }
   const resJson = await res.json();

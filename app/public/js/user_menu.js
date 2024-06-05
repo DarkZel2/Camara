@@ -1,40 +1,40 @@
 const 
-datosContainer = document.getElementById("datos"),
-solicitudContainer = document.getElementById("solicitud"),
-reserContainer = document.getElementById("reser"),
-prevReserContainer = document.getElementById("prev-reser"),
-inicioContainer = document.getElementById("inicio"),
-li1 = document.getElementById("1"),
-li2 = document.getElementById("2"),
-li3 = document.getElementById("3"),
-li4 = document.getElementById("4");
+container0 = document.getElementById("c0"),
+container1 = document.getElementById("c1"),
+container2 = document.getElementById("c2"),
+container3 = document.getElementById("c3"),
+container4 = document.getElementById("c4"),
+li1 = document.getElementById("t1"),
+li2 = document.getElementById("t2"),
+li3 = document.getElementById("t3"),
+li4 = document.getElementById("t4");
 
-li1.addEventListener("click", (e) => {
-  datosContainer.classList.remove("escondido");
-  solicitudContainer.classList.add("escondido");
-  reserContainer.classList.add("escondido");
-  prevReserContainer.classList.add("escondido");
-  inicioContainer.classList.add("escondido");
+li1.addEventListener("click", () => {
+  container0.classList.add("escondido");
+  container1.classList.remove("escondido");
+  container2.classList.add("escondido");
+  container3.classList.add("escondido");
+  container4.classList.add("escondido");
 })
-li2.addEventListener("click", (e) => {
-  datosContainer.classList.add("escondido");
-  solicitudContainer.classList.remove("escondido");
-  reserContainer.classList.add("escondido");
-  prevReserContainer.classList.add("escondido");
-  inicioContainer.classList.add("escondido");
+li2.addEventListener("click", () => {
+  container0.classList.add("escondido");
+  container1.classList.add("escondido");
+  container2.classList.remove("escondido");
+  container3.classList.add("escondido");
+  container4.classList.add("escondido");
 })
-li3.addEventListener("click", (e) => {
-  datosContainer.classList.add("escondido");
-  solicitudContainer.classList.add("escondido");
-  reserContainer.classList.remove("escondido");
-  prevReserContainer.classList.add("escondido");
-  inicioContainer.classList.add("escondido");
+li3.addEventListener("click", () => {
+  container0.classList.add("escondido");
+  container1.classList.add("escondido");
+  container2.classList.add("escondido");
+  container3.classList.remove("escondido");
+  container4.classList.add("escondido");
 })
-li4.addEventListener("click", (e) => {
-  datosContainer.classList.add("escondido");
-  solicitudContainer.classList.add("escondido");
-  reserContainer.classList.add("escondido");
-  prevReserContainer.classList.remove("escondido");
-  inicioContainer.classList.add("escondido");
+li4.addEventListener("click", () => {
+  container0.classList.add("escondido");
+  container1.classList.add("escondido");
+  container2.classList.add("escondido");
+  container3.classList.add("escondido");
+  container4.classList.remove("escondido");
 })
 

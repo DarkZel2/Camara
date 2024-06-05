@@ -8,14 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/log.css">
+  <link rel="stylesheet" href="css/logA.css">
   <title>Registro</title>
 </head>
 <body>
   <header> 
     <div class="hd-hidden">
       <div class="hidden-1">
-        <img src="https://github.com/DarkZel2/Camara/raw/main/FRONT/img/articles-76053_logo-1.webp">
+        <img src="/img/logoGOV">
       </div>
       <div class="hidden-2">
         <div class="nav1">
@@ -39,7 +39,9 @@
     <!-- Encabezado fijo que se mueve conforme al scroll -->
     <div id="hd-fijo">
       <div class="logo">
-        <img src="https://github.com/DarkZel2/Camara/blob/main/FRONT/img/Logo_CE-01%20(5)%20(1).png">
+        <a href="/">
+          <img src="/img/logoCE">
+        </a>
       </div>
       <div class="nav2">
         <ul>
@@ -148,17 +150,25 @@
         <input type="text" placeholder="Nombre" name="name" id="name">
         <label for="email"></label>
         <input type="email" placeholder="Correo Electrónico" name="email" id="email">
+        <label for="acceso"></label>
+        <button id="optionsToggle" popovertarget="optionsContainer" type="button">
+          <span>Seleccionar nivel de acceso</span>
+        </button>
+        <div popover id="optionsContainer" anchor="optionsToggle">
+          <div>
+            <input type="checkbox">
+            <label for="">Administrador de Solicitudes</label>
+          </div>
+          <div>
+            <input type="checkbox">
+            <label for="">Administrador de Reportes</label>
+          </div>
+        </div>
         <label for="password"></label>
-        <select name="access" id="access">
-          <option selected disabled value="">Selecciona tu nivel de acceso</option>
-          <option value="admin">Administrador de Solicitudes</option>
-          <option value="report">Reportes de uso</option>
-          <option value="superAdmin">Administrador</option>
-        </select>
         <input type="password" placeholder="Contraseña" name="password" id="pass">
         <i class="bi bi-eye" id="icon"></i>
         <div class="submit">
-          <input type="submit" value="Registrarme">
+          <input type="submit" value="Registrar">
           <p class="error escondido">hola</p>
         </div>
       </form>

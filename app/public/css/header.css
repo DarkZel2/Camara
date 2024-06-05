@@ -11,7 +11,7 @@ header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  z-index: 99;
+  z-index: 100;
 }
 /*Parte superior del encabezado*/
 .hd-hidden {
@@ -96,7 +96,7 @@ header {
 
 #hd-fijo.abajo {
   position: fixed;
-  z-index: 98;
+  z-index: 99;
 }
 
 /*Logo centro de eventos*/
@@ -105,12 +105,17 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.logo img {
-  height: 60px;
-  width: 220px;
-  margin-left: 40px;
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    height: 60px;
+    width: 220px;
+    margin-left: 40px;
+  }
 }
 /*Segundo nav donde estan los servicios de camara de comercio e informacion*/
 
