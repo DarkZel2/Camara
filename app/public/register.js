@@ -1,11 +1,5 @@
 const mensajeError = document.getElementsByClassName("error");
 
-async function getUsuarios() {
-  const res = await fetch("http://localhost:4500/usuarios");
-  const resJson = await res.json();
-  return resJson;
-}
-
 document.getElementById("register-form").addEventListener("submit",async(e) => {
   e.preventDefault();
   const res = await fetch("http://localhost:4500/api/register", {
@@ -29,3 +23,13 @@ document.getElementById("register-form").addEventListener("submit",async(e) => {
     window.location.href = resJson.redirect;
   }
 })
+
+
+
+async function getUsuarios() {
+  const res = await fetch("http://localhost:4500/usuarios");
+  const resJson = await res.json();
+  return resJson;
+}
+
+getUsuarios()

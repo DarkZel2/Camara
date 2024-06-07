@@ -1,9 +1,14 @@
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
-// import { enviarMailVerificacion } from "../services/mail.services";
 
 dotenv.config();
+
+async function getUsuarios() {
+  const res = await fetch("http://localhost:4500/usuarios");
+  const resJson = await res.json();
+  return resJson;
+}
 
 async function login(req,res) {
   console.log(req.body);
@@ -12,7 +17,7 @@ async function login(req,res) {
   if (!id || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  const usuarioARevisar = usuarios.id === id;
+  const usuarioARevisar = getUsuarios(usuarios => usuarios.id === id);
   if (!usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
   }
@@ -72,6 +77,8 @@ async function login(req,res) {
   }
 };
 
+
+
 async function register(req,res) {
   console.log(req.body);
   const id = req.body.id;
@@ -82,7 +89,9 @@ async function register(req,res) {
   if(!id || !name || !email || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  const usuarioARevisar = usuarios.id === id;
+
+  const usuarioARevisar = {};
+
   if (usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Este usuario ya existe"})
   }
@@ -100,7 +109,8 @@ async function register(req,res) {
   console.log(nuevoUsuario);
   
   return res.status(201).send({statu:"ok",message:`Usuario ${nuevoUsuario.name} agregado`,redirect:"/login"})
-};
+}
+
 
 export const methods = {
   login,
