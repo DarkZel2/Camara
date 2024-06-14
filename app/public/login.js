@@ -1,5 +1,3 @@
-const mensajeError = document.getElementsByClassName("error")
-
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const id = e.target.children.id.value;

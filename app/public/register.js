@@ -1,5 +1,3 @@
-const mensajeError = document.getElementsByClassName("error");
-
 document.getElementById("register-form").addEventListener("submit",async(e) => {
   e.preventDefault();
   const res = await fetch("http://localhost:4500/api/register", {
@@ -26,10 +24,7 @@ document.getElementById("register-form").addEventListener("submit",async(e) => {
 
 
 
-async function getUsuarios() {
-  const res = await fetch("http://localhost:4500/usuarios");
-  const resJson = await res.json();
-  return resJson;
-}
 
-getUsuarios()
+
+
+

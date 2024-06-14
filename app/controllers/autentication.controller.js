@@ -1,14 +1,11 @@
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
+import { getUsuarios } from "../database/usuarios.js";
 
 dotenv.config();
 
-async function getUsuarios() {
-  const res = await fetch("http://localhost:4500/usuarios");
-  const resJson = await res.json();
-  return resJson;
-}
+//usuarios.find(usuario => usuario.id === id)
 
 async function login(req,res) {
   console.log(req.body);
@@ -17,7 +14,9 @@ async function login(req,res) {
   if (!id || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  const usuarioARevisar = getUsuarios(usuarios => usuarios.id === id);
+
+  console.log(getUsuarios())
+  const usuarioARevisar = (await getUsuarios()).find(usuario => usuario.id ===id);
   if (!usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
   }
@@ -89,28 +88,29 @@ async function register(req,res) {
   if(!id || !name || !email || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-
-  const usuarioARevisar = {};
-
+  
+  //Traemos los datos de fetch en 'register.js'
+  const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
+  
+  getUsuarios();
   if (usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Este usuario ya existe"})
   }
   const salt = await bcryptjs.genSalt(5);
   const hashPassword = await bcryptjs.hash(password,salt);
-
+  
   //Enviar mail de verificación al usuario
-
+  
   // const mail = await enviarMailVerificacion(email,"TOKEN DE PRUEBA")
-
+  
   const nuevoUsuario ={
     id, name, email, access, password:hashPassword
   }
-
+  
   console.log(nuevoUsuario);
   
   return res.status(201).send({statu:"ok",message:`Usuario ${nuevoUsuario.name} agregado`,redirect:"/login"})
 }
-
 
 export const methods = {
   login,
