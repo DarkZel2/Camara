@@ -1,11 +1,9 @@
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
-import { getUsuarios } from "../database/usuarios.js";
+import { usuarios } from "../database/usuarios.js";
 
 dotenv.config();
-
-//usuarios.find(usuario => usuario.id === id)
 
 async function login(req,res) {
   console.log(req.body);
@@ -15,8 +13,8 @@ async function login(req,res) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
 
-  console.log(getUsuarios())
-  const usuarioARevisar = (await getUsuarios()).find(usuario => usuario.id ===id);
+  const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
+
   if (!usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
   }
@@ -76,8 +74,6 @@ async function login(req,res) {
   }
 };
 
-
-
 async function register(req,res) {
   console.log(req.body);
   const id = req.body.id;
@@ -88,11 +84,9 @@ async function register(req,res) {
   if(!id || !name || !email || !password) {
     return res.status(400).send({status:"Error",message:"Los campos estan incompletos"})
   }
-  
-  //Traemos los datos de fetch en 'register.js'
+
   const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
-  
-  getUsuarios();
+
   if (usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Este usuario ya existe"})
   }
@@ -103,7 +97,7 @@ async function register(req,res) {
   
   // const mail = await enviarMailVerificacion(email,"TOKEN DE PRUEBA")
   
-  const nuevoUsuario ={
+  nuevoUsuario = {
     id, name, email, access, password:hashPassword
   }
   
@@ -111,6 +105,8 @@ async function register(req,res) {
   
   return res.status(201).send({statu:"ok",message:`Usuario ${nuevoUsuario.name} agregado`,redirect:"/login"})
 }
+
+export const nuevoUsuario = {};
 
 export const methods = {
   login,

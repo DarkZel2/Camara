@@ -1,5 +1,6 @@
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
+import { usuarios } from "../database/usuarios.js";
 
 dotenv.config();
 

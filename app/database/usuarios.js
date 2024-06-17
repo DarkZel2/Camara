@@ -1,7 +1,5 @@
-const usuarios = [];
-
-export async function getUsuarios() {
-  const res = await fetch("http://localhost:4500/usuarios");
+async function getUsuarios() {
+  const res = await fetch("http://localhost:4500/api/usuarios");
   const resJson = await res.json();
   resJson.forEach(users => {
     usuarios.push(users);
@@ -9,4 +7,6 @@ export async function getUsuarios() {
   return usuarios;
 };
 
+getUsuarios();
 
+export const usuarios = [];

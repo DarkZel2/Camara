@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import { methods as autentication } from "./controllers/autentication.controller.js";
 import { methods as authorization } from "./middlewares/authorization.js";
+import { nuevoUsuario } from "./controllers/autentication.controller.js";
 import { getConnection } from "./database/connection.js";
 
 //server 
@@ -47,8 +48,13 @@ app.get("/img/logoCC", (req, res) => res.sendFile(__dirname + "/public/img/logos
 app.get("/img/logoGOV", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo gov.webp"))
 
 //Ruta para la base de datos
-app.get("/usuarios", async (req, res) => {
+app.get("/api/usuarios", async (req, res) => {
   const connection = await getConnection();
   const result = await connection.query("SELECT * FROM `usuarios`")
   res.json(result)
+})
+app.post("/api/nuevoUsuario", async (req, res) => {
+  const connection = await getConnection();
+  const result = await connection.query("INSERT INTO `usuarios`(`id`, `name`, `email`, `access`, `password`) VALUES ('','','','','')")
+  res.json(result);
 })
