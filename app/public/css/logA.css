@@ -49,7 +49,7 @@ form {
     font-size: 1em;
   }
   
-  & input {
+  & input , select {
     width: 350px;
     height: 30px;
     border: solid 1px #058B3C;
@@ -140,38 +140,5 @@ form {
   
   a:hover {
     color: #2c6397;
-  }
-}
-
-#optionsToggle {
-  width: 350px;
-  height: 30px;
-  border: solid 1px #058B3C;
-  border-radius: 5px;
-  padding: 5px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 0.8em;
-  background-color: unset;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  & i {
-    display: block;
-    padding: 5px;
-  }
-}
-
-#optionsContainer {
-  /* transform: translate(544px, 600px); */
-  width: 350px;
-  border: 1px solid #058B3C;
-
-  & div {
-    display: flex;
   }
 }

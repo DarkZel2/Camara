@@ -151,19 +151,11 @@
         <label for="email"></label>
         <input type="email" placeholder="Correo Electrónico" name="email" id="email">
         <label for="acceso"></label>
-        <button id="optionsToggle" popovertarget="optionsContainer" type="button">
-          <span>Seleccionar nivel de acceso</span>
-        </button>
-        <div popover id="optionsContainer" anchor="optionsToggle">
-          <div>
-            <input type="checkbox">
-            <label for="">Administrador de Solicitudes</label>
-          </div>
-          <div>
-            <input type="checkbox">
-            <label for="">Administrador de Reportes</label>
-          </div>
-        </div>
+        <select name="access" id="access">
+          <option selected disabled value="">Seleccione el nivel de acceso</option>
+          <option value="admin">Administrador de Solicitudes</option>
+          <option value="report">Administrador de Reportes</option>
+        </select>
         <label for="password"></label>
         <input type="password" placeholder="Contraseña" name="password" id="pass">
         <i class="bi bi-eye" id="icon"></i>

@@ -14,6 +14,7 @@ async function login(req,res) {
   }
 
   const usuarioARevisar = usuarios.find(usuario => usuario.id === id);
+  console.log(usuarioARevisar);
 
   if (!usuarioARevisar) {
     return res.status(400).send({status:"Error",message:"Credenciales incorrectas"})
@@ -97,16 +98,32 @@ async function register(req,res) {
   
   // const mail = await enviarMailVerificacion(email,"TOKEN DE PRUEBA")
   
-  nuevoUsuario = {
+  const nuevoUsuario = {
     id, name, email, access, password:hashPassword
   }
-  
-  console.log(nuevoUsuario);
+
+  const postData = async () => {
+    const getData = nuevoUsuario;
+    const response = await fetch("http://localhost:4500/api/nuevoUsuario", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: getData.id,
+        name: getData.name,
+        email: getData.email,
+        access: getData.access,
+        password: getData.password
+      })
+    });
+    if (response.ok) {
+      return;
+    }
+  }
+
+  postData();
   
   return res.status(201).send({statu:"ok",message:`Usuario ${nuevoUsuario.name} agregado`,redirect:"/login"})
 }
-
-export const nuevoUsuario = {};
 
 export const methods = {
   login,

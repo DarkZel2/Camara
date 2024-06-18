@@ -6,8 +6,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import { methods as autentication } from "./controllers/autentication.controller.js";
 import { methods as authorization } from "./middlewares/authorization.js";
-import { nuevoUsuario } from "./controllers/autentication.controller.js";
-import { getConnection } from "./database/connection.js";
+import { methods as database } from "./database/connection.js";
 
 //server 
 const app = express();
@@ -22,7 +21,7 @@ app.use(cookieParser());
 
 //Rutas 
 app.get("/", (req, res) => res.sendFile(__dirname + "/pages/index.html"));
-app.get("/salon", (req, res) => res.sendFile(__dirname + "/pages/salons/salon.html"));
+app.get("/auditorio-Pablo-Rodriguez", (req, res) => res.sendFile(__dirname + "/pages/salons/aud_pabloR.html"));
 app.get("/login", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/login.html"));
 app.get("/register", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/register.html"));
 
@@ -48,13 +47,5 @@ app.get("/img/logoCC", (req, res) => res.sendFile(__dirname + "/public/img/logos
 app.get("/img/logoGOV", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo gov.webp"))
 
 //Ruta para la base de datos
-app.get("/api/usuarios", async (req, res) => {
-  const connection = await getConnection();
-  const result = await connection.query("SELECT * FROM `usuarios`")
-  res.json(result)
-})
-app.post("/api/nuevoUsuario", async (req, res) => {
-  const connection = await getConnection();
-  const result = await connection.query("INSERT INTO `usuarios`(`id`, `name`, `email`, `access`, `password`) VALUES ('','','','','')")
-  res.json(result);
-})
+app.get("/api/usuarios", database.showUsers);
+app.post("/api/nuevoUsuario", database.addUsers);
