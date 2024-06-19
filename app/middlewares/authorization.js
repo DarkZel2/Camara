@@ -65,6 +65,12 @@ function soloUser(req,res,next) {
   return res.redirect("/sAdmin");
 }
 
+function soloConLog(req,res,next) {
+  const loggeado = revisarCookie(req);
+  if(loggeado) return next();
+  return res.redirect("/login");
+}
+
 function soloSinLog(req,res,next) {
   const loggeado = revisarCookie(req);
   if(!loggeado) return next();
@@ -76,5 +82,6 @@ export const methods = {
   soloSinLog,
   soloUser,
   soloSAdmin,
-  soloReport
+  soloReport,
+  soloConLog
 };

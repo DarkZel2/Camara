@@ -162,6 +162,9 @@ main {
   border-radius: 20px;
   background-color: #058B3C;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 /* Los estilos del calendario se encuentran en la ruta "/css/calendar.css" */

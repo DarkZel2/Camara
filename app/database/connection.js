@@ -28,7 +28,13 @@ async function addUsers (req, res) {
   return res.status(201).send({statu:"ok"})
 }
 
+async function showSalons(req, res) {
+  const result = await (await connection).query("SELECT * FROM salones");
+  res.json(result)
+}
+
 export const methods = {
   showUsers,
-  addUsers
+  addUsers,
+  showSalons
 }

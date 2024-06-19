@@ -8,7 +8,7 @@ import { methods as autentication } from "./controllers/autentication.controller
 import { methods as authorization } from "./middlewares/authorization.js";
 import { methods as database } from "./database/connection.js";
 
-//server 
+//Server 
 const app = express();
 app.set("port", 4500);
 app.listen(app.get("port"));
@@ -24,6 +24,9 @@ app.get("/", (req, res) => res.sendFile(__dirname + "/pages/index.html"));
 app.get("/auditorio-Pablo-Rodriguez", (req, res) => res.sendFile(__dirname + "/pages/salons/aud_pabloR.html"));
 app.get("/login", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/login.html"));
 app.get("/register", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/register.html"));
+
+//Rutas públicas
+app.get("/cotizar", authorization.soloConLog, (req, res) => res.sendFile(__dirname + "/pages/process/cotizar.html"));
 
 //Rutas de usuarios
 app.get("/user", authorization.soloUser, (req, res) => res.sendFile(__dirname + "/pages/users/user.html"));
@@ -48,4 +51,5 @@ app.get("/img/logoGOV", (req, res) => res.sendFile(__dirname + "/public/img/logo
 
 //Ruta para la base de datos
 app.get("/api/usuarios", database.showUsers);
+app.get("/api/salones", database.showSalons);
 app.post("/api/nuevoUsuario", database.addUsers);
