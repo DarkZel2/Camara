@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 //Rutas 
 app.get("/", (req, res) => res.sendFile(__dirname + "/pages/index.html"));
-app.get("/auditorio-Pablo-Rodriguez", (req, res) => res.sendFile(__dirname + "/pages/salons/aud_pabloR.html"));
+app.get("/auditorio-Presidentes", (req, res) => res.sendFile(__dirname + "/pages/salons/aud_presidentes.html"));
 app.get("/login", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/login.html"));
 app.get("/register", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/register.html"));
 
