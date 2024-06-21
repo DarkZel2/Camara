@@ -45,9 +45,25 @@ app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);
 
 //Rutas de recursos
-app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"))
-app.get("/img/logoCC", (req, res) => res.sendFile(__dirname + "/public/img/logos/LOGO CC B.png"))
-app.get("/img/logoGOV", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo gov.webp"))
+app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));
+app.get("/img/logoCC", (req, res) => res.sendFile(__dirname + "/public/img/logos/LOGO CC B.png"));
+app.get("/img/logoGOV", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo gov.webp"));
+
+app.get("/img/icons/bandera", (req, res) => res.sendFile(__dirname + "/public/img/icons/bandera.png"));
+app.get("/img/icons/cafe", (req, res) => res.sendFile(__dirname + "/public/img/icons/cafe.png"));
+app.get("/img/icons/calendario", (req, res) => res.sendFile(__dirname + "/public/img/icons/calendario.png"));
+app.get("/img/icons/empresarial", (req, res) => res.sendFile(__dirname + "/public/img/icons/empresarial.png"));
+app.get("/img/icons/manteles", (req, res) => res.sendFile(__dirname + "/public/img/icons/manteles.png"));
+app.get("/img/icons/maquina", (req, res) => res.sendFile(__dirname + "/public/img/icons/maquina.png"));
+app.get("/img/icons/mesa", (req, res) => res.sendFile(__dirname + "/public/img/icons/mesa.png"));
+app.get("/img/icons/parqueadero", (req, res) => res.sendFile(__dirname + "/public/img/icons/parqueadero.png"));
+app.get("/img/icons/silla", (req, res) => res.sendFile(__dirname + "/public/img/icons/silla.png"));
+app.get("/img/icons/social", (req, res) => res.sendFile(__dirname + "/public/img/icons/social.png"));
+app.get("/img/icons/sonido_ex", (req, res) => res.sendFile(__dirname + "/public/img/icons/sonido_externo.png"));
+app.get("/img/icons/sonido_pro", (req, res) => res.sendFile(__dirname + "/public/img/icons/sonido_profesional.png"));
+app.get("/img/icons/audiovisual", (req, res) => res.sendFile(__dirname + "/public/img/icons/audiovisual.png"));
+
+app.get("/img/presidentes/plano", (req, res) => res.sendFile(__dirname + "/public/img/presidentes/plano_aud_presidentes.png"));
 
 //Ruta para la base de datos
 app.get("/api/usuarios", database.showUsers);

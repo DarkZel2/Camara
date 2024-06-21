@@ -82,28 +82,46 @@ main {
 }
 
 .texto {
-  background-color: #058B3C;
-  color: #FFFFFF;
-  font-family: 'Poppins';
-  height: 100%;
   width: 500px;
-  padding: 15px;
+  height: 100%;
+  background-color: #058B3C;
+  padding: 20px;
   border-radius: 5px;
-  font-style: normal;
-}
 
-.texto h4 {
-  font-size: 1.5em;
-  font-weight: 600;
-  text-align: center;
+  h2 {
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 700;
+    font-style: normal;
+  }
 
-}
+  h4 {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 12px;
+  }
 
-.texto p {
-  font-size: 1em;
-  font-weight: 300;
-  margin-top: 20px;
-  text-align: justify;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #FFFFFF;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    li img {
+      width: 2em;
+      height: 2em;
+    }
+  }
 }
 
 .imgs {
@@ -123,7 +141,8 @@ main {
   object-fit: cover;
 }
 
-.btn-left, .btn-right {
+.btn-left,
+.btn-right {
   height: 50px;
   width: 50px;
   position: absolute;
@@ -141,7 +160,8 @@ main {
   font-weight: 500;
 }
 
-.btn-left:hover, .btn-right:hover {
+.btn-left:hover,
+.btn-right:hover {
   background-color: #30303081;
   color: #FFFFFF;
 }
@@ -156,7 +176,7 @@ main {
 
 .caract {
   width: 100%;
-  height: 400px;
+  height: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -165,33 +185,86 @@ main {
   margin-bottom: 40px;
   border-radius: 20px;
   padding: 25px;
-  
+
   h2 {
     color: #FFFFFF;
+    margin-bottom: 30px;
     font-weight: 700;
     font-style: normal;
     font-size: 1.5em;
   }
 
-  & .div-main {
+  .div-main {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-  }
 
-  & h4 {
-    color: #FFFFFF;
-    font-weight: 700;
-    font-style: normal;
-  }
+    div img {
+      height: 500px;
+    }
 
-  ul {
-    color: #FFFFFF;
-    font-weight: 300;
-    font-style: normal;
+    & h4 {
+      color: #FFFFFF;
+      font-weight: 700;
+      font-style: normal;
+      margin-top: 12px;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      color: #FFFFFF;
+      font-weight: 300;
+      font-style: normal;
+      font-size: 1em;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      li img {
+        width: 2em;
+        height: 2em;
+      }
+    }
   }
 }
 
 /* Los estilos del calendario se encuentran en la ruta "/css/calendar.css" */
+
+.foot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+
+  a {
+    width: 200px;
+    height: 50px;
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background-color: #058B3C;
+    border-radius: 5px;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #FFFFFF;
+    letter-spacing: 2.5px;
+    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.3);
+    transition: all 300ms ease 0ms;
+  }
+
+  a:hover {
+    background-color: #F15A24;
+    transform: translateY(-5px);
+  }
+}
