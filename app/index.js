@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import { methods as autentication } from "./controllers/autentication.controller.js";
 import { methods as authorization } from "./middlewares/authorization.js";
 import { methods as database } from "./database/connection.js";
+import { methods as process } from "./controllers/quote.controller.js";
 
 //Server 
 const app = express();
@@ -40,9 +41,10 @@ app.get("/admin", authorization.soloAdmin, (req, res) => res.sendFile(__dirname 
 //Reportes
 app.get("/reports", authorization.soloReport, (req, res) => res.sendFile(__dirname + "/pages/private/reports/reports.html"));
 
-//Rutas de autentificación
+//Rutas de procesos
 app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);
+app.post("/api/cotizar", process.quote);
 
 //Rutas de recursos
 app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));

@@ -201,37 +201,64 @@ main {
     flex-direction: row;
     justify-content: space-around;
 
-    div img {
+    .plano {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plano::after {
+      content: "";
+      width: 2px;
+      border-radius: 2px;
+      height: 98%;
+      position: absolute;
+      left: 100%;
+      background-color: #FFFFFF;
+    }
+
+    .plano img {
       height: 500px;
     }
 
-    & h4 {
-      color: #FFFFFF;
-      font-weight: 700;
-      font-style: normal;
-      margin-top: 12px;
-    }
-
-    ul {
+    .serv {
+      width: 50%;
+      position: relative;
       display: flex;
+      align-items: center;
       flex-direction: column;
-      gap: 5px;
-      color: #FFFFFF;
-      font-weight: 300;
-      font-style: normal;
-      font-size: 1em;
 
-      li {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      & h4 {
+        color: #FFFFFF;
+        font-weight: 700;
+        font-style: normal;
+        margin-top: 12px;
       }
-
-      li img {
-        width: 2em;
-        height: 2em;
+  
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        color: #FFFFFF;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 1em;
+  
+        li {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+  
+        li img {
+          width: 2em;
+          height: 2em;
+        }
       }
     }
+
   }
 }
 
