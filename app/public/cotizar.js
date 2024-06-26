@@ -58,7 +58,6 @@ const valorBanderas = salones.servicios.banderas;
 const valorManteles = salones.servicios.mantel;
 const valorMaquina = salones.servicios.maquina;
 
-
 document.getElementById("event-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   console.log()
