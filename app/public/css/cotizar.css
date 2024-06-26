@@ -2,6 +2,7 @@
 	--clr-principal: #058B3C;
 	--clr-principal-osc: #004336;
 	--clr-resaltado: #F15A24;
+	--clr-error: #ff2020;
 	--clr-letra-blc: #FFFFFF;
 	--clr-letra-blc-c: #FFFFFFde;
 	--clr-letra-blc-cc: #FFFFFFab;
@@ -208,28 +209,71 @@ main {
 			}
 
 			.dts-cot {
-				label {
-					display: block;
-					width: 60%;
-					text-align: left;
-				}
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				gap: 10px;
 
-				input {
+				.formulario__grupo {
 					width: 60%;
+					display: flex;
+					flex-direction: column;
+
+					.formulario__label {
+						color: var(--clr-letra-blc);
+					}
+
+					.formulario__grupo-input {
+						display: flex;
+						align-items: center;
+
+						.formulario__input {
+							width: 100%;
+							height: 35px;
+							line-height: 35px;
+							margin: 0;
+							border: 3px solid transparent;
+							border-radius: 10px;
+							padding: 0 30px 0 10px;
+							transition: .3s ease all;
+						}
+
+						.formulario__input:focus {
+							border: 3px solid var(--clr-principal-osc);
+						}
+
+						.bi {
+							transform: translateX(-25px);
+							opacity: 0;
+						}
+					}
+
+					.formulario__input-error {
+						color: var(--clr-error);
+						font-size: 0.8em;
+						font-weight: 600;
+						margin-bottom: 0;
+						display: none;
+					}
+
+					.formulario__input-error-activo {
+						display: block;
+					}
+
 				}
 			}
 
-			.foot {
+			.formulario__grupo-enviar {
 				position: absolute;
-				transform: translateY(1100%);
+				transform: translateY(1060%);
 				right: 0%;
 				width: 100%;
 				height: 50px;
 				display: flex;
-				align-items: end;
-				justify-content: center;
+				align-items: center;
+				flex-direction: column;
 
-				input {
+				.formulario__btn {
 					width: 200px;
 					height: 50px;
 					display: block;
@@ -247,11 +291,27 @@ main {
 					letter-spacing: 2.5px;
 					box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.3);
 					transition: all 300ms ease 0ms;
+					cursor: pointer;
 				}
 
-				input:hover {
+				.formulario__btn:hover {
 					background-color: var(--clr-resaltado);
 					transform: translateY(-5px);
+				}
+
+				p {
+					display: none;
+					align-items: center;
+					height: 40px;
+					line-height: 40px;
+					background-color: var(--clr-error);
+					color: var(--clr-letra-blc);
+					padding: 10px 5px;
+					margin-top: 10px;
+					border-radius: 5px;
+					font-size: 1.5em;
+					font-weight: 600;
+					font-style: normal;
 				}
 			}
 		}

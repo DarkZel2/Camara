@@ -222,50 +222,17 @@
             <div class="hours">
               <label for="">Inicio</label>
               <div class="hr-init">
-                <select name="time" id="init">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <select name="time" id="init">
-                  <option value="AM">AM</option>
-                  <option value="PM">PM</option>
-                </select>
+                <input type="text" name="time" id="init">
               </div>
             </div>
             <div class="hours">
               <label for="">Fin</label>
               <div class="hr-end">
-                <select name="time" id="end">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <select name="time" id="end">
-                  <option value="AM">AM</option>
-                  <option value="PM">PM</option>
-                </select>
+                <input type="text" name="time" id="end">
               </div>
             </div>
           </div>
+
           <!-- Tipo de evento -->
           <div class="event-class">
             <h4>Tipo de Evento:</h4>
@@ -274,51 +241,103 @@
               <label for="social">Social</label>
             </div>
             <div>
-              <input type="radio" name="tipo" id="empresa" value="evento empresarial">
+              <input type="radio" name="tipo" id="empresa">
               <label for="empresa">Empresarial</label>
             </div>
           </div>
+
           <!-- Servicios adicionales -->
           <div class="add-serv">
-            
             <h4>Servicios adicionales:</h4>
-            <div class="item-serv">
-              <input type="checkbox" name="serv" id="mesas" value="mesas">
-              <label for="mesas">Mesas RIMAX</label>
+            <!-- Grupo "Mesas" -->
+            <div class="formulario__grupo" id="grupo__servicios">
+              <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="mesas" id="mesas">
+                Mesas RIMAX
+              </label>
             </div>
-            <div class="item-serv">
-              <input type="checkbox" name="serv" id="sonido-pro" value="sonido pro">
-              <label for="sonido-pro">Sonido Profesional</label>
+
+            <!-- Grupo "Sonido Profesional" -->
+            <div class="formulario__grupo" id="grupo__servicios">
+              <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="sonido-pro" id="sonido-pro">
+                Sonido Profesional
+              </label>
             </div>
-            <div class="item-serv">
-              <input type="checkbox" name="serv" id="sonido-ex">
-              <label for="sonido-ex">Acceso a sonido externo</label>
+
+            <!-- Grupo "Sonido  Externo" -->
+            <div class="formulario__grupo" id="grupo__servicios">
+              <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="sonido-ex" id="sonido-ex">
+                Sonido Externo
+              </label>
             </div>
-            <div class="item-serv">
-              <input type="checkbox" name="serv" id="banderas">
-              <label for="banderas">Astas con Banderas</label>
+
+            <!-- Grupo "Banderas" -->
+            <div class="formulario__grupo" id="grupo__servicios">
+              <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="banderas" id="banderas">
+                Astas con Banderas
+              </label>
             </div>
-            <div class="item-serv">
-              <input type="checkbox" name="serv" id="maquina">
-              <label for="maquina">Máquina de Raspados</label>
+
+            <!-- Grupo "Máquina de Raspados" -->
+            <div class="formulario__grupo" id="grupo__servicios">
+              <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="maquina" id="maquina">
+                Máquina de Raspados
+              </label>
             </div>
-            <div class="item-serv">
-              <input type="checkbox" name="serv" id="manteles">
-              <label for="manteles">Manteles Grandes</label>
+
+            <!-- Grupo "Manteles" -->
+            <div class="formulario__grupo" id="grupo__servicios">
+              <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles">
+                Manteles Grandes
+              </label>
             </div>
+
           </div>
         </div>
+
         <div class="dts-cot">
           <h2>Información de la persona a cargo:</h2>
-          <label for="name">Nombre:</label>
-          <input type="text" name="datos-user" id="name">
-          <label for="phone">Teléfono:</label>
-          <input type="text" name="datos-user" id="phone">
-          <label for="email">Correo Electrónico:</label>
-          <input type="email" name="datos-user" id="email">
+
+          <!-- Grupo "Nombre" -->
+          <div class="formulario__grupo" id="grupo__name">
+            <label for="name" class="formulario__label">Nombre:</label>
+            <div class="formulario__grupo-input">
+              <input type="text" class="formulario__input" name="name" id="name" placeholder="Nombre">
+              <i class="bi bi-x-circle-fill"></i>
+            </div>
+            <p class="formulario__input-error">El Nombre no debe contener números, comas, puntos ni ningún otro caracter especial.</p>
+          </div>
+
+          <!-- Grupo "Télefono" -->
+          <div class="formulario__grupo" id="grupo__phone">
+            <label for="phone" class="formulario__label">Teléfono:</label>
+            <div class="formulario__grupo-input">
+              <input type="text" class="formulario__input" name="phone" id="phone" placeholder="3551864428">
+              <i class="bi bi-x-circle-fill"></i>
+            </div>
+            <p class="formulario__input-error">El Teléfono debe contener 10 dígitos y solo deben ser números.</p>
+          </div>
+
+          <!-- Grupo "Correo" -->
+          <div class="formulario__grupo" id="grupo__email">
+            <label for="email" class="formulario__label">Correo Electrónico:</label>
+            <div class="formulario__grupo-input">
+              <input type="email" class="formulario__input" name="email" id="email"
+                placeholder="correo123@ejemplo.com">
+              <i class="bi bi-x-circle-fill"></i>
+            </div>
+            <p class="formulario__input-error">El Correo solo puede contener letras, números, puntos, guiones y guión bajo.</p>
+          </div>
+
         </div>
-        <div class="foot">
-          <input type="submit" value="SOLICITAR">
+        <div class="formulario__grupo formulario__grupo-enviar" id="formulario__mensaje">
+          <button type="submit" class="formulario__btn">SOLICITAR</button>
+          <p><i class="bi bi-exclamation-circle-fill"></i><b> Error:</b> Por favor complete el formulario correctamente.</p>
         </div>
       </form>
     </div>
