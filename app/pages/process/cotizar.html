@@ -252,7 +252,7 @@
             <!-- Grupo "Mesas" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="mesas" id="mesas">
+                <input class="formulario__checkbox" type="checkbox" name="mesas" id="mesas" value="mesas">
                 Mesas RIMAX
               </label>
             </div>
@@ -260,7 +260,7 @@
             <!-- Grupo "Sonido Profesional" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="sonido-pro" id="sonido-pro">
+                <input class="formulario__checkbox" type="checkbox" name="sonido-pro" id="sonido-pro" value="sonidoPro">
                 Sonido Profesional
               </label>
             </div>
@@ -268,7 +268,7 @@
             <!-- Grupo "Sonido  Externo" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="sonido-ex" id="sonido-ex">
+                <input class="formulario__checkbox" type="checkbox" name="sonido-ex" id="sonido-ex" value="sonidoEx">
                 Sonido Externo
               </label>
             </div>
@@ -276,7 +276,7 @@
             <!-- Grupo "Banderas" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="banderas" id="banderas">
+                <input class="formulario__checkbox" type="checkbox" name="banderas" id="banderas" value="banderas">
                 Astas con Banderas
               </label>
             </div>
@@ -284,7 +284,7 @@
             <!-- Grupo "Máquina de Raspados" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="maquina" id="maquina">
+                <input class="formulario__checkbox" type="checkbox" name="maquina" id="maquina" value="maquina">
                 Máquina de Raspados
               </label>
             </div>
@@ -292,7 +292,7 @@
             <!-- Grupo "Manteles" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles">
+                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles" value="manteles">
                 Manteles Grandes
               </label>
             </div>
@@ -340,6 +340,17 @@
           <p><i class="bi bi-exclamation-circle-fill"></i><b> Error:</b> Por favor complete el formulario correctamente.</p>
         </div>
       </form>
+      <div class="total">
+        <ul>
+          <li>Día seleccionado para tu evento:</li>
+          <li>Hora de tu evento:</li>
+          <li>Servicios seleccionados:
+            <ul id="lista">
+            </ul>
+          </li>
+          <li>Valor total de tu eventos:</li>
+        </ul>
+      </div>
     </div>
   </main>
   <!-- Footer o Pie de página -->

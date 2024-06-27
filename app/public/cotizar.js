@@ -42,25 +42,51 @@ const salones =
     }
   },
   servicios: {
-    sonidoP: 500000,
+    sonidoPro: 500000,
     mesas: 4000,
-    sonidoE: 120000,
+    sonidoEx: 120000,
     banderas: 80000,
     maquina: 30000,
-    mantel: 18000
+    manteles: 18000
   }
 }
 
 const valorMesas = salones.servicios.mesas;
-const valorSonidoP = salones.servicios.sonidoP;
-const valorSonidoE = salones.servicios.sonidoE;
+const valorSonidoP = salones.servicios.sonidoPro;
+const valorSonidoE = salones.servicios.sonidoEx;
 const valorBanderas = salones.servicios.banderas;
-const valorManteles = salones.servicios.mantel;
+const valorManteles = salones.servicios.manteles;
 const valorMaquina = salones.servicios.maquina;
 
-document.getElementById("event-form").addEventListener("submit", async (e) => {
+const checks =  document.querySelectorAll(".formulario__checkbox");
+const buttom =  document.getElementById("event-form");
+const lista = document.getElementById("lista");
+
+let seleccionados = [];
+
+function insertSelect(value) {
+  const comprobar = seleccionados.find();
+  if (!comprobar) {
+    seleccionados.push(value);
+  }
+}
+
+buttom.addEventListener("submit", async (e) => {
   e.preventDefault();
-  console.log()
+
+  lista.innerHTML = "";
+  checks.forEach((e) => {
+    if (e.checked == true){
+      insertSelect(e.value);
+      var elemento = document.createElement('li');
+      elemento.innerHTML = e.value;
+      lista.appendChild(elemento);
+      return seleccionados;
+    }
+  });
+  console.log(seleccionados)
+  console.log(salones.servicios)
+
   // const res = await fetch("http://localhost:4500/api/cotizar", {
   //   method:"POST",
   //   headers:{
