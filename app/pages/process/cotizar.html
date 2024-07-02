@@ -208,28 +208,24 @@
       </div>
     </div>
   </header>
-  <!-- Cuerpo pirncipal de la página -->
+  <!-- Cuerpo principal de la página -->
   <main>
     <div class="container">
       <form id="event-form">
         <div class="dts-salon">
           <h2>Información del Evento:</h2>
           <label for="">Selecciona el dia que se realizara tu evento:</label>
-          <input type="date" name="date" id="date">
+          <input type="date" name="date" id="date" class="formulario__date">
           <!-- hora del evento -->
           <div class="hr-event">
             <h4>Selecciona la hora de tu evento</h4>
             <div class="hours">
-              <label for="">Inicio</label>
-              <div class="hr-init">
-                <input type="text" name="time" id="init">
-              </div>
+              <label for="">Inicio:</label>
+              <input type="text" name="time" id="Inicio" class="formulario__time">
             </div>
             <div class="hours">
-              <label for="">Fin</label>
-              <div class="hr-end">
-                <input type="text" name="time" id="end">
-              </div>
+              <label for="">Fin:</label>
+              <input type="text" name="time" id="Fin" class="formulario__time">
             </div>
           </div>
 
@@ -237,11 +233,11 @@
           <div class="event-class">
             <h4>Tipo de Evento:</h4>
             <div>
-              <input type="radio" name="tipo" id="social">
+              <input type="radio" name="tipo" id="social" class="formulario__radio" value="Social">
               <label for="social">Social</label>
             </div>
             <div>
-              <input type="radio" name="tipo" id="empresa">
+              <input type="radio" name="tipo" id="empresa" class="formulario__radio" value="Empresarial">
               <label for="empresa">Empresarial</label>
             </div>
           </div>
@@ -252,7 +248,7 @@
             <!-- Grupo "Mesas" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="mesas" id="mesas" value="mesas">
+                <input class="formulario__checkbox input" type="checkbox" name="mesas" id="mesas" value="Mesas RIMAX">
                 Mesas RIMAX
               </label>
             </div>
@@ -260,7 +256,7 @@
             <!-- Grupo "Sonido Profesional" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="sonido-pro" id="sonido-pro" value="sonidoPro">
+                <input class="formulario__checkbox input" type="checkbox" name="sonido-pro" id="sonido-pro" value="Sonido Profesional">
                 Sonido Profesional
               </label>
             </div>
@@ -268,7 +264,7 @@
             <!-- Grupo "Sonido  Externo" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="sonido-ex" id="sonido-ex" value="sonidoEx">
+                <input class="formulario__checkbox input" type="checkbox" name="sonido-ex" id="sonido-ex" value="Sonido Externo">
                 Sonido Externo
               </label>
             </div>
@@ -276,7 +272,7 @@
             <!-- Grupo "Banderas" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="banderas" id="banderas" value="banderas">
+                <input class="formulario__checkbox input" type="checkbox" name="banderas" id="banderas" value="Astas con Banderas">
                 Astas con Banderas
               </label>
             </div>
@@ -284,7 +280,7 @@
             <!-- Grupo "Máquina de Raspados" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="maquina" id="maquina" value="maquina">
+                <input class="formulario__checkbox input" type="checkbox" name="maquina" id="maquina" value="Máquina de Raspados">
                 Máquina de Raspados
               </label>
             </div>
@@ -292,7 +288,7 @@
             <!-- Grupo "Manteles" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles" value="manteles">
+                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles" value="Manteles Grandes">
                 Manteles Grandes
               </label>
             </div>
@@ -339,18 +335,42 @@
           <button type="submit" class="formulario__btn">SOLICITAR</button>
           <p><i class="bi bi-exclamation-circle-fill"></i><b> Error:</b> Por favor complete el formulario correctamente.</p>
         </div>
-      </form>
-      <div class="total">
-        <ul>
-          <li>Día seleccionado para tu evento:</li>
-          <li>Hora de tu evento:</li>
-          <li>Servicios seleccionados:
-            <ul id="lista">
+
+        <div class="total">
+          <h2>Resumen:</h2>
+          <div>
+            <ul>
+              <li>Día seleccionado para tu evento:
+                <ul id="dateList">
+                </ul>
+              </li>
+              <li>Hora de tu evento:
+                <ul id="timeList">
+                </ul>
+              </li>
+              <li>Tipo de evento:
+                <ul id="typeEventList">
+                </ul>
+              </li>
+              <li>Servicios seleccionados:
+                <ul id="listaServicios">
+                </ul>
+              </li>
+              <li>Datos del Encargado:
+                <ul id="listaDatos">
+                </ul>
+              </li>
             </ul>
-          </li>
-          <li>Valor total de tu eventos:</li>
-        </ul>
-      </div>
+            <ul>
+              <li>Valor por el tiempo de uso del salón:</li>
+              <li>Valor total de los servicios solicitados:</li>
+              <li>Valor total de tu evento:</li>
+            </ul>
+          </div>
+        </div>
+
+      </form>
+
     </div>
   </main>
   <!-- Footer o Pie de página -->
