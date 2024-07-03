@@ -1,5 +1,4 @@
 document.getElementById("register-form").addEventListener("submit",async(e) => {
-  e.preventDefault();
   const res = await fetch("http://localhost:4500/api/register", {
     method:"POST",
     headers:{

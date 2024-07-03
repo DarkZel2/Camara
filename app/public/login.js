@@ -1,5 +1,4 @@
 document.getElementById("login-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
   const id = e.target.children.id.value;
   const password = e.target.children.password.value;
   const res = await fetch("http://localhost:4500/api/login", {
