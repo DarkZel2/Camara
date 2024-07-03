@@ -80,11 +80,13 @@ const listaDatos = document.getElementById("listaDatos");
 const validarFecha = (e) => {
   const diaEvento = traerDiaSemana(e.target.value);
   listaFecha.innerHTML = "";
-  if (e.target.value !== "") {
-    var elemento = document.createElement('li');
-    elemento.innerHTML = `${diaEvento} ${e.target.value}`;
-    listaFecha.appendChild(elemento);
-  };
+  date.forEach((e) => {
+    if (e.target.value !== "") {
+      var elemento = document.createElement('li');
+      elemento.innerHTML = `${diaEvento} ${e.target.value}`;
+      listaFecha.appendChild(elemento);
+    };
+  });
 
   var valor = "";
   if (
@@ -101,11 +103,12 @@ const validarFecha = (e) => {
     valor = salones.price.hora.weekend;
   }
   console.log(valor)
-  return valor;
+  // return valor;
 };
 
 date.forEach((date) => {
-  date.addEventListener('blur', validarFecha)
+  date.addEventListener('blur', validarFecha);
+  date.addEventListener('click', validarFecha);
 });
 // Funcionabilidad de la hora
 const validarHora = (e) => {

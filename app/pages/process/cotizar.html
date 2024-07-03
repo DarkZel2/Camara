@@ -214,8 +214,17 @@
       <form id="event-form">
         <div class="dts-salon">
           <h2>Información del Evento:</h2>
-          <label for="">Selecciona el dia que se realizara tu evento:</label>
-          <input type="date" name="date" id="date" class="formulario__date">
+          <label for="">Selecciona el dia que se realizara tu evento:
+            <div class="grupo__dia">
+              <input type="date" name="date" id="Inicio" class="formulario__date">
+               - 
+              <input type="date" name="date" id="Fin" class="formulario__date">
+            </div>
+          </label>
+          <label for="allDay">
+            <input type="checkbox" name="allDay" id="allDay" checked>
+            Todo el día
+          </label>
           <!-- hora del evento -->
           <div class="hr-event">
             <h4>Selecciona la hora de tu evento</h4>
@@ -256,7 +265,7 @@
             <!-- Grupo "Sonido Profesional" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox input" type="checkbox" name="sonido-pro" id="sonido-pro" value="Sonido Profesional">
+                <input class="formulario__checkbox input" type="checkbox" name="sonidoPro" id="sonido-pro" value="Sonido Profesional">
                 Sonido Profesional
               </label>
             </div>
@@ -264,7 +273,7 @@
             <!-- Grupo "Sonido  Externo" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox input" type="checkbox" name="sonido-ex" id="sonido-ex" value="Sonido Externo">
+                <input class="formulario__checkbox input" type="checkbox" name="sonidoEx" id="sonido-ex" value="Sonido Externo">
                 Sonido Externo
               </label>
             </div>
