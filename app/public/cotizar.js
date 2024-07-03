@@ -100,6 +100,7 @@ const validarFecha = (e) => {
   ) {
     valor = salones.price.hora.weekend;
   }
+  console.log(valor)
   return valor;
 };
 
