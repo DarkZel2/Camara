@@ -7,6 +7,53 @@ const banderas = document.getElementById("banderas");
 const maquina = document.getElementById("maquina");
 const manteles = document.getElementById("manteles");
 
+const select1 = document.querySelector("#select1");
+const select2 = document.querySelector("#select2");
+const options1 = document.querySelector("#options1");
+const options2 = document.querySelector("#options2");
+const contentSelect1 = document.querySelector(".content__select1");
+const contentSelect2 = document.querySelector(".content__select2");
+const hiddenInput1 = document.querySelector("#inputSelect1");
+const hiddenInput2 = document.querySelector("#inputSelect2");
+
+select1.addEventListener("click", () => {
+  select1.classList.toggle("active");
+  options1.classList.toggle("active");
+});
+
+select1.addEventListener("blur", () => {
+  select1.classList.toggle("active");
+  options1.classList.toggle("active");
+});
+
+select2.addEventListener("click", () => {
+  select2.classList.toggle("active");
+  options2.classList.toggle("active");
+});
+
+document.querySelectorAll(".option1").forEach((option) => {
+  option.addEventListener("click", (e) => {
+    e.preventDefault();
+    contentSelect1.innerHTML = e.currentTarget.innerHTML;
+    select1.classList.toggle("active");
+    options1.classList.toggle("active");
+    hiddenInput1.value = e.currentTarget.querySelector(".title").innerText;
+    validarHora();
+    console.log(hiddenInput1.value);
+  });
+});
+
+document.querySelectorAll(".option2").forEach((option) => {
+  option.addEventListener("click", (e) => {
+    e.preventDefault();
+    contentSelect2.innerHTML = e.currentTarget.innerHTML;
+    select2.classList.toggle("active");
+    options2.classList.toggle("active");
+    hiddenInput2.value = e.currentTarget.querySelector(".title").innerText;
+    validarHora();
+    console.log(hiddenInput2.value);
+  });
+});
 
 const salones =
 {
@@ -30,12 +77,12 @@ const salones =
     }
   },
   servicios: {
-    sonidoPro: 500000,
-    mesas: 4000,
-    sonidoEx: 120000,
-    banderas: 80000,
-    maquina: 30000,
-    manteles: 18000
+    sonidoPro: "500000",
+    mesas: "4000",
+    sonidoEx: "120000",
+    banderas: "80000",
+    maquina: "30000",
+    manteles: "18000"
   }
 }
 
@@ -68,66 +115,88 @@ const checks = document.querySelectorAll(".formulario__checkbox");
 const inputs = document.querySelectorAll(".formulario__input");
 const radios = document.querySelectorAll(".formulario__radio");
 const times = document.querySelectorAll(".formulario__time");
-const date = document.querySelectorAll(".formulario__date");
+const dates = document.querySelectorAll(".formulario__date");
 const buttom = document.getElementById("event-form");
 const listaFecha = document.getElementById("dateList");
 const listaHora = document.getElementById("timeList");
 const listaTipoEvento = document.getElementById("typeEventList");
 const listaServicios = document.getElementById("listaServicios");
 const listaDatos = document.getElementById("listaDatos");
+const fechaInicial = document.getElementById("Inicio");
+const fechaFinal = document.getElementById("Fin");
+const dayContainer = document.getElementById("day");
+const todoElDia = document.getElementById("allDay");
+const hourContainer = document.getElementById("hour");
+
+todoElDia.addEventListener("click", () => {
+  dayContainer.classList.toggle("none");
+  hourContainer.classList.toggle("none");
+});
 
 // Funcionabilidad de la fecha
-const validarFecha = (e) => {
-  const diaEvento = traerDiaSemana(e.target.value);
-  listaFecha.innerHTML = "";
-  date.forEach((e) => {
-    if (e.target.value !== "") {
-      var elemento = document.createElement('li');
-      elemento.innerHTML = `${diaEvento} ${e.target.value}`;
-      listaFecha.appendChild(elemento);
-    };
-  });
+var valorDia = "";
+function verificarFecha(e) {
 
-  var valor = "";
+  var value = e.target.value;
+  const diaEvento = traerDiaSemana(value);
+  listaFecha.innerHTML = "";
+  if (!todoElDia.checked) {
+    var elemento = document.createElement('li');
+    elemento.innerHTML = `${diaEvento} ${value}`;
+    listaFecha.appendChild(elemento);
+  } else {
+    dates.forEach(() => {
+      if (value !== "") {
+        var elemento = document.createElement('li');
+        elemento.innerHTML = `${diaEvento} ${value}`;
+        listaFecha.appendChild(elemento);
+      };
+    });
+  }
+
+
+
   if (
     diaEvento === "Lunes" ||
     diaEvento === "Martes" ||
     diaEvento === "Miércoles" ||
     diaEvento === "Jueves"
   ) {
-    valor = salones.price.hora.week;
+    valorDia = salones.price.hora.week;
   } else if (
     diaEvento === "Viernes" ||
     diaEvento === "Sábado"
   ) {
-    valor = salones.price.hora.weekend;
+    valorDia = salones.price.hora.weekend;
   }
-  console.log(valor)
-  // return valor;
+  console.log(valorDia)
+  return valorDia;
 };
 
-date.forEach((date) => {
-  date.addEventListener('blur', validarFecha);
-  date.addEventListener('click', validarFecha);
-});
-// Funcionabilidad de la hora
-const validarHora = (e) => {
-  listaHora.innerHTML = "";
-  times.forEach((e) => {
-    if (e.value !== "") {
-      var elemento = document.createElement('li');
-      elemento.innerHTML = `Hora de ${e.id} ${e.value}`;
-      listaHora.appendChild(elemento);
-    }
-  })
-
-  console.log(e.target.value)
-};
-
-times.forEach((time) => {
-  time.addEventListener('keyup', validarHora)
-  time.addEventListener('blur', validarHora)
+dates.forEach((date) => {
+  date.addEventListener("change", verificarFecha)
 })
+
+// Funcionabilidad de la hora
+var horaInicial = "";
+var horaFinal = "";
+const validarHora = () => {
+  listaHora.innerHTML = "";
+  if (hiddenInput1.value !== "") {
+    var elemento = document.createElement('li');
+    elemento.innerHTML = `Hora de Inicio: ${hiddenInput1.value}`;
+    listaHora.appendChild(elemento);
+    horaInicial = hiddenInput1.value;
+  }
+  if (hiddenInput2.value !== "") {
+    var elemento = document.createElement('li');
+    elemento.innerHTML = `Hora de Fin: ${hiddenInput2.value}`;
+    listaHora.appendChild(elemento);
+    horaFinal = hiddenInput2.value;
+  }
+  return horaInicial, horaFinal;
+};
+
 // Funcionabilidad de los checks de tipo de evento
 const validarEvento = (e) => {
   listaTipoEvento.innerHTML = "";
@@ -143,7 +212,7 @@ const validarEvento = (e) => {
 radios.forEach((check) => {
   check.addEventListener('click', validarEvento)
 });
-// FUncionabilidad de lis checkbox de servicios
+// Funcionabilidad de lista checkbox de servicios
 const validarChecks = (e) => {
   listaServicios.innerHTML = "";
   checks.forEach((e) => {
@@ -177,7 +246,62 @@ inputs.forEach((input) => {
 });
 
 
+function revertTime(time12hr) {
+  // Separar la cadena en horas, minutos y formato (AM/PM)
+  let timeArr = time12hr.split(" ");
+  let timeFormat = timeArr[1];
+  // Separar las horas y minutos
+  let [timeHourStr, timeMin] = timeArr[0].split(":");
+  let timeHour = parseInt(timeHourStr); // Convertir la hora a número
+  // Convertir de formato de 12 horas a 24 horas
+  if (timeFormat === "AM") {
+    // Si es "AM" y la hora es 12, convertirla a 0
+    if (timeHour === 12) {
+      timeHour = 0;
+    }
+  } else {
+    // Si es "PM" y la hora no es 12, sumarle 12 para convertirla
+    if (timeHour !== 12) {
+      timeHour += 12;
+    }
+  }
+  // Formar la cadena de tiempo en formato de 24 horas
+  let time24hr = `${String(timeHour).padStart(2, '0')}${timeMin}`;
+  // Retornar el tiempo en formato de 24 horas
+  return time24hr;
+}
 
+const btnCalcular = document.getElementById("btn-calcular");
+const mostrarValorUso = document.getElementById("valorUso");
+btnCalcular.addEventListener("click", totalTiempoUso);
+btnCalcular.addEventListener("click", totalValorServicios);
+
+function totalTiempoUso() {
+  var hrRevertInicial = revertTime(horaInicial);
+  var hrRevertFinal = revertTime(horaFinal);
+  console.log(hrRevertInicial);
+  console.log(hrRevertFinal);
+  var cantHoras = "";
+  const lapsoTiempo = (hr1, hr2) => {
+    const rest = hr1 - hr2;
+    const result = rest / -100;
+    cantHoras = result;
+    return cantHoras;
+  }
+  lapsoTiempo(hrRevertInicial, hrRevertFinal);
+  const valorTotal = valorDia * cantHoras;
+  // Mostrar valor en el DOOM
+  mostrarValorUso.innerHTML = "";
+  var elemento = document.createElement('li');
+  elemento.innerHTML = `$${valorTotal}`;
+  mostrarValorUso.appendChild(elemento);
+
+}
+
+function totalValorServicios() {
+  
+  
+}
 
 
 buttom.addEventListener("submit", async (e) => {

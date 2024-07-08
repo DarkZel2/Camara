@@ -214,27 +214,220 @@
       <form id="event-form">
         <div class="dts-salon">
           <h2>Información del Evento:</h2>
-          <label for="">Selecciona el dia que se realizara tu evento:
-            <div class="grupo__dia">
+          <h4>Selecciona el dia que se realizará tu evento:</h4>
+          <div class="grupo__dia">
+            <div class="day">
               <input type="date" name="date" id="Inicio" class="formulario__date">
             </div>
-          </label>
-          <label for="allDay">
-            <input type="checkbox" name="allDay" id="allDay" checked>
-            Todo el día
-          </label>
-          <!-- hora del evento -->
-          <div class="hr-event">
-            <h4>Selecciona la hora de tu evento</h4>
-            <div class="hours">
-              <label for="">Inicio:</label>
-              <input type="text" name="time" id="Inicio" class="formulario__time">
+            <div id="day">
+              <input type="date" name="date" id="Fin" class="formulario__date">
             </div>
-            <div class="hours">
-              <label for="">Fin:</label>
-              <input type="text" name="time" id="Fin" class="formulario__time">
+            <div id="hour" class="none">
+              <div class="selectbox">
+                <div class="select" id="select1">
+                  <div class="content__select1">
+                    <p class="title">Inicio:</p>
+                  </div>
+                </div>
+
+                <div class="options" id="options1">
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">8:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">9:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">10:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">11:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">12:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">1:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">2:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">3:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">4:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">5:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option1">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">6:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <input type="hidden" name="hora" id="inputSelect1" value="">
+              <span>-</span>
+              <div class="selectbox">
+                <div class="select" id="select2">
+                  <div class="content__select2">
+                    <p class="title">Fin:</p>
+                  </div>
+                </div>
+
+                <div class="options" id="options2">
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">8:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">9:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">10:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">11:00 AM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">12:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">1:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">2:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">3:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">4:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">5:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="option2">
+                    <div class="content__option">
+                      <!-- Puede tener una imagen -->
+                      <div class="text">
+                        <p class="title">6:00 PM</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <input type="hidden" name="hora" id="inputSelect2" value="">
             </div>
           </div>
+          <label for="allDay">
+            <input type="checkbox" name="allDay" id="allDay" checked class="formulario__checkbox">
+            Todo el día
+          </label>
 
           <!-- Tipo de evento -->
           <div class="event-class">
@@ -263,7 +456,8 @@
             <!-- Grupo "Sonido Profesional" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox input" type="checkbox" name="sonidoPro" id="sonido-pro" value="Sonido Profesional">
+                <input class="formulario__checkbox input" type="checkbox" name="sonidoPro" id="sonido-pro"
+                  value="Sonido Profesional">
                 Sonido Profesional
               </label>
             </div>
@@ -271,7 +465,8 @@
             <!-- Grupo "Sonido  Externo" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox input" type="checkbox" name="sonidoEx" id="sonido-ex" value="Sonido Externo">
+                <input class="formulario__checkbox input" type="checkbox" name="sonidoEx" id="sonido-ex"
+                  value="Sonido Externo">
                 Sonido Externo
               </label>
             </div>
@@ -279,7 +474,8 @@
             <!-- Grupo "Banderas" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox input" type="checkbox" name="banderas" id="banderas" value="Astas con Banderas">
+                <input class="formulario__checkbox input" type="checkbox" name="banderas" id="banderas"
+                  value="Astas con Banderas">
                 Astas con Banderas
               </label>
             </div>
@@ -287,7 +483,8 @@
             <!-- Grupo "Máquina de Raspados" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox input" type="checkbox" name="maquina" id="maquina" value="Máquina de Raspados">
+                <input class="formulario__checkbox input" type="checkbox" name="maquina" id="maquina"
+                  value="Máquina de Raspados">
                 Máquina de Raspados
               </label>
             </div>
@@ -295,7 +492,8 @@
             <!-- Grupo "Manteles" -->
             <div class="formulario__grupo" id="grupo__servicios">
               <label class="formulario__label">
-                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles" value="Manteles Grandes">
+                <input class="formulario__checkbox" type="checkbox" name="manteles" id="manteles"
+                  value="Manteles Grandes">
                 Manteles Grandes
               </label>
             </div>
@@ -313,7 +511,8 @@
               <input type="text" class="formulario__input" name="name" id="name" placeholder="Nombre">
               <i class="bi bi-x-circle-fill"></i>
             </div>
-            <p class="formulario__input-error">El Nombre no debe contener números, comas, puntos ni ningún otro caracter especial.</p>
+            <p class="formulario__input-error">El Nombre no debe contener números, comas, puntos ni ningún otro caracter
+              especial.</p>
           </div>
 
           <!-- Grupo "Télefono" -->
@@ -330,17 +529,18 @@
           <div class="formulario__grupo" id="grupo__email">
             <label for="email" class="formulario__label">Correo Electrónico:</label>
             <div class="formulario__grupo-input">
-              <input type="email" class="formulario__input" name="email" id="email"
-                placeholder="correo123@ejemplo.com">
+              <input type="email" class="formulario__input" name="email" id="email" placeholder="correo123@ejemplo.com">
               <i class="bi bi-x-circle-fill"></i>
             </div>
-            <p class="formulario__input-error">El Correo solo puede contener letras, números, puntos, guiones y guión bajo.</p>
+            <p class="formulario__input-error">El Correo solo puede contener letras, números, puntos, guiones y guión
+              bajo.</p>
           </div>
 
         </div>
         <div class="formulario__grupo formulario__grupo-enviar" id="formulario__mensaje">
           <button type="submit" class="formulario__btn">SOLICITAR</button>
-          <p><i class="bi bi-exclamation-circle-fill"></i><b> Error:</b> Por favor complete el formulario correctamente.</p>
+          <p><i class="bi bi-exclamation-circle-fill"></i><b> Error:</b> Por favor complete el formulario correctamente.
+          </p>
         </div>
 
         <div class="total">
@@ -369,7 +569,10 @@
               </li>
             </ul>
             <ul>
-              <li>Valor por el tiempo de uso del salón:</li>
+              <button id="btn-calcular">Calcular Valor</button>
+              <li>Valor por el tiempo de uso del salón:
+                <ul id="valorUso"></ul>
+              </li>
               <li>Valor total de los servicios solicitados:</li>
               <li>Valor total de tu evento:</li>
             </ul>
