@@ -39,7 +39,6 @@ document.querySelectorAll(".option1").forEach((option) => {
     options1.classList.toggle("active");
     hiddenInput1.value = e.currentTarget.querySelector(".title").innerText;
     validarHora();
-    console.log(hiddenInput1.value);
   });
 });
 
@@ -51,7 +50,6 @@ document.querySelectorAll(".option2").forEach((option) => {
     options2.classList.toggle("active");
     hiddenInput2.value = e.currentTarget.querySelector(".title").innerText;
     validarHora();
-    console.log(hiddenInput2.value);
   });
 });
 
@@ -77,12 +75,12 @@ const salones =
     }
   },
   servicios: {
-    sonidoPro: "500000",
-    mesas: "4000",
-    sonidoEx: "120000",
-    banderas: "80000",
-    maquina: "30000",
-    manteles: "18000"
+    sonidoPro: 500000,
+    mesas: 4000,
+    sonidoEx: 120000,
+    banderas: 80000,
+    maquina: 30000,
+    manteles: 18000
   }
 }
 
@@ -111,7 +109,7 @@ function traerDiaSemana(fecha) {
   }
 }
 
-const checks = document.querySelectorAll(".formulario__checkbox");
+const checks = document.querySelectorAll(".input");
 const inputs = document.querySelectorAll(".formulario__input");
 const radios = document.querySelectorAll(".formulario__radio");
 const times = document.querySelectorAll(".formulario__time");
@@ -134,7 +132,7 @@ todoElDia.addEventListener("click", () => {
 });
 
 // Funcionabilidad de la fecha
-var valorDia = "";
+var valorDia = 0;
 function verificarFecha(e) {
 
   var value = e.target.value;
@@ -142,19 +140,20 @@ function verificarFecha(e) {
   listaFecha.innerHTML = "";
   if (!todoElDia.checked) {
     var elemento = document.createElement('li');
-    elemento.innerHTML = `${diaEvento} ${value}`;
+    elemento.innerHTML = `Fecha del evento: ${diaEvento} ${value}`;
     listaFecha.appendChild(elemento);
   } else {
-    dates.forEach(() => {
-      if (value !== "") {
-        var elemento = document.createElement('li');
-        elemento.innerHTML = `${diaEvento} ${value}`;
-        listaFecha.appendChild(elemento);
-      };
-    });
+    if (fechaInicial.value !== "") {
+      var elemento = document.createElement('li');
+      elemento.innerHTML = `Fecha Inicial: ${traerDiaSemana(fechaInicial.value)} ${fechaInicial.value}`;
+      listaFecha.appendChild(elemento);
+    }
+    if (fechaFinal.value !== "") {
+      var elemento = document.createElement('li');
+      elemento.innerHTML = `Fecha Final: ${traerDiaSemana(fechaFinal.value)} ${fechaFinal.value}`;
+      listaFecha.appendChild(elemento);
+    }
   }
-
-
 
   if (
     diaEvento === "Lunes" ||
@@ -169,7 +168,6 @@ function verificarFecha(e) {
   ) {
     valorDia = salones.price.hora.weekend;
   }
-  console.log(valorDia)
   return valorDia;
 };
 
@@ -213,6 +211,12 @@ radios.forEach((check) => {
   check.addEventListener('click', validarEvento)
 });
 // Funcionabilidad de lista checkbox de servicios
+var vlrMesas = 0;
+var vlrSonidoPro = 0;
+var vlrSonidoEx = 0;
+var vlrBanderas = 0;
+var vlrMaquina = 0;
+var vlrManteles = 0;
 const validarChecks = (e) => {
   listaServicios.innerHTML = "";
   checks.forEach((e) => {
@@ -222,6 +226,30 @@ const validarChecks = (e) => {
       listaServicios.appendChild(elemento);
     }
   });
+  if (e.target.name === "mesas" && e.target.checked) {
+    vlrMesas = salones.servicios.mesas;
+    return vlrMesas;
+  }
+  if (e.target.name === "sonidoPro" && e.target.checked) {
+    vlrSonidoPro = salones.servicios.sonidoPro;
+    return vlrSonidoPro;
+  }
+  if (e.target.name === "sonidoEx" && e.target.checked) {
+    vlrSonidoEx = salones.servicios.sonidoEx;
+    return vlrSonidoEx;
+  }
+  if (e.target.name === "banderas" && e.target.checked) {
+    vlrBanderas = salones.servicios.banderas;
+    return vlrBanderas;
+  }
+  if (e.target.name === "maquina" && e.target.checked) {
+    vlrMaquina = salones.servicios.maquina;
+    return vlrMaquina;
+  }
+  if (e.target.name === "manteles" && e.target.checked) {
+    vlrManteles = salones.servicios.maquina;
+    return vlrManteles;
+  }
 };
 
 checks.forEach((check) => {
@@ -266,7 +294,7 @@ function revertTime(time12hr) {
     }
   }
   // Formar la cadena de tiempo en formato de 24 horas
-  let time24hr = `${String(timeHour).padStart(2, '0')}${timeMin}`;
+  var time24hr = `${String(timeHour).padStart(2, '0')}${timeMin}`;
   // Retornar el tiempo en formato de 24 horas
   return time24hr;
 }
@@ -275,32 +303,48 @@ const btnCalcular = document.getElementById("btn-calcular");
 const mostrarValorUso = document.getElementById("valorUso");
 btnCalcular.addEventListener("click", totalTiempoUso);
 btnCalcular.addEventListener("click", totalValorServicios);
+btnCalcular.addEventListener("click", totalSalon);
 
+var valorTotal = 0;
 function totalTiempoUso() {
   var hrRevertInicial = revertTime(horaInicial);
   var hrRevertFinal = revertTime(horaFinal);
-  console.log(hrRevertInicial);
-  console.log(hrRevertFinal);
-  var cantHoras = "";
+  var cantHoras = 0;
   const lapsoTiempo = (hr1, hr2) => {
     const rest = hr1 - hr2;
     const result = rest / -100;
-    cantHoras = result;
+    cantHoras = Number(result);
     return cantHoras;
   }
   lapsoTiempo(hrRevertInicial, hrRevertFinal);
-  const valorTotal = valorDia * cantHoras;
+  valorTotal = valorDia * cantHoras;
   // Mostrar valor en el DOOM
   mostrarValorUso.innerHTML = "";
   var elemento = document.createElement('li');
   elemento.innerHTML = `$${valorTotal}`;
   mostrarValorUso.appendChild(elemento);
-
+  return valorTotal;
 }
 
+const mostrarValorServicios = document.getElementById("valorServicios");
+
+var totalServicios = 0;
 function totalValorServicios() {
-  
-  
+  totalServicios = vlrBanderas + vlrManteles + vlrMaquina + vlrMesas + vlrSonidoEx + vlrSonidoPro;
+  mostrarValorServicios.innerHTML = "";
+  var elemento = document.createElement('li');
+  elemento.innerHTML = `$${totalServicios}`;
+  mostrarValorServicios.appendChild(elemento);
+  return totalServicios;
+}
+
+const mostrarValorTotal = document.getElementById("valorTotal");
+function totalSalon() {
+  const valorTotalSalon = valorTotal + totalServicios;
+  mostrarValorTotal.innerHTML = "";
+  var elemento = document.createElement('li');
+  elemento.innerHTML = `$${valorTotalSalon}`;
+  mostrarValorTotal.appendChild(elemento);
 }
 
 
@@ -314,20 +358,7 @@ buttom.addEventListener("submit", async (e) => {
   //     "content-Type" : "application/json"
   //   },
   //   body: JSON.stringify({
-  //     fecha: e.target.date.value,
-  //     horaI: e.target.init.value,
-  //     horaF: e.target.end.value,
-  //     cSocial: social.checked,
-  //     cEmpresa: empresa.checked,
-  //     cMesas: mesas.checked,
-  //     cSonidoP: sonidoP.checked,
-  //     cSonidoE: sonidoE.checked,
-  //     cBandera: banderas.checked,
-  //     cMaquina: maquina.checked,
-  //     cMantel: manteles.checked,
-  //     name: e.target.name.value,
-  //     phone: e.target.phone.value,
-  //     email: e.target.email.value
+  //     
   //   })
   // });
 })
