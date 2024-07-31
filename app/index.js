@@ -27,6 +27,7 @@ app.get("/login", authorization.soloSinLog, (req, res) => res.sendFile(__dirname
 app.get("/register", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/register.html"));
 
 //Rutas públicas
+app.get("/api/salon/index", (req, res) => res.sendFile(__dirname + "/pages/salons/salonesIndex.html"));
 app.get("/cotizar", authorization.soloConLog, (req, res) => res.sendFile(__dirname + "/pages/process/cotizar.html"));
 
 //Rutas de usuarios
@@ -50,6 +51,11 @@ app.post("/api/cotizar", process.quote);
 app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));
 app.get("/img/logoCC", (req, res) => res.sendFile(__dirname + "/public/img/logos/LOGO CC B.png"));
 app.get("/img/logoGOV", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo gov.webp"));
+//Rutas para los archivos css
+app.get("/css/header", (req, res) => res.sendFile(__dirname + "/public/css/header.css"));
+app.get("/css/footer", (req, res) => res.sendFile(__dirname + "/public/css/footer.css"));
+app.get("/css/salon", (req, res) => res.sendFile(__dirname + "/public/css/salon.css"));
+app.get("/css/calendar", (req, res) => res.sendFile(__dirname + "/public/css/calendar.css"));
 
 app.get("/img/icons/bandera", (req, res) => res.sendFile(__dirname + "/public/img/icons/bandera.png"));
 app.get("/img/icons/cafe", (req, res) => res.sendFile(__dirname + "/public/img/icons/cafe.png"));
@@ -69,5 +75,7 @@ app.get("/img/presidentes/plano", (req, res) => res.sendFile(__dirname + "/publi
 
 //Ruta para la base de datos
 app.get("/api/usuarios", database.showUsers);
-app.get("/api/salones", database.showSalons);
 app.post("/api/nuevoUsuario", database.addUsers);
+app.get("/api/pagina1/datos", database.getSalons);
+app.get("/api/card/salones", database.showInfoSalons);
+

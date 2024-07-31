@@ -28,13 +28,18 @@ async function addUsers (req, res) {
   return res.status(201).send({statu:"ok"})
 }
 
-async function showSalons(req, res) {
+async function showInfoSalons(req, res) {
   const result = await (await connection).query("SELECT * FROM salones");
   res.json(result)
+}
+
+async function getSalons(req, res) {
+  
 }
 
 export const methods = {
   showUsers,
   addUsers,
-  showSalons
+  showInfoSalons,
+  getSalons
 }
