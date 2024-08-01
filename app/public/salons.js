@@ -36,7 +36,7 @@ function crearTarjetasSalones (salon){
           </div>
           <div class="card-footer">
             <a href="">Recorrido</a>
-            <a href="/api/salon/index/${element.id}">Ver más</a>
+            <a href="/api/salon/index">Ver más</a>
           </div>
         </div>
 		`

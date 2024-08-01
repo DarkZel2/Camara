@@ -8,6 +8,7 @@ import { methods as autentication } from "./controllers/autentication.controller
 import { methods as authorization } from "./middlewares/authorization.js";
 import { methods as database } from "./database/connection.js";
 import { methods as process } from "./controllers/quote.controller.js";
+import { salones } from "./database/salones.js";
 
 //Server 
 const app = express();
@@ -78,4 +79,7 @@ app.get("/api/usuarios", database.showUsers);
 app.post("/api/nuevoUsuario", database.addUsers);
 app.get("/api/pagina1/datos", database.getSalons);
 app.get("/api/card/salones", database.showInfoSalons);
+app.get("/api/info/salones", (req, res) => {
+  res.json(salones);
+});
 
