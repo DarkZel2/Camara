@@ -7,7 +7,6 @@ const connection = mysql.createConnection({
   password: ""
 })
 
-// export const getConnection = async () => await connection;
 async function showUsers(req, res) {
   const result = await (await connection).query("SELECT * FROM usuarios");
   res.json(result)
@@ -21,7 +20,7 @@ async function addUsers (req, res) {
   const access = req.body.access;
   const password = req.body.password;
   try {
-    const result = await (await connection).query("INSERT INTO usuarios(id, name, email, access, password) VALUES ('"+id+"','"+name+"','"+email+"','"+access+"','"+password+"')");
+    const result = await (await connection).query(`INSERT INTO usuarios(id, name, email, access, password) VALUES ('${id}','${name}','${email}','${access}','${password}')`);
   } catch {
     return res.status(400).send({status:"Error",message:"Error con la base de datos"})
   }
@@ -34,7 +33,7 @@ async function showInfoSalons(req, res) {
 }
 
 async function getSalons(req, res) {
-  
+  res.json();
 }
 
 export const methods = {

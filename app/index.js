@@ -8,7 +8,8 @@ import { methods as autentication } from "./controllers/autentication.controller
 import { methods as authorization } from "./middlewares/authorization.js";
 import { methods as database } from "./database/connection.js";
 import { methods as process } from "./controllers/quote.controller.js";
-import { salones } from "./database/salones.js";
+import { methods as information } from "./controllers/infoSalons.controller.js";
+// import { salones } from "./database/salones.js";
 
 //Server 
 const app = express();
@@ -28,7 +29,7 @@ app.get("/login", authorization.soloSinLog, (req, res) => res.sendFile(__dirname
 app.get("/register", authorization.soloSinLog, (req, res) => res.sendFile(__dirname + "/pages/register.html"));
 
 //Rutas públicas
-app.get("/api/salon/index", (req, res) => res.sendFile(__dirname + "/pages/salons/salonesIndex.html"));
+app.get("/salon/index", (req, res) => res.sendFile(__dirname + "/pages/salons/salonesIndex.html"));
 app.get("/cotizar", authorization.soloConLog, (req, res) => res.sendFile(__dirname + "/pages/process/cotizar.html"));
 
 //Rutas de usuarios
@@ -47,6 +48,7 @@ app.get("/reports", authorization.soloReport, (req, res) => res.sendFile(__dirna
 app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);
 app.post("/api/cotizar", process.quote);
+app.post("/api/info", information.getInfo);
 
 //Rutas de recursos
 app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));
@@ -57,6 +59,7 @@ app.get("/css/header", (req, res) => res.sendFile(__dirname + "/public/css/heade
 app.get("/css/footer", (req, res) => res.sendFile(__dirname + "/public/css/footer.css"));
 app.get("/css/salon", (req, res) => res.sendFile(__dirname + "/public/css/salon.css"));
 app.get("/css/calendar", (req, res) => res.sendFile(__dirname + "/public/css/calendar.css"));
+//Rutas de archivos
 
 app.get("/img/icons/bandera", (req, res) => res.sendFile(__dirname + "/public/img/icons/bandera.png"));
 app.get("/img/icons/cafe", (req, res) => res.sendFile(__dirname + "/public/img/icons/cafe.png"));
@@ -79,7 +82,7 @@ app.get("/api/usuarios", database.showUsers);
 app.post("/api/nuevoUsuario", database.addUsers);
 app.get("/api/pagina1/datos", database.getSalons);
 app.get("/api/card/salones", database.showInfoSalons);
-app.get("/api/info/salones", (req, res) => {
-  res.json(salones);
-});
+// app.get("/api/info/salones", (req, res) => {
+//   res.json(salones);
+// });
 
