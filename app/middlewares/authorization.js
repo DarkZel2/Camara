@@ -17,7 +17,7 @@ function revisarCookie(req) {
     return true;
   }
   catch {
-    return false
+    return false;
   }
 }
 
