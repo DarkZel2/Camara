@@ -13,29 +13,29 @@ function crearTarjetasSalones(salon) {
 		  <div class="card-img">
         <ul>
           <li>
-            <img src="${element.img1}">
+            <img src="${element.Img1}">
           </li>
           <li>
-            <img src="${element.img2}">
+            <img src="${element.Img2}">
           </li>
           <li>
-            <img src="${element.img3}">
+            <img src="${element.Img3}">
           </li>
           <li>
-            <img src="${element.img4}">
+            <img src="${element.Img4}">
           </li>
         </ul>
       </div>
       <div class="card-body">
         <div class="card-head">
-          <h2>${element.name}</h2>
+          <h2>${element.Name}</h2>
         </div>
         <div class="card-main">
-          <p>${element.description}</p>
+          <p>${element.Description}</p>
         </div>
         <div class="card-footer">
           <a>Recorrido</a>
-          <a onclick="enviarId(${element.id})">Ver más</a>
+          <a onclick="redirectForId(${element.TarjetaID})">Ver más</a>
         </div>
       </div>
 		`;
@@ -47,24 +47,20 @@ getSalones().then(salones => {
   crearTarjetasSalones(salones)
 });
 
-async function enviarId(dato) {
-  var idSolicitado = "";
-  idSolicitado = dato
-
-  const res = await fetch("http://localhost:4500/api/info", {
-    method: "POST",
-    headers:{
-      "Content-Type" : "application/json"
-    },
+async function redirectForId(dato) {
+  var datoId = "";
+  datoId = dato;
+  const response = await fetch("http://localhost:4500/api/ID/salones", {
+    method: 'POST',
+    headers: {'Content-Type' : 'application/json'},
     body: JSON.stringify({
-      idSolicitado
+      id: datoId
     })
   });
-  if(!res.ok){
-    return;
-  }
-  const resJson = await res.json();
-  if (resJson.redirect){
-    window.location.href = resJson.redirect;
+  if (response.ok) {
+    const responseJson = await response.json();
+    if (responseJson.redirect) {
+      window.location.href = responseJson.redirect;
+    }
   }
 }

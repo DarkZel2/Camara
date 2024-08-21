@@ -8,8 +8,6 @@ import { methods as autentication } from "./controllers/autentication.controller
 import { methods as authorization } from "./middlewares/authorization.js";
 import { methods as database } from "./database/connection.js";
 import { methods as process } from "./controllers/quote.controller.js";
-import { methods as information } from "./controllers/infoSalons.controller.js";
-// import { salones } from "./database/salones.js";
 
 //Server 
 const app = express();
@@ -48,7 +46,6 @@ app.get("/reports", authorization.soloReport, (req, res) => res.sendFile(__dirna
 app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);
 app.post("/api/cotizar", process.quote);
-app.post("/api/info", information.getInfo);
 
 //Rutas de recursos
 app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));
@@ -80,9 +77,6 @@ app.get("/img/presidentes/plano", (req, res) => res.sendFile(__dirname + "/publi
 //Ruta para la base de datos
 app.get("/api/usuarios", database.showUsers);
 app.post("/api/nuevoUsuario", database.addUsers);
-app.get("/api/pagina1/datos", database.getSalons);
 app.get("/api/card/salones", database.showInfoSalons);
-// app.get("/api/info/salones", (req, res) => {
-//   res.json(salones);
-// });
-
+app.post("/api/ID/salones", database.findForId);
+app.get("/api/info/salones", database.getInfoSalons);
