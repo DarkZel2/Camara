@@ -75,3 +75,8 @@ export const methods = {
 // 	INNER JOIN Servicios_Salones ON Servicios_Details.ServiciosID = Servicios_Salones.ServiciosID
 // WHERE Tarjetas_Salones.TarjetaID = 1
 
+// Consulta de los servicios adicionales
+// SELECT Adicionales_Salones.Description FROM Tarjetas_Salones
+//  	INNER JOIN Adicionales_Details ON Tarjetas_Salones.TarjetaID = Adicionales_Details.CaracteristicasID
+//  	INNER JOIN Adicionales_Salones ON Adicionales_Details.AdicionalesID = Adicionales_Salones.AdicionalesID
+// WHERE Tarjetas_Salones.TarjetaID = 1
