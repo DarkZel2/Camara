@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/footer">
   <link rel="stylesheet" href="/css/calendar">
   <link rel="stylesheet" href="/css/salon">
-  <title>Auditorio Pablo Rodriguez Ruiz</title>
+  <title id="pageHead"></title>
 </head>
 
 <body>
@@ -219,18 +219,7 @@
       <div class="carrusel">
         <div class="box-slider">
           <div class="imgs" id="slider">
-            <section class="section-carrusel">
-              <img src="">
-            </section>
-            <section class="section-carrusel">
-              <img src="">
-            </section>
-            <section class="section-carrusel">
-              <img src="">
-            </section>
-            <section class="section-carrusel">
-              <img src="">
-            </section>
+            <!-- Las imagenes se traen de la base de datos por medio de js -->
           </div>
           <div class="btn-left"><i class="bi bi-arrow-left-short"></i></div>
           <div class="btn-right"><i class="bi bi-arrow-right-short"></i></div>
@@ -244,7 +233,7 @@
             <ul id="servicesList">
             </ul>
             <h4>Disponibilidad:</h4>
-            <ul>
+            <ul id="disponibilidad">
               <!-- <li><img src="/img/icons/calendario">Lunes - Sábado</li> -->
             </ul>
         </div>
@@ -396,6 +385,7 @@
   <script src="/js/carrusel.js"></script>
   <script src="/js/nav_fijo.js"></script>
   <script src="/js/calendar.js"></script>
+  <script src="/mostrar_salon.js"></script>
 </body>
 
 </html>

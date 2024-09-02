@@ -105,7 +105,6 @@ main {
   ul {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     color: #FFFFFF;
     font-weight: 300;
     font-style: normal;

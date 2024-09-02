@@ -79,4 +79,7 @@ app.get("/api/usuarios", database.showUsers);
 app.post("/api/nuevoUsuario", database.addUsers);
 app.get("/api/card/salones", database.showInfoSalons);
 app.post("/api/ID/salones", database.findForId);
-app.get("/api/info/salones", database.getInfoSalons);
+app.get("/api/data/salones", database.getInfoSalons);
+app.get("/api/data/servicios", database.getServiciosSalones);
+app.get("/api/data/adicionales", database.getAdicionalesSalones);
+app.get("/api/data/caracteristicas", database.getCaracteristicasSalones);

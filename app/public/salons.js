@@ -10,7 +10,7 @@ function crearTarjetasSalones(salon) {
     const nuevoSalon = document.createElement("div");
     nuevoSalon.classList = "salon";
     nuevoSalon.innerHTML = `
-		  <div class="card-img">
+      <div class="card-img">
         <ul>
           <li>
             <img src="${element.Img1}">
