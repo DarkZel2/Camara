@@ -5,27 +5,22 @@ async function getInfo() {
 };
 
 function mostrarInfo(info) {
-  const imgContainer= document.getElementById("slider");
+  const img1 = document.getElementById("img1"),
+    img2 = document.getElementById("img2"),
+    img3 = document.getElementById("img3"),
+    img4 = document.getElementById("img4");
   const title = document.getElementById("title");
   const page = document.getElementById("pageHead");
+  const plano = document.getElementById("plano");
   info.forEach(element => {
-    // console.log(element);
+    console.log(element)
     page.innerText = element.Name;
     title.innerText = element.Name;
-    imgContainer.innerHTML = `
-      <section class="section-carrusel">
-        <img src="${element.Img1}">
-      </section>
-      <section class="section-carrusel">
-        <img src="${element.Img2}">
-      </section>
-      <section class="section-carrusel">
-        <img src="${element.Img3}">
-      </section>
-      <section class="section-carrusel">
-        <img src="${element.Img4}">
-      </section>
-    `;
+    img1.innerHTML = `<img src="${element.Img1}">`;
+    img2.innerHTML = `<img src="${element.Img2}">`;
+    img3.innerHTML = `<img src="${element.Img3}">`;
+    img4.innerHTML = `<img src="${element.Img4}">`;
+    plano.innerHTML = `<img src="${element.ImgPlano}">`;
   })
 }
 

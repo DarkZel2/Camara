@@ -1,6 +1,6 @@
 const btnLeft = document.querySelector(".btn-left"),
       btnRight = document.querySelector(".btn-right"),
-      slider = document.querySelector("#slider"),
+      slider = document.getElementById("slider"),
       sliderSection = document.querySelectorAll(".section-carrusel");
 
 btnLeft.addEventListener("click", e => moveToLeft())
@@ -8,7 +8,7 @@ btnRight.addEventListener("click", e => moveToRight())
 
 setInterval(() =>{
   moveToRight()
-}, 3000);
+}, 4000);
 
 let operacion = 0,
     counter = 0,

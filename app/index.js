@@ -56,8 +56,8 @@ app.get("/css/header", (req, res) => res.sendFile(__dirname + "/public/css/heade
 app.get("/css/footer", (req, res) => res.sendFile(__dirname + "/public/css/footer.css"));
 app.get("/css/salon", (req, res) => res.sendFile(__dirname + "/public/css/salon.css"));
 app.get("/css/calendar", (req, res) => res.sendFile(__dirname + "/public/css/calendar.css"));
-//Rutas de archivos
 
+//Rutas de archivos
 app.get("/img/icons/bandera", (req, res) => res.sendFile(__dirname + "/public/img/icons/bandera.png"));
 app.get("/img/icons/cafe", (req, res) => res.sendFile(__dirname + "/public/img/icons/cafe.png"));
 app.get("/img/icons/calendario", (req, res) => res.sendFile(__dirname + "/public/img/icons/calendario.png"));
@@ -71,8 +71,19 @@ app.get("/img/icons/social", (req, res) => res.sendFile(__dirname + "/public/img
 app.get("/img/icons/sonido_ex", (req, res) => res.sendFile(__dirname + "/public/img/icons/sonido_externo.png"));
 app.get("/img/icons/sonido_pro", (req, res) => res.sendFile(__dirname + "/public/img/icons/sonido_profesional.png"));
 app.get("/img/icons/audiovisual", (req, res) => res.sendFile(__dirname + "/public/img/icons/audiovisual.png"));
+app.get("/img/icons/mesaO", (req, res) => res.sendFile(__dirname + "/public/img/icons/mesa_ovalada.png"));
+app.get("/img/icons/aire", (req, res) => res.sendFile(__dirname + "/public/img/icons/aire.png"));
+app.get("/img/icons/cocina", (req, res) => res.sendFile(__dirname + "/public/img/icons/cocina.png"));
+app.get("/img/icons/ventiladores", (req, res) => res.sendFile(__dirname + "/public/img/icons/ventilador_techo.png"));
+app.get("/img/icons/wifi", (req, res) => res.sendFile(__dirname + "/public/img/icons/wifi.png"));
+app.get("/img/icons/sillaSin", (req, res) => res.sendFile(__dirname + "/public/img/icons/silla_sin.png"));
+app.get("/img/icons/sillaA", (req, res) => res.sendFile(__dirname + "/public/img/icons/silla_academica.png"));
 
-app.get("/img/presidentes/plano", (req, res) => res.sendFile(__dirname + "/public/img/presidentes/plano_aud_presidentes.png"));
+app.get("/img/presidentes/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_presidentes.png"));
+app.get("/img/empresarial/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_empresarial.png"));
+app.get("/img/aldana/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_aldana.png"));
+app.get("/img/catufa/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_catufa.png"));
+app.get("/img/umaña/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_umaña.png"));
 
 //Ruta para la base de datos
 app.get("/api/usuarios", database.showUsers);
