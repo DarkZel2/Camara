@@ -5,6 +5,7 @@ async function getInfo() {
 };
 
 function mostrarInfo(info) {
+  
   const img1 = document.getElementById("img1"),
     img2 = document.getElementById("img2"),
     img3 = document.getElementById("img3"),
@@ -95,3 +96,22 @@ function mostrarAdicionales(adicional) {
 getAdicionales().then(adicionales => {
   mostrarAdicionales(adicionales)
 });
+
+
+async function redirectForId(dato) {
+  var datoId = "";
+  datoId = dato;
+  const response = await fetch("http://localhost:4500/api/ID/salones", {
+    method: 'POST',
+    headers: {'Content-Type' : 'application/json'},
+    body: JSON.stringify({
+      id: datoId
+    })
+  });
+  if (response.ok) {
+    const responseJson = await response.json();
+    if (responseJson.redirect) {
+      window.location.href = responseJson.redirect;
+    }
+  }
+}

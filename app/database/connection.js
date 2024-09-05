@@ -23,7 +23,7 @@ async function addUsers(req, res) {
     const result = await (
       await connection
     ).query(
-      `INSERT INTO usuarios(id, name, email, access, password) VALUES ('${id}','${name}','${email}','${access}','${password}')`
+      `INSERT INTO usuarios VALUES ('${id}','${name}','${email}','${access}','${password}')`
     );
   } catch {
     return res
@@ -55,7 +55,7 @@ async function findForId(req, res) {
 }
 
 async function getInfoSalons(req, res) {
-  const result = await ( await connection ).query(`SELECT Name, Img1, Img2, Img3, Img4, ImgPlano FROM Tarjetas_Salones WHERE TarjetaID = ${almacenarId}`)
+  const result = await ( await connection ).query(`SELECT TarjetaID, Name, Img1, Img2, Img3, Img4, ImgPlano FROM Tarjetas_Salones WHERE TarjetaID = ${almacenarId}`)
   res.json(result);
 }
 
