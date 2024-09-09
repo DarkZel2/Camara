@@ -85,6 +85,15 @@ async function getCaracteristicasSalones(req, res) {
     res.json(result);
 }
 
+async function getEventosSalones(req, res) {
+  const result = await ( await connection ).query(`
+      SELECT Day, Month, Year, Title, InitHour, EndHour FROM eventos_salones
+      INNER JOIN eventos_detalles ON eventos_salones.eventsID = eventos_detalles.EventsID
+      WHERE eventos_detalles.TarjetaID = ${almacenarId}
+    `);
+    res.json(result)
+}
+
 export const methods = {
   showUsers,
   addUsers,
@@ -93,5 +102,6 @@ export const methods = {
   getInfoSalons,
   getServiciosSalones,
   getAdicionalesSalones,
-  getCaracteristicasSalones
+  getCaracteristicasSalones,
+  getEventosSalones
 };

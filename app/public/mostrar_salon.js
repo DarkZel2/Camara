@@ -14,7 +14,6 @@ function mostrarInfo(info) {
   const page = document.getElementById("pageHead");
   const plano = document.getElementById("plano");
   info.forEach(element => {
-    console.log(element)
     page.innerText = element.Name;
     title.innerText = element.Name;
     img1.innerHTML = `<img src="${element.Img1}">`;

@@ -94,3 +94,4 @@ app.get("/api/data/salones", database.getInfoSalons);
 app.get("/api/data/servicios", database.getServiciosSalones);
 app.get("/api/data/adicionales", database.getAdicionalesSalones);
 app.get("/api/data/caracteristicas", database.getCaracteristicasSalones);
+app.get("/api/data/eventos", database.getEventosSalones)

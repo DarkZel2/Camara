@@ -1,5 +1,19 @@
-const 
-  calendar = document.querySelector(".calendar"),
+//Traemos los eventos de la base de datos
+async function getEvents() {
+  const res = await fetch("http://localhost:4500/api/data/eventos");
+  const resJson = await res.json();
+  resJson.forEach(eventos => {
+    eventsArr.push(eventos);
+  });
+  initCalendar();
+  return eventsArr;
+}
+
+getEvents();
+
+const eventsArr = [];
+
+const calendar = document.querySelector(".calendar"),
   date = document.querySelector(".date"),
   daysContainer = document.querySelector(".days"),
   prev = document.querySelector("#prev"),
@@ -30,12 +44,8 @@ const months = [
   "Octubre",
   "Noviembre",
   "Diciembre",
-]
+];
 
-//Usamos un array vacio
-let eventsArr = [];
-
-getEvents();
 
 //Función para agregar dias
 
@@ -65,29 +75,27 @@ function initCalendar() {
 
   //Mes actual
 
-  for (let i = 1; i <= lastDate; i++ ) {
-
+  for (let i = 1; i <= lastDate; i++) {
     //Verificar si hay eventos en el dia transcurrido
 
     let event = false;
     eventsArr.forEach((eventObj) => {
       if (
-        eventObj.day === i &&
-        eventObj.month === month + 1 &&
-        eventObj.year === year
+        eventObj.Day === i &&
+        eventObj.Month === month + 1 &&
+        eventObj.Year === year
       ) {
         //Si se encuentra un evento
         event = true;
       }
-    })
+    });
 
     //Si el dia es hoy agregar "today"
     if (
       i === new Date().getDate() &&
-      year === new Date().getFullYear() && 
+      year === new Date().getFullYear() &&
       month === new Date().getMonth()
     ) {
-
       activeDay = i;
       getActiveDay(i);
       updateEvents(i);
@@ -109,20 +117,20 @@ function initCalendar() {
     }
   }
 
-  //Mes próximo 
+  //Mes próximo
 
   for (let j = 1; j <= nextDays; j++) {
     days += `<div class="day next-date " >${j}</div>`;
   }
 
-  daysContainer.innerHTML = days; 
+  daysContainer.innerHTML = days;
   //Agregar el listener  despues de inicializar el calendario
   addListener();
 }
 
 initCalendar();
 
-//Mes previo 
+//Mes previo
 
 function prevMonth() {
   month--;
@@ -144,7 +152,7 @@ function nextMonth() {
   initCalendar();
 }
 
-//Agregar evento de paginación de los meses 
+//Agregar evento de paginación de los meses
 
 prev.addEventListener("click", prevMonth);
 next.addEventListener("click", nextMonth);
@@ -169,7 +177,7 @@ dateInput.addEventListener("input", (e) => {
     //No puede agregar mas de 7 caracteres
     dateInput.value = dateInput.value.slice(0, 7);
   }
-  //Si backspace es presionado 
+  //Si backspace es presionado
   if (e.inputType === "deleteContentBackward") {
     if (dateInput.value.length === 3) {
       dateInput.value = dateInput.value.slice(0, 2);
@@ -186,13 +194,13 @@ function gotoDate() {
   if (dateArr.length === 2) {
     if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
       month = dateArr[0] - 1;
-      year  = dateArr[1];
+      year = dateArr[1];
       initCalendar();
       return;
     }
   }
   //Si la fecha es inválida
-  alert("Fecha inválida")
+  alert("Fecha inválida");
 }
 
 //Agregar pestaña de eventos
@@ -206,10 +214,10 @@ const addEventBtn = document.querySelector(".add-event"),
 
 addEventBtn.addEventListener("click", () => {
   addEventContainer.classList.add("active");
-})
+});
 addEventCloseBtn.addEventListener("click", () => {
   addEventContainer.classList.remove("active");
-})
+});
 
 document.addEventListener("click", (e) => {
   if (e.target != addEventBtn && !addEventContainer.contains(e.target)) {
@@ -234,15 +242,15 @@ addEventFrom.addEventListener("input", (e) => {
   }
   //No admite mas de 5 caracteres
   if (addEventFrom.value.length > 5) {
-    addEventFrom.value = addEventFrom.value.slice(0,5);
+    addEventFrom.value = addEventFrom.value.slice(0, 5);
   }
-  //Si backspace es presionado 
+  //Si backspace es presionado
   if (e.inputType === "deleteContentBackward") {
     if (addEventFrom.value.length === 3) {
       addEventFrom.value = addEventFrom.value.slice(0, 2);
     }
   }
-})
+});
 
 //Formato de la hora "hasta"
 
@@ -255,15 +263,15 @@ addEventTo.addEventListener("input", (e) => {
   }
   //No admite mas de 5 caracteres
   if (addEventTo.value.length > 5) {
-    addEventTo.value = addEventTo.value.slice(0,5);
+    addEventTo.value = addEventTo.value.slice(0, 5);
   }
-  //Si backspace es presionado 
+  //Si backspace es presionado
   if (e.inputType === "deleteContentBackward") {
     if (addEventTo.value.length === 3) {
       addEventTo.value = addEventTo.value.slice(0, 2);
     }
   }
-})
+});
 
 //Creamos la funcion para agregar
 
@@ -272,7 +280,7 @@ function addListener() {
   days.forEach((day) => {
     day.addEventListener("click", (e) => {
       //Cambia de dia transcurrido a dia activo
-      activeDay = Number(e.target.innerHTML)
+      activeDay = Number(e.target.innerHTML);
 
       //Llamar "getActiveDay" después del click
       getActiveDay(e.target.innerHTML);
@@ -286,7 +294,7 @@ function addListener() {
 
       //Si "click" en mas previo ir a mes previo y agregar "active"
 
-      if (e.target.classList.contains("prev-date")){
+      if (e.target.classList.contains("prev-date")) {
         prevMonth();
 
         setTimeout(() => {
@@ -295,10 +303,10 @@ function addListener() {
           //Después de ir a mes previo agregar el "active"
           days.forEach((day) => {
             if (
-              !day.classList.contains("prev-date") && 
+              !day.classList.contains("prev-date") &&
               day.innerHTML === e.target.innerHTML
             ) {
-              day.classList.add("active")
+              day.classList.add("active");
             }
           });
         }, 100);
@@ -344,40 +352,36 @@ function updateEvents(date) {
   eventsArr.forEach((event) => {
     //Traer eventos solo del dia activo
     if (
-      date === event.day &&
-      month + 1 === event.month &&
-      year === event.year
+      date === event.Day &&
+      month + 1 === event.Month &&
+      year === event.Year
     ) {
       //Mostrar eventos en el documento
-
-      event.events.forEach((event) => {
-        events += `
+      events += `
         <div class="event">
           <div class="title">
             <i class="bi bi-circle-fill"></i>
-            <h3 class="event-title">${event.title}</h3>
+            <h3 class="event-title">${event.Title}</h3>
           </div>
           <div class="event-time">
-            <span class="event-time">${event.time}</span>
+            <span class="event-time">${event.InitHour} - ${event.EndHour}</span>
           </div>
         </div>
         `;
-      });
     }
   });
 
   //Si no encuentra nada
 
-  if (events === "" ) {
+  if (events === "") {
     events = `
     <div class="no-event">
       <h3>Sin eventos para hoy</h3>
     </div>
-    `
+    `;
   }
   eventsContainer.innerHTML = events;
   //Guarda los eventos cuando se haga update
-  saveEvents();
 }
 
 //Creamos la función para agregar eventos
@@ -405,7 +409,7 @@ addEventSubmit.addEventListener("click", () => {
     timeToArr[0] > 23 ||
     timeToArr[1] > 59
   ) {
-    alert("Formato de hora inválido")
+    alert("Formato de hora inválido");
   }
 
   const timeFrom = convertTime(eventTimeFrom);
@@ -414,7 +418,7 @@ addEventSubmit.addEventListener("click", () => {
   const newEvent = {
     title: eventTitle,
     time: timeFrom + " - " + timeTo,
-  }
+  };
 
   let eventAdded = false;
 
@@ -441,12 +445,12 @@ addEventSubmit.addEventListener("click", () => {
       day: activeDay,
       month: month + 1,
       year: year,
-      events: [newEvent]
-    })
+      events: [newEvent],
+    });
   }
 
   //removemos "active" y agregamos "event"
-  addEventContainer.classList.remove("active")
+  addEventContainer.classList.remove("active");
   //Limpiamos los campos de texto
   addEventTitle.value = "";
   addEventFrom.value = "";
@@ -460,9 +464,8 @@ addEventSubmit.addEventListener("click", () => {
 
   const activeDayElem = document.querySelector(".day.active");
   if (!activeDayElem.classList.contains("event")) {
-    activeDayElem.classList.add("event")
+    activeDayElem.classList.add("event");
   }
-
 });
 
 function convertTime(time) {
@@ -484,7 +487,7 @@ eventsContainer.addEventListener("click", (e) => {
     eventsArr.forEach((event) => {
       if (
         event.day === activeDay &&
-        event.month === month +1 &&
+        event.month === month + 1 &&
         event.year === year
       ) {
         event.events.forEach((item, index) => {
@@ -510,18 +513,6 @@ eventsContainer.addEventListener("click", (e) => {
 
 //Almacenaremos los eventos de forma local
 
-function saveEvents() {
-  localStorage.setItem("events", JSON.stringify(eventsArr));
-}
-
-async function getEvents() {
-  if (localStorage.getItem("events" === null)) {
-    return;
-  }
-
-  eventsArr.push( ... JSON.parse(localStorage.getItem("events")));
-
-  // const res = await fetch("https://localhost:5500/eventos");
-  // const resJson = await res.json();
-  // return resJson;
-}
+// function saveEvents() {
+//   localStorage.setItem("events", JSON.stringify(eventsArr));
+// }
