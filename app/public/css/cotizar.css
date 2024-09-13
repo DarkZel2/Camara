@@ -17,6 +17,26 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+#subSocial {
+	display: none;
+}
+
+#subSocial.more {
+	display: block;
+	padding-left: 20px;
+}
+
+input#other {
+	width: 60%;
+	border-radius: 5px;
+	border: unset;
+	padding: 2.5px 5px;
+}
+
+label#other {
+	width: 25%;
+}
+
 main {
 	width: 100%;
 	height: auto;
@@ -184,10 +204,6 @@ main {
 						color: #000;
 					}
 
-					.selectbox.none {
-						display: none;
-					}
-
 					.selectbox {
 						width: 100%;
 						position: relative;
@@ -291,13 +307,13 @@ main {
 
 			/* Estilos del tipo de evento */
 			.event-class {
-				width: 50%;
+				width: 55%;
 				display: flex;
 				align-items: center;
 				flex-direction: column;
 
 				div {
-					width: 50%;
+					width: 80%;
 					display: flex;
 					align-items: center;
 					gap: 5px;
