@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -213,143 +213,188 @@
   <main>
     <div class="container">
       <form id="event-form">
-        <div class="dts-salon">
-          <h2>Información del Evento:</h2>
-          <h4>Selecciona el dia de tu evento:</h4>
-          <div class="grupo__dia">
-
+        <div class="up">
+          <div class="left">
+            <div class="date">
+              <label for="">Fecha del Evento:</label>
+              <input type="date" name="" id="date" required>
+            </div>
+            <div class="time">
+              <label for="">Horario:</label>
+              <div class="hours">
+                <div class="title">
+                  <label for="">Inicio:</label>
+                  <div class="init">
+                    <select id="hours"></select>
+                    <select id="minutes"></select>
+                    <select id="horario"></select>
+                  </div>
+                </div>
+                <div class="title">
+                  <label for="">Fin:</label>
+                  <div class="end">
+                    <select id="hours2"></select>
+                    <select id="minutes2"></select>
+                    <select id="horario2"></select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="people">
+              <label for="">N° de Personas:</label>
+              <input type="number" name="" id="number" required>
+            </div>
+            <div class="event-type">
+              <div class="type">
+                <label for="">Tipo de Evento:</label>
+                <select name="" id="event-type" required>
+                  <option value="" selected disabled></option>
+                  <option value="Social">Social</option>
+                  <option value="Empresarial">Empresarial</option>
+                </select>
+              </div>
+              <div class="activity">
+                <label for="">Actividad:</label>
+                <select name="" id="activity" required>
+                  <option value="" selected disabled></option>
+                  <option value="Cumpleaños">Cumpleaños</option>
+                  <option value="Matrimonio">Matrimonio</option>
+                  <option value="Bautizo">Bautizo</option>
+                  <option value="Grados">Grados</option>
+                  <option value="Primera Comunión">Primera Comunión</option>
+                  <option value="Otros">Otros</option>
+                </select>
+              </div>
+              <div class="other">
+                <label for="">Otros:</label>
+                <input type="text" name="" id="others" required>
+              </div>
+            </div>
+            <div class="event-character">
+              <label for="">Caracter del Evento:</label>
+              <select name="" id="event-character" required>
+                <option value="" selected disabled></option>
+                <option value="Privado con asistentes de un solo tipo o afinidad definida">Privado con asistentes de un solo tipo o afinidad definida</option>
+                <option value="Abierta a todo tipo de público en varios escenarios">Abierta a todo tipo de público en varios escenarios</option>
+                <option value="Abierta a todo tipo de público mezclado en un único escenario">Abierta a todo tipo de público mezclado en un único escenario</option>
+                <option value="Gratuito">Gratuito</option>
+              </select>
+            </div>
           </div>
-
-          <!-- Tipo de evento -->
-          <div class="event-class">
-            <h4>Tipo de Evento:</h4>
-            <div>
-              <input type="radio" name="tipo" id="social" class="formulario__radio" value="Social">
-              <label for="social">Social</label>
-            </div>
-            <div id="subSocial">
-              <div>
-                <input class="formulario__radio" type="radio" name="subtipo" id="cumple" value="Cumpleaños">
-                <label for="cumple">Cumpleaños</label>
+          <div class="right">
+            <div class="primary-dates">
+              <div class="dates">
+                <div class="name">
+                  <label for="name">Nombre:</label>
+                  <input type="text" name="" id="name" required>
+                </div>
+                <div class="phone">
+                  <label for="phone">Teléfono:</label>
+                  <input type="tel" name="" id="phone" required>
+                </div>
+                <div class="email">
+                  <label for="email">Email:</label>
+                  <input type="email" name="" id="email" required>
+                </div>
               </div>
-              <div>
-                <input class="formulario__radio" type="radio" name="subtipo" id="matri" value="Matrimonios">
-                <label for="matri">Matrimonios</label>
-              </div>
-              <div>
-                <input class="formulario__radio" type="radio" name="subtipo" id="primer" value="Primera Comunión">
-                <label for="primer">Primera Comunión</label>
-              </div>
-              <div>
-                <input class="formulario__radio" type="radio" name="subtipo" id="bautizo" value="Bautizo">
-                <label for="bautizo">Bautizo</label>
-              </div>
-              <div>
-                <input class="formulario__radio" type="radio" name="subtipo" id="grados" value="Grados">
-                <label for="grados">Grados</label>
-              </div>
-              <div>
-                <input class="formulario__radio" type="radio" name="subtipo" id="otro" value="Otro">
-                <label for="otro" id="other">Otro:</label>
-                <input type="text" id="other">
+              <div class="category">
+                <!-- De momento se deja en blanco -->
               </div>
             </div>
-            <div>
-              <input type="radio" name="tipo" id="empresa" class="formulario__radio" value="Empresarial">
-              <label for="empresa">Empresarial</label>
+            <div class="person-type">
+              <div class="radios">
+                <input type="radio" name="radio" id="radio" value="Persona Jurídica" required>
+                <div class="radio-title">
+                  <!-- icon -->
+                  <label for="radio">Persona Jurídica</label>
+                </div>
+              </div>
+              <div class="radios">
+                <input type="radio" name="radio" id="radio" value="Persona Natural" required>
+                <div class="radio-title">
+                  <!-- icon -->
+                  <label for="radio">Persona Natural</label>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <!-- Servicios adicionales -->
-          <div class="add-serv">
-            <!-- Los servicios son traídos de la base de datos -->
+            <div class="company">
+              <div>
+                <label for="nit">Nit:</label>
+                <input type="text" name="" id="nit">
+              </div>
+              <div>
+                <label for="razon">Razón Social:</label>
+                <input type="text" name="" id="razon">
+              </div>
+              <div>
+                <label for="tel">Teléfono:</label>
+                <input type="tel" name="" id="tel">
+              </div>
+            </div>
+            <div class="address">
+              <div>
+                <label for="address">Dirección:</label>
+                <input type="text" name="" id="address" required>
+              </div>
+              <div>
+                <label for="country">Municipio:</label>
+                <select name="" id="country" required>
+                  <option value="" selected disabled></option>
+                  <option value="Espinal">Espinal</option>
+                  <option value="Guamo">Guamo</option>
+                  <option value="Chicoral">Chicoral</option>
+                  <option value="Saldaña">Saldaña</option>
+                  <option value="Purificación">Purificación</option>
+                  <option value="Ibagué">Ibagué</option>
+                  <option value="Neiva">Neiva</option>
+                  <option value="Melgar">Melgar</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="dts-cot">
-          <h2>Información de la persona a cargo:</h2>
-
-          <!-- Grupo "Nombre" -->
-          <div class="formulario__grupo" id="grupo__name">
-            <label for="name" class="formulario__label">Nombre:</label>
-            <div class="formulario__grupo-input">
-              <input type="text" class="formulario__input" name="name" id="name" placeholder="Nombre">
-              <i class="bi bi-x-circle-fill"></i>
+        <div class="down">
+          <div class="left">
+            <div class="services">
+              <!-- Se arrastran desde la base de datos -->
             </div>
-            <p class="formulario__input-error">El Nombre no debe contener números, comas, puntos ni ningún otro caracter
-              especial.</p>
-          </div>
-
-          <!-- Grupo "Télefono" -->
-          <div class="formulario__grupo" id="grupo__phone">
-            <label for="phone" class="formulario__label">Teléfono:</label>
-            <div class="formulario__grupo-input">
-              <input type="text" class="formulario__input" name="phone" id="phone" placeholder="3551864428">
-              <i class="bi bi-x-circle-fill"></i>
+            <div class="logistics">
+              <label for="logistics"><input type="checkbox" name="" id="logistics">Servicios Logísticos</label>
+              <p>Información...</p>
             </div>
-            <p class="formulario__input-error">El Teléfono debe contener 10 dígitos y solo deben ser números.</p>
           </div>
-
-          <!-- Grupo "Correo" -->
-          <div class="formulario__grupo" id="grupo__email">
-            <label for="email" class="formulario__label">Correo Electrónico:</label>
-            <div class="formulario__grupo-input">
-              <input type="email" class="formulario__input" name="email" id="email" placeholder="correo123@ejemplo.com">
-              <i class="bi bi-x-circle-fill"></i>
-            </div>
-            <p class="formulario__input-error">El Correo solo puede contener letras, números, puntos, guiones y guión
-              bajo.</p>
-          </div>
-
-        </div>
-        <div class="formulario__grupo formulario__grupo-enviar" id="formulario__mensaje">
-          <button type="button" class="formulario__btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">SOLICITAR</button>
-          <p><i class="bi bi-exclamation-circle-fill"></i><b> Error:</b> Por favor complete el formulario correctamente.
-          </p>
-        </div>
-
-        <div class="total">
-          <h2>Resumen:</h2>
-          <div>
+          <div class="right">
             <ul>
-              <li>Día seleccionado para tu evento:
-                <ul id="dateList">
+              <li>
+                Valor por el tiempo de uso del salón:
+                <ul id="usedPrice">
+                  <!-- Se genera con js -->
                 </ul>
               </li>
-              <li>Hora de tu evento:
-                <ul id="timeList">
+              <li>
+                Valor total por los servicios seleccionados:
+                <ul id="servicesPrice">
+                  <!-- Se genera con js -->
                 </ul>
               </li>
-              <li>Tipo de evento:
-                <ul id="typeEventList">
+              <li>
+                Valor total de tu evento:
+                <ul id="totalPrice">
+                  <!-- Se genera con js -->
                 </ul>
               </li>
-              <li>Servicios seleccionados:
-                <ul id="listaServicios">
-                </ul>
-              </li>
-              <li>Datos del Encargado:
-                <ul id="listaDatos">
-                </ul>
+              <li>
+                <div>
+                  <a onclick="calcularCotizacion()">Calcular Cotización</a>
+                  <a onclick="limpiarCotizacion()">Limpiar Cotizacion</a>
+                </div>
               </li>
             </ul>
-            <ul>
-              <button id="btn-calcular">Calcular Valor</button>
-              <li>Valor por el tiempo de uso del salón:
-                <ul id="valorUso"></ul>
-              </li>
-              <li>Valor total de los servicios solicitados:
-                <ul id="valorServicios"></ul>
-              </li>
-              <li>Valor total de tu evento:
-                <ul id="valorTotal"></ul>
-              </li>
-            </ul>
           </div>
         </div>
-
       </form>
-
+      <button type="button" class="btn-submit" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">SOLICITAR</button>
     </div>
   </main>
   <!-- Footer o Pie de página -->
@@ -414,8 +459,8 @@
     </div>
   </footer>
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -425,46 +470,16 @@
         <div class="modal-body">
           <a href="https://drive.google.com/file/d/1XTlYSTLA0c802z3ZazgJcPqDEDPX56fy/view">Nuestro reglamento</a>
           <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
+            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content
+            becomes
             longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
             This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to
-            demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes
-            longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.
-            This content should appear at the bottom after you scroll.</p>
-            <label for=""><input type="checkbox" name="" id="">Acepto los Términos y Condiciones de uso de los Salones de Centro de Eventos.</label>
+          <label for=""><input type="checkbox" name="" id="">Acepto los Términos y Condiciones de uso de los Salones de
+            Centro de Eventos.</label>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Comprendo</button>
+          <button type="submit" form="event-form" class="btn btn-primary">Comprendo</button>
         </div>
       </div>
     </div>

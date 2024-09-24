@@ -59,9 +59,9 @@ main {
 			width: 100%;
 			height: auto;
 			display: flex;
-			flex-wrap: wrap;
+			flex-direction: column;
+			gap: 15px;
 			background-color: var(--clr-principal);
-			margin-bottom: 100px;
 			border-radius: 20px;
 			padding: 25px;
 
@@ -90,427 +90,309 @@ main {
 				font-style: normal;
 			}
 
-			.dts-salon,
-			.dts-cot {
-				position: relative;
+			& input,
+			select {
+				width: 200px;
+				height: 35px;
+				border-radius: 5px;
+				border: #004336 1px;
+				padding: 5px 10px;
+			}
+
+			.up,
+			.down {
+				display: flex;
+				flex-direction: row;
+				gap: 25px;
+			}
+
+			.left,
+			.right {
+				display: flex;
 				width: 50%;
-				height: 100%;
-				display: flex;
 				flex-direction: column;
-				align-items: center;
-				padding: 15px;
-				gap: 5px;
+				gap: 10px;
 			}
 
-			.dts-salon::after {
-				content: "";
-				width: 2px;
-				top: 0%;
-				border-radius: 2px;
-				height: 98%;
-				left: 100%;
-				position: absolute;
-				background-color: #FFFFFF;
-			}
-
-			.formulario__checkbox {
-				appearance: none;
-				width: 18px;
-				height: 15px;
+			.time {
 				display: flex;
-				align-items: center;
-				justify-content: center;
-				background-color: var(--clr-letra-blc);
-				border-radius: 1px;
-				cursor: pointer;
-			}
+				justify-content: space-between;
 
-			.formulario__checkbox::after {
-				content: "✔";
-				font-weight: 900;
-				font-size: 1.2em;
-				color: var(--clr-principal-osc);
-				display: none;
-			}
-
-			.formulario__checkbox:hover {
-				background-color: var(--clr-letra-gris);
-			}
-
-			.formulario__checkbox:checked {
-				background-color: var(--clr-principal);
-			}
-
-			.formulario__checkbox:checked::after {
-				display: block;
-			}
-
-			/* Estilos de la fecha y hora */
-			.grupo__dia {
-				width: 100%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 5px;
-
-				.formulario__date {
-					width: 100%;
-					height: 35px;
-					border-radius: 10px;
-					border: 2px solid transparent;
-					padding: 0px 10px;
-					font-style: normal;
-					font-weight: 600;
-					font-size: 1em;
-					cursor: pointer;
-				}
-
-				.formulario__date:hover {
-					border: 2px solid var(--clr-principal-osc);
-				}
-
-				#day {
-					width: 30%;
+				.hours {
 					display: flex;
-					align-items: center;
-					gap: 5px;
-					justify-content: center;
-				}
-
-				.day {
-					width: 30%;
-					display: flex;
-					align-items: center;
-					gap: 5px;
-					justify-content: center;
-				}
-
-				#day.none {
-					display: none;
-				}
-
-				#hour.none {
-					display: none;
-				}
-
-				#hour {
-					width: 30%;
-					display: flex;
-					align-items: center;
 					gap: 5px;
 
-					a {
-						text-decoration: unset;
-						color: #000;
-					}
-
-					.selectbox {
-						width: 100%;
-						position: relative;
-
-						.select {
-							width: 100%;
-							height: 35px;
-							background-color: #FFFFFF;
-							box-shadow: 0px 0px 0px rgb(0, 0, 0, .16);
-							border-radius: 10px;
-							cursor: pointer;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							transition: .2s ease all;
-							/* padding: 5px 10px; */
-							position: relative;
-							z-index: 100;
-							border: 2px solid transparent;
-
-							.title {
-								color: #000;
-								font-weight: 600;
-								font-size: 1em;
-							}
-
-							/* i {
-								font-size: 1em;
-								color: var(--clr-principal-osc);
-							} */
-
-							/* .description {
-										font-size: 18px;
-										color: #434343;
-									} */
-
-						}
-
-						.select.active,
-						.select:hover {
-							box-shadow: 0px 0px 0px rgb(0, 0, 0, .16);
-							border: 2px solid var(--clr-principal-osc);
-						}
-
-						.options::-webkit-scrollbar {
-							width: 5px;
-							background-color: transparent;
-						}
-
-						.options::-webkit-scrollbar-thumb {
-							background-color: var(--clr-principal-osc);
-							border-radius: 5px;
-						}
-
-						.options {
-							top: 100%;
-							position: absolute;
-							background-color: #FFFFFF;
-							border-radius: 10px;
-							box-shadow: 0px 5px 10px rgb(0, 0, 0, .16);
-							overflow: auto;
-							z-index: 99;
-							width: 100%;
-							display: none;
-
-							.content__option {
-								width: 100%;
-								display: flex;
-								align-items: center;
-								transition: .2s ease all;
-								padding: 8px;
-
-								.title {
-									color: #000;
-									font-weight: 500;
-									font-size: 0.8em;
-								}
-
-								/* img {
-											margin-right: 30px;
-										} */
-							}
-
-							.content__option:hover {
-								background-color: var(--clr-principal-osc);
-
-								.title {
-									color: #FFFFFF;
-								}
-							}
-						}
-
-						.options.active {
-							display: block;
-							height: 150px;
-						}
-
-					}
-				}
-			}
-
-			/* Estilos del tipo de evento */
-			.event-class {
-				width: 55%;
-				display: flex;
-				align-items: center;
-				flex-direction: column;
-
-				div {
-					width: 80%;
-					display: flex;
-					align-items: center;
-					gap: 5px;
-
-					.formulario__radio {
-						appearance: none;
-						width: 18px;
-						height: 15px;
+					.title {
 						display: flex;
+						flex-direction: column;
+
+						label {
+							width: 100%;
+							display: block;
+						}
+
+						.init,
+						.end {
+							display: flex;
+							gap: 5px;
+
+							select {
+								width: 70px;
+							}
+						}
+					}
+				}
+			}
+
+			.event-type {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+
+				.type,
+				.activity {
+					width: 49%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
+
+				.other.visible {
+					display: flex;
+				}
+
+				.other {
+					width: 100%;
+					display: none;
+					justify-content: center;
+					gap: 15px;
+				}
+			}
+
+			.date,
+			.people,
+			.event-character {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.primary-dates {
+				display: flex;
+				gap: 5%;
+
+				.dates {
+					display: flex;
+					flex-direction: column;
+					width: 65%;
+					gap: 10px;
+
+					.name,
+					.phone,
+					.email {
+						display: flex;
+						justify-content: space-between;
+
+						label {
+							width: 50%;
+						}
+					}
+				}
+
+				.category {
+					width: 30%;
+					height: 100%;
+					background-color: #F4F4F7;
+				}
+			}
+
+			.person-type {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+
+				.radios {
+					position: relative;
+					width: 200px;
+					height: 35px;
+
+					input {
+						position: absolute;
+						height: 100%;
+						width: 100%;
+						margin: 0;
+						cursor: pointer;
+						z-index: 2;
+						opacity: 0;
+					}
+
+					.radio-title {
+						display: flex;
+						flex-direction: column;
 						align-items: center;
 						justify-content: center;
-						background-color: var(--clr-letra-blc);
-						border-radius: 100%;
-						cursor: pointer;
-					}
-
-					.formulario__radio::after {
-						content: "✔";
-						font-weight: 900;
-						font-size: 1.2em;
-						color: var(--clr-principal-osc);
-						display: none;
-					}
-
-					.formulario__radio:hover {
-						background-color: var(--clr-letra-gris);
-					}
-
-					.formulario__radio:checked {
-						background-color: var(--clr-principal);
-					}
-
-					.formulario__radio:checked::after {
-						display: block;
+						height: 100%;
+						border: 2px solid var(--clr-principal-osc);
+						border-radius: 5px;
+						transition: all 300ms ease;
 					}
 
 					label {
-						color: var(--clr-letra-blc-cc);
-						width: 100%;
-						display: block;
-						cursor: pointer;
+						color: var(--clr-principal-osc);
+						font-size: 1.2em;
+						font-weight: bold;
+						font-style: normal;
 					}
-				}
-			}
 
-			/* Estilos de servicios adicionales */
-			.add-serv {
-				width: auto;
+					input:checked+.radio-title {
+						background-color: var(--clr-principal-osc);
+						box-shadow: 0 0 12px var(--clr-principal-osc);
+					}
 
-				.formulario__label {
-					display: flex;
-					align-items: center;
-					gap: 5px;
-					color: var(--clr-letra-blc-cc);
-				}
-			}
+					input:hover+.radio-title {
+						box-shadow: 0 0 12px var(--clr-principal-osc);
+					}
 
-			.dts-cot {
-				display: flex;
-				align-items: center;
-				flex-direction: column;
-				gap: 10px;
-
-				.formulario__grupo {
-					width: 60%;
-					display: flex;
-					flex-direction: column;
-
-					.formulario__label {
+					input:checked+.radio-title label {
 						color: var(--clr-letra-blc);
 					}
-
-					.formulario__grupo-input {
-						display: flex;
-						align-items: center;
-
-						.formulario__input {
-							width: 100%;
-							height: 35px;
-							line-height: 35px;
-							margin: 0;
-							border: 3px solid transparent;
-							border-radius: 10px;
-							padding: 0 30px 0 10px;
-							transition: .3s ease all;
-						}
-
-						.formulario__input:focus {
-							border: 3px solid var(--clr-principal-osc);
-						}
-
-						.bi {
-							transform: translateX(-25px);
-							opacity: 0;
-						}
-					}
-
-					.formulario__input-error {
-						color: var(--clr-error);
-						font-size: 0.8em;
-						font-weight: 600;
-						margin-bottom: 0;
-						display: none;
-					}
-
-					.formulario__input-error-activo {
-						display: block;
-					}
-
 				}
 			}
 
-			.total {
-				width: 100%;
-				height: auto;
+			.company.visible {
 				display: flex;
-				align-items: center;
-				justify-content: center;
-				flex-direction: column;
+			}
+
+			.company {
+				display: none;
+				flex-direction: row;
+				gap: 5px;
 
 				div {
-					width: 100%;
+					width: calc(100/3);
+
+					label {
+						width: 100%;
+						display: block;
+					}
+
+					input {
+						width: 100%;
+					}
+				}
+			}
+
+			.address {
+				display: flex;
+				gap: 5px;
+
+				div {
+					width: 50%;
 					display: flex;
+					justify-content: space-between;
+				}
+			}
+
+			.down {
+
+				.left {
+					flex-direction: row;
+
+					.services,
+					.logistics {
+						width: 50%;
+
+						label {
+							width: 100%;
+
+							input {
+								width: 20px;
+								height: 20px;
+								border: unset;
+								border-radius: 1px;
+							}
+						}
+
+						p {
+							color: var(--clr-letra-blc);
+							margin-top: 10px;
+							font-size: 0.8em;
+						}
+					}
+				}
+
+				.right {
 
 					ul {
-						width: 50%;
+						list-style: none;
+						color: var(--clr-letra-blc);
 						display: flex;
 						flex-direction: column;
-						gap: 8px;
+						gap: 5px;
+						margin-left: -30px;
 
-						& li {
+						li>ul {
+							color: var(--clr-letra-blc-cc);
 							display: flex;
-							color: var(--clr-letra-blc);
-							font-style: normal;
-							font-weight: 600;
-							gap: 15px;
+						}
 
-							ul li {
-								color: var(--clr-letra-blc-c);
-								font-weight: 400;
+						div {
+							width: 100%;
+							height: 50px;
+							display: flex;
+							justify-content: space-around;
+							align-items: end;
+
+							a {
+								display: block;
+								width: 180px;
+								height: 30px;
+								border: 2px solid var(--clr-principal-osc);
+								border-radius: 5px;
+								background: transparent;
+								color: var(--clr-principal-osc);
+								font-weight: bold;
+								text-align: center;
+								padding: 2px 0px;
+								cursor: pointer;
+								transition: all 300ms ease;
+							}
+
+							a:hover {
+								box-shadow: 0 0 12px var(--clr-principal-osc);
 							}
 						}
 					}
 				}
 			}
 
-			.formulario__grupo-enviar {
-				position: absolute;
-				top: 105%;
-				right: 0%;
-				width: 100%;
-				display: flex;
-				align-items: center;
-				flex-direction: column;
+		}
 
-				.formulario__btn {
-					width: 200px;
-					height: 50px;
-					display: block;
-					text-align: center;
-					padding: 8px;
-					background-color: var(--clr-principal);
-					border: unset;
-					border-radius: 5px;
-					font-size: 1.5em;
-					text-decoration: none;
-					font-family: 'Poppins', sans-serif;
-					font-weight: 700;
-					font-style: normal;
-					color: var(--clr-letra-blc);
-					letter-spacing: 2.5px;
-					box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.3);
-					transition: all 300ms ease 0ms;
-					cursor: pointer;
-				}
+		.btn-submit {
+			width: 200px;
+			height: 50px;
+			display: block;
+			text-align: center;
+			margin-top: 25px;
+			padding: 8px;
+			background-color: var(--clr-principal);
+			border: unset;
+			border-radius: 5px;
+			font-size: 1.5em;
+			text-decoration: none;
+			font-family: 'Poppins', sans-serif;
+			font-weight: 700;
+			font-style: normal;
+			color: var(--clr-letra-blc);
+			letter-spacing: 2.5px;
+			box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.3);
+			transition: all 300ms ease 0ms;
+			cursor: pointer;
+		}
 
-				.formulario__btn:hover {
-					background-color: var(--clr-resaltado);
-					transform: translateY(-5px);
-				}
-
-				p {
-					display: none;
-					align-items: center;
-					height: 40px;
-					line-height: 40px;
-					background-color: var(--clr-error);
-					color: var(--clr-letra-blc);
-					padding: 10px 5px;
-					margin-top: 10px;
-					border-radius: 5px;
-					font-size: 1.5em;
-					font-weight: 600;
-					font-style: normal;
-				}
-			}
-
+		.btn-submit:hover {
+			background-color: var(--clr-resaltado);
+			transform: translateY(-5px);
 		}
 	}
 }
