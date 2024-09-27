@@ -197,7 +197,7 @@ const validarMunicipio = (e) => {
 inputCountry.addEventListener("change", validarMunicipio);
 // Creación de contenedores de servicios y validación
 async function getAdicionales() {
-  const res = await fetch("http://localhost:4500/api/data/adicionales");
+  const res = await fetch("http://localhost:4500/api/data/cotizar/servicios");
   const resJson = await res.json();
   return resJson;
 }
@@ -208,26 +208,12 @@ function crearServicios(data) {
   data.forEach((element) => {
     const service = document.createElement("label");
     service.innerHTML = `
-    <input type="checkbox" class="service-checkbox" value="${element.Description}">
+    <input type="checkbox" class="service-checkbox" value="${element.InterPrice}">
     ${element.Description}
     `;
     adicionalesContainer.appendChild(service);
   });
-
-  // Ahora que los checkboxes están en el DOM, selecciona y agrega los eventos
-  const checkServices = document.querySelectorAll(".service-checkbox");
-  checkServices.forEach((check) => {
-    check.addEventListener("click", validarServicios);
-  });
 }
-
-const validarServicios = (e) => {
-  // Mostrar el valor del checkbox seleccionado
-  if (e.target.checked) {
-    console.log(`Seleccionado: ${e.target.value}`);
-  }
-};
-
 // Llamada a la función para obtener y mostrar los servicios
 getAdicionales().then((data) => {
   crearServicios(data);
@@ -286,6 +272,7 @@ function calcularCotizacion() {
   const horarioF = document.getElementById("horario2").value;
   const date = document.getElementById("date").value;
   const diaSemana = traerDiaSemana(date);
+  const checkServices = document.querySelectorAll(".service-checkbox");
 
   const init = revertTime(timeFormat(horaI, minutosI, horarioI)).split(":");
   const end = revertTime(timeFormat(horaF, minutosF, horarioF)).split(":");
@@ -355,6 +342,12 @@ function calcularCotizacion() {
       }
     });
   }
+
+  checkServices.forEach((check) => {
+    if (check.checked) {
+      console.log(check.value)
+    }
+  });
 }
 
 function limpiarCotizacion() {

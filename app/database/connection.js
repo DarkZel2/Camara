@@ -116,7 +116,7 @@ async function preciosServicios(req, res) {
   const result = await (
     await connection
   ).query(`
-      SELECT adicionales_salones.InterPrice FROM tarjetas_salones 
+      SELECT adicionales_salones.InterPrice, adicionales_salones.Description FROM tarjetas_salones 
       INNER JOIN adicionales_details ON tarjetas_salones.TarjetaID = adicionales_details.CaracteristicasID 
       INNER JOIN adicionales_salones ON adicionales_details.AdicionalesID = adicionales_salones.AdicionalesID
       WHERE tarjetas_salones.TarjetaID = ${almacenarId};
