@@ -30,9 +30,9 @@ function createOption(value, text) {
   return option;
 }
 
-// Limitamos las horas de 8 a 18
+// Limitamos las horas de 1 a 12
 var hourSelect = document.getElementById("hours");
-for (var i = 0; i <= 12; i++) {
+for (var i = 1; i <= 12; i++) {
   hourSelect.add(createOption(i, i));
 }
 
@@ -47,9 +47,9 @@ var horarioSelect = document.getElementById("horario");
 horarioSelect.add(createOption("AM", "AM"));
 horarioSelect.add(createOption("PM", "PM"));
 
-// Limitamos las horas de 8 a 18
+// Limitamos las horas de 1 a 12
 var hourSelect = document.getElementById("hours2");
-for (var i = 0; i <= 12; i++) {
+for (var i = 1; i <= 12; i++) {
   hourSelect.add(createOption(i, i));
 }
 
@@ -73,7 +73,7 @@ nPersonas.addEventListener("input", (e) => {
   console.log(value);
 });
 // Validación del tipo de Evento
-const tipoEvento = document.getElementById("event-type");
+const tipoEvento = document.getElementById("eventType");
 
 const validarEvento = (e) => {
   console.log(e.target.value);
@@ -106,7 +106,7 @@ others.addEventListener("input", (e) => {
   console.log(value);
 });
 // Validación del campo de Caracter del Evento
-const eventCharacter = document.getElementById("event-character");
+const eventCharacter = document.getElementById("eventCharacter");
 
 const validarCaracterEvento = (e) => {
   console.log(e.target.value);
@@ -163,7 +163,7 @@ radios.forEach((check) => {
 });
 // Validación de la informacion de la Empresa
 const inputNit = document.getElementById("nit");
-const inputRazon = document.getElementById("razon");
+const inputRazon = document.getElementById("reason");
 const inputTel = document.getElementById("tel");
 
 const validarNit = (e) => {
@@ -208,7 +208,7 @@ function crearServicios(data) {
   data.forEach((element) => {
     const service = document.createElement("label");
     service.innerHTML = `
-    <input type="checkbox" class="service-checkbox" value="${element.InterPrice}">
+    <input type="checkbox" class="checkbox" value="${element.InterPrice}">
     ${element.Description}
     `;
     adicionalesContainer.appendChild(service);
@@ -254,15 +254,25 @@ function timeFormat(hour, minutes, hourHand) {
   if (minutes < 0 || minutes > 59) {
     return "Minutos no válidos";
   }
-
+  
   // Asegurarse de que los minutos tengan dos dígitos
   const formattedMinutes = minutes.toString().padStart(2, "0");
-
+  
   // Retornar el tiempo formateado
   return `${hour}:${formattedMinutes} ${hourHand}`;
 }
 
 // Funciones para calcular el valor de la cotización, enviar cotizacion realizada y limpiar cotización
+const serviceCheck = [];
+const servicesList = document.getElementById("servicesPrice");
+const priceContainer = document.getElementById("usedPrice");
+const totalList = document.getElementById("totalPrice");
+let valorTiempoSalon = 0;
+let valorHoraDia = 0;
+let suma = 0;
+let totalPrice = 0;
+let hri = "";
+let hrf = "";
 function calcularCotizacion() {
   const horaI = document.getElementById("hours").value;
   const minutosI = document.getElementById("minutes").value;
@@ -270,12 +280,14 @@ function calcularCotizacion() {
   const horaF = document.getElementById("hours2").value;
   const minutosF = document.getElementById("minutes2").value;
   const horarioF = document.getElementById("horario2").value;
+  hri = timeFormat(horaI, minutosI, horarioI);
+  hrf = timeFormat(horaF, minutosF, horarioF);
+  const init = revertTime(hri).split(":");
+  const end = revertTime(hrf).split(":");
+  suma = 0;
   const date = document.getElementById("date").value;
   const diaSemana = traerDiaSemana(date);
-  const checkServices = document.querySelectorAll(".service-checkbox");
-
-  const init = revertTime(timeFormat(horaI, minutosI, horarioI)).split(":");
-  const end = revertTime(timeFormat(horaF, minutosF, horarioF)).split(":");
+  const checkServices = document.querySelectorAll(".checkbox");
 
   // Calcular tiempo de uso en horas
   const inicio = new Date(date);
@@ -284,7 +296,10 @@ function calcularCotizacion() {
   const fin = new Date(date);
   fin.setHours(end[0], end[1]);
 
-  const tiempoUsoHoras = (fin - inicio) / (1000 * 60 * 60); // Convertir a horas
+  let tiempoUsoHoras = (fin - inicio) / (1000 * 60 * 60); // Convertir a horas
+  if (tiempoUsoHoras < 0) {
+    tiempoUsoHoras += 24;
+  }
 
   // Función para obtener precios por hora y día de la semana desde la base de datos
   async function obtenerPreciosHora() {
@@ -296,7 +311,7 @@ function calcularCotizacion() {
   }
 
   obtenerPreciosHora().then((data) => {
-    darValorDia(data);
+    darValor(data);
   });
 
   function formatearPrecio(precio) {
@@ -313,10 +328,7 @@ function calcularCotizacion() {
     });
   }
 
-  function darValorDia(data) {
-    const priceContainer = document.getElementById("usedPrice");
-    let valorHoraDia = "";
-    let valorTiempoSalon = "";
+  function darValor(data) {
     data.forEach((e) => {
       if (
         "Lunes" === diaSemana ||
@@ -340,51 +352,74 @@ function calcularCotizacion() {
           <li>${formatearPrecio(valorTiempoSalon)}</li>
         `;
       }
+      return valorTiempoSalon;
     });
-  }
+    
+    serviceCheck.splice(0, serviceCheck.length);
+    checkServices.forEach((check) => {
+      if (check.checked) {
+        // Sumar valor del checkbox seleccionado
+        suma += parseInt(check.value);
+        serviceCheck.push(check.value);
+      }
+      return serviceCheck;
+    });
+    servicesList.innerHTML = `
+      <li>${formatearPrecio(suma)}</li>
+    `
+    totalPrice = suma + valorTiempoSalon;
+    totalList.innerHTML = `
+      <li>${formatearPrecio(totalPrice)}</li>
+    `;
+  };
+  return hri, hrf;
+};
 
-  checkServices.forEach((check) => {
-    if (check.checked) {
-      console.log(check.value)
-    }
-  });
-}
 
 function limpiarCotizacion() {
-  console.log("Limpio");
+  priceContainer.innerHTML = ""
+  servicesList.innerHTML = ""
+  totalList.innerHTML = "";
 }
 
-// // URL de la API que devuelve los precios por hora y día de la semana
-// const urlPreciosHora = "http://localhost:4500/api/data/cotizar/hora";
-
-// // URL de la API que devuelve los precios de servicios adicionales
-// const urlPreciosServicios = "http://localhost:4500/api/data/cotizar/servicios";
-
-//   } catch (error) {
-//     console.error("Error al obtener precios por hora:", error);
-//   }
-// }
-
-// // Función para obtener precios de servicios adicionales desde la base de datos
-// async function obtenerPreciosServicios() {
-//   try {
-//     const respuesta = await fetch(urlPreciosServicios);
-//     const preciosServicios = await respuesta.json();
-//     return preciosServicios;
-//   } catch (error) {
-//     console.error("Error al obtener precios de servicios:", error);
-//   }
-// }
-
-// // Función para calcular la cotización
-// async function calcularCotizacion(horas, dia, servicios) {
-//   const preciosHora = await obtenerPreciosHora();
-//   const preciosServicios = await obtenerPreciosServicios();
-
-//   let subtotal = horas * preciosHora[dia];
-//   let totalServicios = servicios.reduce(
-//     (acum, servicio) => acum + preciosServicios[servicio],
-//     0
-//   );
-//   return subtotal + totalServicios;
-// }
+document.getElementById("event-form").addEventListener("submit", async (e) => {
+  console.log(serviceCheck)
+  e.preventDefault();
+  const res = await fetch("http://localhost:4500/api/cotizar", {
+    method: "POST",
+    headers:{
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify({
+      date: e.target.date.value,
+      initTime: hri,
+      endTime: hrf,
+      peopleNum: e.target.number.value,
+      eventType: e.target.eventType.value,
+      activity: e.target.activity.value,
+      others: e.target.others.value,
+      eventCharac: e.target.eventCharacter.value,
+      name: e.target.name.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      personType: e.target.radio.value,
+      nit: e.target.nit.value,
+      reason: e.target.reason.value,
+      tel: e.target.tel.value,
+      address: e.target.address.value,
+      country: e.target.country.value,
+      services: serviceCheck,
+      logistic: e.target.logistics.value,
+      timePrice: valorTiempoSalon,
+      servicePrice: suma,
+      totalPrice: totalPrice
+    })
+  });
+  if (!res.ok) {
+    return;
+  }
+  const resJson = await res.json();
+  if (resJson.redirect) {
+    window.location.href = resJson.redirect;
+  }
+});

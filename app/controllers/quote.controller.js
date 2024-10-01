@@ -1,5 +1,5 @@
 async function quote(req,res) {
- console.log(req.body);
+  console.log(req.body);
 }
 
 export const methods = {
