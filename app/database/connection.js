@@ -132,6 +132,44 @@ async function preciosHora(req, res) {
     res.json(result);
 }
 
+async function quote(req,res) {
+  console.log(req.body);
+  const date = req.dody.date;
+  const horaI = req.body.hri;
+  const horaF = req.body.hrf;
+  const peopleNum = req.body.peopleNum;
+  const eventType = req.body.eventType;
+  const activity = req.body.activity;
+  const others = req.body.others;
+  const eventCharacter = req.body.eventCharac;
+  const name = req.body.name;
+  const phone = req.body.phone;
+  const email = req.body.email;
+  const personType = req.body.personType;
+  const nitems = req.body.nit;
+  const reason = req.body.reason;
+  const tel = req.body.tel;
+  const address = req.body.address;
+  const country = req.body.country;
+  const services = req.body.services;
+  const logistic = req.body.logistic;
+  const timePrice = req.body.timePrice;
+  const servicesPrice = req.body.servicesPrice;
+  const totalPrice = req.body.totalPrice;
+  try {
+    await (
+      await connection
+    ).query(
+      `INSERT INTO ...`
+    );
+  } catch {
+    return res
+      .status(400)
+      .send({ status: "Error", message: "Error en la solicitud." });
+  }
+  return res.status(201).send({ statu:"ok",message:"Solicitud enviada con éxito.", redirect:"/" });
+}
+
 export const methods = {
   showUsers,
   addUsers,
@@ -143,7 +181,8 @@ export const methods = {
   getCaracteristicasSalones,
   getEventosSalones,
   preciosServicios,
-  preciosHora
+  preciosHora,
+  quote
 };
 
 

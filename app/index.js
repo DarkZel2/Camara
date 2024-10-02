@@ -45,7 +45,6 @@ app.get("/reports", authorization.soloReport, (req, res) => res.sendFile(__dirna
 //Rutas de procesos
 app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);
-app.post("/api/cotizar", process.quote);
 
 //Rutas de recursos
 app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));
@@ -97,3 +96,4 @@ app.get("/api/data/caracteristicas", database.getCaracteristicasSalones);
 app.get("/api/data/eventos", database.getEventosSalones);
 app.get("/api/data/cotizar/servicios", database.preciosServicios);
 app.get("/api/data/cotizar/hora", database.preciosHora);
+app.post("/api/cotizar", database.quote);
