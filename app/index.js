@@ -7,7 +7,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import { methods as autentication } from "./controllers/autentication.controller.js";
 import { methods as authorization } from "./middlewares/authorization.js";
 import { methods as database } from "./database/connection.js";
-import { methods as process } from "./controllers/quote.controller.js";
 
 //Server 
 const app = express();
@@ -45,6 +44,7 @@ app.get("/reports", authorization.soloReport, (req, res) => res.sendFile(__dirna
 //Rutas de procesos
 app.post("/api/register", autentication.register);
 app.post("/api/login", autentication.login);
+app.post("/api/cotizar", autentication.quote);
 
 //Rutas de recursos
 app.get("/img/logoCE", (req, res) => res.sendFile(__dirname + "/public/img/logos/Logo_CE-01.png"));
@@ -84,7 +84,7 @@ app.get("/img/aldana/plano", (req, res) => res.sendFile(__dirname + "/public/img
 app.get("/img/catufa/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_catufa.png"));
 app.get("/img/umaña/plano", (req, res) => res.sendFile(__dirname + "/public/img/planos/plano_umaña.png"));
 
-//Ruta para la base de datos
+// Ruta para la base de datos
 app.get("/api/usuarios", database.showUsers);
 app.post("/api/nuevoUsuario", database.addUsers);
 app.get("/api/card/salones", database.showInfoSalons);
@@ -96,4 +96,7 @@ app.get("/api/data/caracteristicas", database.getCaracteristicasSalones);
 app.get("/api/data/eventos", database.getEventosSalones);
 app.get("/api/data/cotizar/servicios", database.preciosServicios);
 app.get("/api/data/cotizar/hora", database.preciosHora);
-app.post("/api/cotizar", database.quote);
+app.post("/api/data/cotizar", database.quote);
+app.post("/api/data/newEvent", database.addEvent);
+app.get("/api/data/showSalones", database.getEditSalones);
+app.get("/api/data/solicitud", database.showSolicitud);

@@ -30,7 +30,7 @@ async function addUsers(req, res) {
       .status(400)
       .send({ status: "Error", message: "Error con la base de datos" });
   }
-  return res.status(201).send({ statu: "ok" });
+  return res.status(201).send({ status: "ok" });
 }
 
 async function showInfoSalons(req, res) {
@@ -105,9 +105,7 @@ async function getEventosSalones(req, res) {
   const result = await (
     await connection
   ).query(`
-      SELECT Day, Month, Year, Title, InitHour, EndHour FROM eventos_salones
-      INNER JOIN eventos_detalles ON eventos_salones.eventsID = eventos_detalles.EventsID
-      WHERE eventos_detalles.TarjetaID = ${almacenarId}
+      SELECT Day, Month, Year, InitHour, EndHour FROM eventos_salones WHERE TarjetaID = ${almacenarId}
     `);
   res.json(result);
 }
@@ -134,19 +132,18 @@ async function preciosHora(req, res) {
 
 async function quote(req,res) {
   console.log(req.body);
-  const date = req.dody.date;
-  const horaI = req.body.hri;
-  const horaF = req.body.hrf;
+  const date = req.body.date;
+  const horaI = req.body.initTime;
+  const horaF = req.body.endTime;
   const peopleNum = req.body.peopleNum;
   const eventType = req.body.eventType;
-  const activity = req.body.activity;
-  const others = req.body.others;
+  const activity = req.body.revisarActividad
   const eventCharacter = req.body.eventCharac;
   const name = req.body.name;
   const phone = req.body.phone;
   const email = req.body.email;
   const personType = req.body.personType;
-  const nitems = req.body.nit;
+  const nit = req.body.nit;
   const reason = req.body.reason;
   const tel = req.body.tel;
   const address = req.body.address;
@@ -157,17 +154,56 @@ async function quote(req,res) {
   const servicesPrice = req.body.servicesPrice;
   const totalPrice = req.body.totalPrice;
   try {
-    await (
+    const result = await (
       await connection
     ).query(
-      `INSERT INTO ...`
+      `INSERT INTO cotizacion_salones VALUES ('', '${date}', '${horaI}', '${horaF}', '${peopleNum}', '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', '${timePrice}', '${servicesPrice}', '${totalPrice}')`
     );
   } catch {
     return res
       .status(400)
       .send({ status: "Error", message: "Error en la solicitud." });
   }
-  return res.status(201).send({ statu:"ok",message:"Solicitud enviada con éxito.", redirect:"/" });
+  return res.status(201).send({ status: "ok" });
+};
+
+async function addEvent(req, res) {
+  console.log(req.body);
+  const Day = req.body.day
+  const Month = req.body.month
+  const Year = req.body.year
+  const InitHour = req.body.initHour
+  const EndHour = req.body.endHour
+  try {
+    const result = await (
+      await connection
+    ).query(
+      `
+        INSERT INTO eventos_salones VALUES ('','${Day}','${Month}','${Year}','${InitHour}','${EndHour}','${almacenarId}')
+      `
+    );
+  } catch {
+    return res
+      .status(400)
+      .send({ status: "Error", message: "Error con la base de datos" });
+  }
+  return res.status(201).send({ status: "ok" });
+}
+
+async function getEditSalones(req, res) {
+  const result = await (
+    await connection
+  ).query(
+    `SELECT TarjetaID, Name, Description FROM Tarjetas_Salones`
+  );
+  res.json(result);
+}
+
+async function showSolicitud(req, res) {
+  const result = await ( await connection ). query(
+    `SELECT * FROM cotizacion_salones`
+  );
+  res.json(result);
 }
 
 export const methods = {
@@ -182,7 +218,10 @@ export const methods = {
   getEventosSalones,
   preciosServicios,
   preciosHora,
-  quote
+  quote,
+  addEvent,
+  getEditSalones,
+  showSolicitud
 };
 
 

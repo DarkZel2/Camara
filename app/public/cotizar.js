@@ -70,16 +70,7 @@ nPersonas.addEventListener("input", (e) => {
   const value = e.target.value;
   const validPhone = value.replace(/[^0-9]/g, "");
   e.target.value = validPhone.slice(0, 5);
-  console.log(value);
 });
-// Validación del tipo de Evento
-const tipoEvento = document.getElementById("eventType");
-
-const validarEvento = (e) => {
-  console.log(e.target.value);
-};
-
-tipoEvento.addEventListener("change", validarEvento);
 // Validación del tipo de Actividad y Otras actividades
 const activitySelect = document.getElementById("activity");
 const otherInput = document.querySelector(".other");
@@ -89,7 +80,6 @@ const validarActividad = (e) => {
   const result = e.target.value;
   if (result === "") {
   } else {
-    console.log(result);
     if (result === "Otros") {
       otherInput.classList.add("visible");
     } else {
@@ -103,16 +93,7 @@ others.addEventListener("input", (e) => {
   const value = e.target.value;
   validValue = value.replace(/[^A-Za-z\s]/g, "");
   e.target.value = validValue.slice(0, 20);
-  console.log(value);
 });
-// Validación del campo de Caracter del Evento
-const eventCharacter = document.getElementById("eventCharacter");
-
-const validarCaracterEvento = (e) => {
-  console.log(e.target.value);
-};
-
-eventCharacter.addEventListener("change", validarCaracterEvento);
 // Validación del campo Nombre
 const inputName = document.getElementById("name");
 
@@ -120,7 +101,6 @@ inputName.addEventListener("input", (e) => {
   const value = e.target.value;
   const valid = value.replace(/[^a-zA-Z\s]/g, "");
   e.target.value = valid.slice(0, 30);
-  console.log(value);
 });
 // Validación del campo Teléfono
 const inputPhone = document.getElementById("phone");
@@ -129,7 +109,6 @@ inputPhone.addEventListener("input", (e) => {
   const value = e.target.value;
   const valid = value.replace(/[^0-9+]/g, "");
   e.target.value = valid.slice(0, 10);
-  console.log(value);
 });
 // Validación del campo Email
 const inputEmail = document.getElementById("email");
@@ -138,7 +117,6 @@ inputEmail.addEventListener("input", (e) => {
   const value = e.target.value;
   const valid = value.replace(/[^a-zA-Z@0-9.]/g, "");
   e.target.value = valid.slice(0, 40);
-  console.log(value);
 });
 // Validación de los botones Juridica y Natual
 const radios = document.querySelectorAll("#radio");
@@ -148,7 +126,6 @@ const validarRadios = (e) => {
   radios.forEach((e) => {
     const result = e.value;
     if (e.checked === true) {
-      console.log(result);
       if (result === "Persona Jurídica") {
         infoCompany.classList.add("visible");
       } else {
@@ -161,40 +138,6 @@ const validarRadios = (e) => {
 radios.forEach((check) => {
   check.addEventListener("click", validarRadios);
 });
-// Validación de la informacion de la Empresa
-const inputNit = document.getElementById("nit");
-const inputRazon = document.getElementById("reason");
-const inputTel = document.getElementById("tel");
-
-const validarNit = (e) => {
-  console.log(e.target.value);
-};
-const validarRazon = (e) => {
-  console.log(e.target.value);
-};
-const validarTel = (e) => {
-  console.log(e.target.value);
-};
-
-inputNit.addEventListener("change", validarNit);
-inputRazon.addEventListener("change", validarRazon);
-inputTel.addEventListener("change", validarTel);
-// Validación de la Dirección
-const inputAddress = document.getElementById("address");
-
-const validarDireccion = (e) => {
-  console.log(e.target.value);
-};
-
-inputAddress.addEventListener("change", validarDireccion);
-// Validación de el Municipio
-const inputCountry = document.getElementById("country");
-
-const validarMunicipio = (e) => {
-  console.log(e.target.value);
-};
-
-inputCountry.addEventListener("change", validarMunicipio);
 // Creación de contenedores de servicios y validación
 async function getAdicionales() {
   const res = await fetch("http://localhost:4500/api/data/cotizar/servicios");
@@ -383,7 +326,6 @@ function limpiarCotizacion() {
 }
 
 document.getElementById("event-form").addEventListener("submit", async (e) => {
-  console.log(serviceCheck)
   e.preventDefault();
   const res = await fetch("http://localhost:4500/api/cotizar", {
     method: "POST",

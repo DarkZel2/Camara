@@ -361,7 +361,7 @@ function updateEvents(date) {
         <div class="event">
           <div class="title">
             <i class="bi bi-circle-fill"></i>
-            <h3 class="event-title">${event.Title}</h3>
+            <h3 class="event-title">Evento</h3>
           </div>
           <div class="event-time">
             <span class="event-time">${event.InitHour} - ${event.EndHour}</span>
