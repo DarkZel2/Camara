@@ -161,19 +161,6 @@ function crearServicios(data) {
 getAdicionales().then((data) => {
   crearServicios(data);
 });
-// Validación de Servicios Logísticos
-const checkLogist = document.getElementById("logistics");
-
-const validarLogistica = (e) => {
-  const result = e.target.checked;
-  if (result) {
-    console.log("Servicios ON");
-  } else {
-    console.log("Servicios OFF");
-  }
-};
-
-checkLogist.addEventListener("click", validarLogistica);
 // Función para convertir el tiempo en formato 24 hrs
 function revertTime(time) {
   let timeArr = time.split(" ");
@@ -351,7 +338,7 @@ document.getElementById("event-form").addEventListener("submit", async (e) => {
       address: e.target.address.value,
       country: e.target.country.value,
       services: serviceCheck,
-      logistic: e.target.logistics.value,
+      logistic: e.target.logistics.checked,
       timePrice: valorTiempoSalon,
       servicePrice: suma,
       totalPrice: totalPrice

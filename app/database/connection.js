@@ -119,25 +119,27 @@ async function preciosServicios(req, res) {
       INNER JOIN adicionales_salones ON adicionales_details.AdicionalesID = adicionales_salones.AdicionalesID
       WHERE tarjetas_salones.TarjetaID = ${almacenarId};
     `);
-    res.json(result);
+  res.json(result);
 }
 
 async function preciosHora(req, res) {
-  const result = await ( await connection ).query(`
+  const result = await (
+    await connection
+  ).query(`
       SELECT * FROM Hora_Salones
       WHERE HoraID = ${almacenarId}
     `);
-    res.json(result);
+  res.json(result);
 }
 
-async function quote(req,res) {
+async function quote(req, res) {
   console.log(req.body);
   const date = req.body.date;
   const horaI = req.body.initTime;
   const horaF = req.body.endTime;
   const peopleNum = req.body.peopleNum;
   const eventType = req.body.eventType;
-  const activity = req.body.revisarActividad
+  const activity = req.body.revisarActividad;
   const eventCharacter = req.body.eventCharac;
   const name = req.body.name;
   const phone = req.body.phone;
@@ -157,7 +159,7 @@ async function quote(req,res) {
     const result = await (
       await connection
     ).query(
-      `INSERT INTO cotizacion_salones VALUES ('', '${date}', '${horaI}', '${horaF}', '${peopleNum}', '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', '${timePrice}', '${servicesPrice}', '${totalPrice}')`
+      `INSERT INTO cotizacion_salones VALUES ('${date}', '${horaI}', '${horaF}', '${peopleNum}', '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', '${timePrice}', '${servicesPrice}', '${totalPrice}')`
     );
   } catch {
     return res
@@ -165,15 +167,15 @@ async function quote(req,res) {
       .send({ status: "Error", message: "Error en la solicitud." });
   }
   return res.status(201).send({ status: "ok" });
-};
+}
 
 async function addEvent(req, res) {
   console.log(req.body);
-  const Day = req.body.day
-  const Month = req.body.month
-  const Year = req.body.year
-  const InitHour = req.body.initHour
-  const EndHour = req.body.endHour
+  const Day = req.body.day;
+  const Month = req.body.month;
+  const Year = req.body.year;
+  const InitHour = req.body.initTime;
+  const EndHour = req.body.endTime;
   try {
     const result = await (
       await connection
@@ -194,16 +196,42 @@ async function getEditSalones(req, res) {
   const result = await (
     await connection
   ).query(
-    `SELECT TarjetaID, Name, Description FROM Tarjetas_Salones`
+    `
+    SELECT TarjetaID, Name, Description, Img1, Img2, Img3, Img4, ImgPlano FROM Tarjetas_Salones;
+    `
   );
   res.json(result);
 }
 
 async function showSolicitud(req, res) {
-  const result = await ( await connection ). query(
-    `SELECT * FROM cotizacion_salones`
-  );
+  const result = await (
+    await connection
+  ).query(`SELECT c.CotizacionID, c.Date, c.HourI, c.HourE, c.PeopleNum, c.EventType, c.Activity, c.EventCharacter, c.Name, c.Phone, c.Email, c.PersonType, c.Nit, c.Company, c.Tel, c.Address, c.Country, c.Services, c.Logistic, c.TimePrice, c.ServicesPrice, c.TotalPrice, c.Estado, t.Name AS TarjetaName, u.id AS UsuarioID FROM cotizacion_salones AS c INNER JOIN orders AS o ON o.CotizacionID = c.CotizacionID INNER JOIN tarjetas_salones AS t ON t.TarjetaID = o.TarjetaID INNER JOIN usuarios AS u ON u.id = o.UserID WHERE c.Date > NOW() AND c.Estado = 'En espera' LIMIT 50;`);
   res.json(result);
+}
+
+async function updateSalones(req, res) {
+  console.log(req.body);
+  const ID = req.body.Id
+  const Name = req.body.Name
+  const Description = req.body.Description
+  const Img1 = req.body.Img1
+  const Img2 = req.body.Img2
+  const Img3 = req.body.Img3
+  const Img4 = req.body.Img4
+  const ImgPlano = req.body.ImgPlano
+  try {
+    const result = await (
+      await connection
+    ).query(
+      `UPDATE tarjetas_salones SET Name='${Name}', Description='${Description}', Img1='${Img1}', Img2='${Img2}', Img3='${Img3}' ,Img4='${Img4}', ImgPlano='${ImgPlano}' WHERE TarjetaID = ${ID};`
+    );
+  } catch {
+    return res
+      .status(400)
+      .send({ status: "Error", message: "Error en la solicitud." });
+  }
+  return res.status(201).send({status:"ok"});
 }
 
 export const methods = {
@@ -221,7 +249,6 @@ export const methods = {
   quote,
   addEvent,
   getEditSalones,
-  showSolicitud
+  showSolicitud,
+  updateSalones
 };
-
-

@@ -221,8 +221,6 @@ async function quote(req, res) {
   
   const nuevaCotizacion = {
     date,
-    horaI,
-    horaF,
     peopleNum,
     eventType,
     revisarActividad,
@@ -244,7 +242,6 @@ async function quote(req, res) {
   };
   
   const agregarEvento = async () => {
-    const getData = nuevaCotizacion;
     const respuesta = await fetch("http://localhost:4500/api/data/newEvent", {
       method: "POST",
       headers: { "Content-Type" : "application/json" },
@@ -252,8 +249,8 @@ async function quote(req, res) {
         day: day,
         month: month,
         year: year,
-        initHour: getData.horaI,
-        endHour: getData.horaF,
+        initTime: req.body.hri,
+        endTime: req.body.hrf
       }),
     });
     if (respuesta.ok) {
@@ -271,8 +268,8 @@ async function quote(req, res) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         date: getData.date,
-        initTime: getData.horaI,
-        endTime: getData.horaF,
+        initTime: req.body.hri,
+        endTime: req.body.hrf,
         peopleNum: getData.peopleNum,
         eventType: getData.eventType,
         activity: revisarActividad,
