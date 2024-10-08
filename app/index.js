@@ -101,3 +101,4 @@ app.post("/api/data/newEvent", database.addEvent);
 app.get("/api/data/showSalones", database.getEditSalones);
 app.get("/api/data/solicitud", database.showSolicitud);
 app.post("/api/update/salones", database.updateSalones);
+app.post("/api/update/estado", database.updateEstado);

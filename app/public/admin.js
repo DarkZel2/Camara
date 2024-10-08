@@ -108,6 +108,20 @@ showSalones().then((data) => {
   crearVisualizacion(data);
 });
 
+function formatearPrecio(precio) {
+  // Convertir el precio a un número flotante
+  const numeroPrecio = parseFloat(precio);
+  // Verificar si la conversión fue exitosa
+  if (isNaN(numeroPrecio)) {
+    return "Valor no válido";
+  }
+  // Formatear el número como precio en pesos colombianos
+  return numeroPrecio.toLocaleString("es-CO", {
+    style: "currency",
+    currency: "COP",
+  });
+}
+
 async function getSolicitud() {
   const response = await fetch("http://localhost:4500/api/data/solicitud");
   const resJson = await response.json();
@@ -145,27 +159,70 @@ function solicitudes(data) {
       <td>${element.Logistic}</td>
       <td>${element.Estado}</td>
       <td>
-        <a class="btn-accept">Aceptar</a>
-        <a class="btn-decline">Rechazar</a>
+      <a onclick="aceptarSolicitud(${element.CotizacionID})" class="btn-accept">Aceptar</a>
+      <a onclick="denegarSolicitud(${element.CotizacionID})" class="btn-decline">Rechazar</a>
       </td>
       <td><a onclick="infoSolicitud(${element.CotizacionID})" class="btn-edit">Ver más</a></td>
-    `;
-    tablaSolicitud.appendChild(fila);
-    cotizaciones.push(element);
-    return cotizaciones;
+      `;
+      tablaSolicitud.appendChild(fila);
+      cotizaciones.push(element);
+      return cotizaciones;
   });
+}
+
+async function aceptarSolicitud(id) {
+  const res = await fetch("http://localhost:4500/api/update/estado", {
+    method: "POST",
+    headers: {
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify({
+      id: id,
+      estado: "Aceptada"
+    })
+  });
+  if (res.ok) {
+    getSolicitud().then((data) => {
+      solicitudes(data);
+    });
+    alert("Cambios guardados con éxito.");
+  } else {
+    alert("Error al guardar los cambios.");
+    return;
+  }
+}
+
+async function denegarSolicitud(id) {
+  const res = await fetch("http://localhost:4500/api/update/estado", {
+    method: "POST",
+    headers: {
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify({
+      id: id,
+      estado: "Denegada"
+    })
+  });
+  if (res.ok) {
+    getSolicitud().then((data) => {
+      solicitudes(data);
+    });
+    alert("Cambios guardados con éxito.");
+  } else {
+    alert("Error al guardar los cambios.");
+    return;
+  }
 }
 
 function infoSolicitud(id) {
   const solicitudSeleccionada = cotizaciones.find(solicitud => solicitud.CotizacionID === id);
-  console.log(solicitudSeleccionada);
   const infoSolicitud = document.querySelector(".info-solicitud");
   infoSolicitud.classList.remove("escondido");
   infoSolicitud.innerHTML = `
     <h2>Cotización N°${solicitudSeleccionada.CotizacionID}</h2>
     <div class="more-info">
-      <h3>Datos del Evento:</h3>
-        <ul>
+      <ul>
+        <h3>Datos del Evento:</h3>
           <li>
             <h4>Nombre del Salón:</h4>
             <p>${solicitudSeleccionada.TarjetaName}</p>
@@ -195,8 +252,8 @@ function infoSolicitud(id) {
             <p>${solicitudSeleccionada.EventCharacter}</p>
           </li>
         </ul>
-        <h3>Datos del Solicitante</h3>
         <ul>
+          <h3>Datos del Solicitante</h3>
           <li>
             <h4>ID del Usuario:</h4>
             <p>${solicitudSeleccionada.UsuarioID}</p>
@@ -250,19 +307,19 @@ function infoSolicitud(id) {
             <p>${solicitudSeleccionada.Estado}</p>
           </li>
         </ul>
-        <h3>Valor de la Cotización:</h3>
         <ul>
+          <h3>Valor de la Cotización:</h3>
           <li>
             <h4>Valor total por los servicios seleccionados:</h4>
-            <p>${solicitudSeleccionada.ServicesPrice}</p>
+            <p>${formatearPrecio(solicitudSeleccionada.ServicesPrice)}</p>
           </li>
           <li>
             <h4>Valor total por el tiempo solicitado:</h4>
-            <p>${solicitudSeleccionada.TimePrice}</p>
+            <p>${formatearPrecio(solicitudSeleccionada.TimePrice)}</p>
           </li>
           <li>
             <h4>Valor total de la cotización:</h4>
-            <p>${solicitudSeleccionada.TotalPrice}</p>
+            <p>${formatearPrecio(solicitudSeleccionada.TotalPrice)}</p>
           </li>
         </ul>
     </div>
@@ -272,3 +329,4 @@ function infoSolicitud(id) {
 getSolicitud().then((data) => {
   solicitudes(data);
 });
+

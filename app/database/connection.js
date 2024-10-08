@@ -159,7 +159,8 @@ async function quote(req, res) {
     const result = await (
       await connection
     ).query(
-      `INSERT INTO cotizacion_salones VALUES ('${date}', '${horaI}', '${horaF}', '${peopleNum}', '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', '${timePrice}', '${servicesPrice}', '${totalPrice}')`
+      `INSERT INTO cotizacion_salones VALUES ('', '${date}', '${horaI}', '${horaF}', '${peopleNum}', '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', '${timePrice}', '${servicesPrice}', '${totalPrice}', '');
+      SET @CotizacionID = LAST_INSERT_ID();`
     );
   } catch {
     return res
@@ -234,6 +235,22 @@ async function updateSalones(req, res) {
   return res.status(201).send({status:"ok"});
 }
 
+async function updateEstado(req, res) {
+  console.log(req.body);
+  try {
+    const result = await (
+      await connection
+    ).query(
+      `UPDATE cotizacion_salones SET Estado='${req.body.estado}' WHERE CotizacionID = ${req.body.id};`
+    );
+  } catch {
+    return res
+      .status(400)
+      .send({ status: "Error", message: "Error en la solicitud." });
+  }
+  return res.status(201).send({status:"ok"});
+}
+
 export const methods = {
   showUsers,
   addUsers,
@@ -250,5 +267,6 @@ export const methods = {
   addEvent,
   getEditSalones,
   showSolicitud,
-  updateSalones
+  updateSalones,
+  updateEstado
 };
