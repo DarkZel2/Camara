@@ -183,10 +183,14 @@ async function register(req, res) {
 }
 
 async function quote(req, res) {
+  const cookieJWT = req.headers.cookie.split("; ").find(cookie => cookie.startsWith("jwt=")).slice(4);
+  const decodificada = jsonwebtoken.verify(cookieJWT,process.env.JWT_SECRET);
+  const usuarioARevisar = usuarios.find(usuario => usuario.id === decodificada.id);
+
   console.log(req.body);
   const date = req.body.date;
-  const horaI = req.body.hri;
-  const horaF = req.body.hrf;
+  const horaI = req.body.initTime;
+  const horaF = req.body.endTime;
   const peopleNum = req.body.peopleNum;
   const eventType = req.body.eventType;
   const activity = req.body.activity;
@@ -204,8 +208,10 @@ async function quote(req, res) {
   const services = req.body.services;
   const logistic = req.body.logistic;
   const timePrice = req.body.timePrice;
-  const servicesPrice = req.body.servicesPrice;
+  const servicePrice = req.body.servicePrice;
   const totalPrice = req.body.totalPrice;
+  const estado = "En espera";
+  const user = usuarioARevisar.id;
 
   let revisarActividad = "";
   if (activity === "Otros") {
@@ -213,33 +219,27 @@ async function quote(req, res) {
   } else {
     revisarActividad = activity;
   }
+  let logUpdate = "";
+  if (logistic) {
+    logUpdate = "Si";
+  } else if (!logistic) {
+    logUpdate = "No"
+  }
+  const clearEmpty = "No aplica";
+  if (nit === "") {
+    nit = clearEmpty;
+  }
+  if (reason === "") {
+    reason = clearEmpty;
+  }
+  if (tel === "") {
+    tel = clearEmpty;
+  }
 
   const fecha = date.split("-");
   const year = fecha[0];
   const month = fecha[1];
   const day = fecha[2];
-  
-  const nuevaCotizacion = {
-    date,
-    peopleNum,
-    eventType,
-    revisarActividad,
-    eventCharacter,
-    name,
-    phone,
-    email,
-    personType,
-    nit,
-    reason,
-    tel,
-    address,
-    country,
-    services,
-    logistic,
-    timePrice,
-    servicesPrice,
-    totalPrice,
-  };
   
   const agregarEvento = async () => {
     const respuesta = await fetch("http://localhost:4500/api/data/newEvent", {
@@ -249,8 +249,8 @@ async function quote(req, res) {
         day: day,
         month: month,
         year: year,
-        initTime: req.body.hri,
-        endTime: req.body.hrf
+        initTime: horaI,
+        endTime: horaF
       }),
     });
     if (respuesta.ok) {
@@ -258,39 +258,38 @@ async function quote(req, res) {
     }
   };
 
-  agregarEvento();
-
-
   const postData = async () => {
-    const getData = nuevaCotizacion;
     const response = await fetch("http://localhost:4500/api/data/cotizar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        date: getData.date,
-        initTime: req.body.hri,
-        endTime: req.body.hrf,
-        peopleNum: getData.peopleNum,
-        eventType: getData.eventType,
+        date: date,
+        initTime: horaI,
+        endTime: horaF,
+        peopleNum: peopleNum,
+        eventType: eventType,
         activity: revisarActividad,
-        eventCharac: getData.eventCharacter,
-        name: getData.name,
-        phone: getData.phone,
-        email: getData.email,
-        personType: getData.personType,
-        nit: getData.nit,
-        reason: getData.reason,
-        tel: getData.tel,
-        address: getData.address,
-        country: getData.country,
-        services: getData.services,
-        logistic: getData.logistic,
-        timePrice: getData.timePrice,
-        servicePrice: getData.servicesPrice,
-        totalPrice: getData.totalPrice,
+        eventCharac: eventCharacter,
+        name: name,
+        phone: phone,
+        email: email,
+        personType: personType,
+        nit: nit,
+        reason: reason,
+        tel: tel,
+        address: address,
+        country: country,
+        services: services,
+        logistic: logUpdate,
+        timePrice: timePrice,
+        servicePrice: servicePrice,
+        totalPrice: totalPrice,
+        estado: estado,
+        user: user
       }),
     });
     if (response.ok) {
+      agregarEvento();
       return;
     }
   };

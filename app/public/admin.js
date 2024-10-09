@@ -92,6 +92,7 @@ function editarSalon(id) {
       })
     });
     if (res.ok) {
+      salones.splice(0, salones.length);
       showSalones().then((data) => {
         crearVisualizacion(data);
       });

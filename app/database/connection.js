@@ -1,4 +1,5 @@
 import mysql from "promise-mysql";
+import { usuarios } from "./usuarios.js";
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -133,42 +134,53 @@ async function preciosHora(req, res) {
 }
 
 async function quote(req, res) {
-  console.log(req.body);
-  const date = req.body.date;
-  const horaI = req.body.initTime;
-  const horaF = req.body.endTime;
-  const peopleNum = req.body.peopleNum;
-  const eventType = req.body.eventType;
-  const activity = req.body.revisarActividad;
-  const eventCharacter = req.body.eventCharac;
-  const name = req.body.name;
-  const phone = req.body.phone;
-  const email = req.body.email;
-  const personType = req.body.personType;
-  const nit = req.body.nit;
-  const reason = req.body.reason;
-  const tel = req.body.tel;
-  const address = req.body.address;
-  const country = req.body.country;
-  const services = req.body.services;
-  const logistic = req.body.logistic;
-  const timePrice = req.body.timePrice;
-  const servicesPrice = req.body.servicesPrice;
-  const totalPrice = req.body.totalPrice;
-  try {
-    const result = await (
-      await connection
-    ).query(
-      `INSERT INTO cotizacion_salones VALUES ('', '${date}', '${horaI}', '${horaF}', '${peopleNum}', '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', '${timePrice}', '${servicesPrice}', '${totalPrice}', '');
-      SET @CotizacionID = LAST_INSERT_ID();`
-    );
-  } catch {
-    return res
-      .status(400)
-      .send({ status: "Error", message: "Error en la solicitud." });
+    console.log(req.body);
+  
+    const {
+      date, initTime: horaI, endTime: horaF, peopleNum, eventType, activity,
+      eventCharac: eventCharacter, name, phone, email, personType, nit,
+      reason, tel, address, country, services, logistic, timePrice,
+      servicePrice: servicesPrice, totalPrice, estado, user: userID
+    } = req.body;
+  
+    try {
+      // Iniciar la transacción
+      const connectionInstance = await connection; // Solo una vez
+      connectionInstance.beginTransaction();
+  
+      // Insertar en la tabla `cotizacion_salones` usando consultas preparadas
+      connectionInstance.query(
+        `INSERT INTO cotizacion_salones VALUES ('',
+        '${date}', '${horaI}', '${horaF}', ${peopleNum}, '${eventType}', '${activity}', '${eventCharacter}', '${name}', '${phone}', '${email}', '${personType}', '${nit}', '${reason}', '${tel}', '${address}', '${country}', '${services}', '${logistic}', ${timePrice}, ${servicesPrice}, ${totalPrice}, '${estado}')`
+      );
+  
+      // Obtener el ID generado
+      connectionInstance.query(
+        `SET @last_id = LAST_INSERT_ID();`
+      );
+
+  
+      // Insertar en la tabla `orders` usando el ID generado
+      connectionInstance.query(
+        `INSERT INTO orders VALUES ('', '${userID}', ${almacenarId}, @last_id)`
+      );
+  
+      // Confirmar la transacción
+      connectionInstance.commit();
+  
+      // Devolver respuesta exitosa
+      return res.status(201).send({ status: "ok" });
+      
+    } catch (error) {
+      console.error("Error en la transacción:", error);
+  
+      // Revertir los cambios en caso de error
+      if (connection) await (await connection).rollback();
+  
+      // Devolver respuesta de error
+      return res.status(400).send({ status: "Error", message: "Error en la solicitud." });
+    }
   }
-  return res.status(201).send({ status: "ok" });
-}
 
 async function addEvent(req, res) {
   console.log(req.body);
