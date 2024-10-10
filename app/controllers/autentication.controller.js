@@ -200,9 +200,9 @@ async function quote(req, res) {
   const phone = req.body.phone;
   const email = req.body.email;
   const personType = req.body.personType;
-  const nit = req.body.nit;
-  const reason = req.body.reason;
-  const tel = req.body.tel;
+  let nit = req.body.nit;
+  let reason = req.body.reason;
+  let tel = req.body.tel;
   const address = req.body.address;
   const country = req.body.country;
   const services = req.body.services;
@@ -225,7 +225,7 @@ async function quote(req, res) {
   } else if (!logistic) {
     logUpdate = "No"
   }
-  const clearEmpty = "No aplica";
+  let clearEmpty = "No aplica";
   if (nit === "") {
     nit = clearEmpty;
   }
